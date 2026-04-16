@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AQA Science | Radiation · Nervous System · Photosynthesis</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+
+  :root {
+    --ink: #1a1a2e;
+    --paper: #f7f4ef;
+    --light-border: #ddd8cf;
+    --mid: #6b7280;
+    --phys: #1a3a5c;
+    --bio: #2d6a4f;
+    --accent: #c0392b;
+    --gold: #d4a017;
+    --success: #27ae60;
+    --warn: #e67e22;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 15.5px;
+    line-height: 1.65;
+  }
+
+  header {
+    background: var(--ink);
+    color: white;
+    padding: 26px 40px 22px;
+    border-bottom: 4px solid var(--gold);
+  }
+
+  header .label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  header .meta {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #aaa;
+    font-family: 'Syne', sans-serif;
+  }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 28px 20px 60px; }
+
+  .brief {
+    background: white;
+    border: 1px solid var(--light-border);
+    border-left: 4px solid var(--gold);
+    padding: 14px 18px;
+    margin-bottom: 28px;
+    font-size: 14.5px;
+  }
+
+  /* SUBJECT DIVIDERS */
+  .subject-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 36px 0 16px;
+  }
+
+  .subject-badge {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    padding: 5px 14px;
+    border-radius: 3px;
+    color: white;
+    white-space: nowrap;
+  }
+
+  .phys-badge { background: var(--phys); }
+  .bio-badge  { background: var(--bio); }
+
+  .subject-header h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+  }
+
+  .timer-pill {
+    margin-left: auto;
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--ink);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  /* BLOCKS */
+  .block {
+    background: white;
+    border: 1px solid var(--light-border);
+    margin-bottom: 18px;
+    border-radius: 2px;
+  }
+
+  .block-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--light-border);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .block-header:hover { background: #fafafa; }
+
+  .block-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    min-width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+  }
+
+  .pn { background: var(--phys); }
+  .bn { background: var(--bio); }
+
+  .block-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14.5px;
+    flex: 1;
+  }
+
+  .block-time {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    background: #fdf0ee;
+    padding: 3px 9px;
+    border-radius: 20px;
+    border: 1px solid #f5c6c0;
+  }
+
+  .expand-icon {
+    font-size: 14px;
+    color: var(--mid);
+    transition: transform 0.2s;
+    margin-left: 6px;
+  }
+
+  .block-content { padding: 18px 20px; display: none; }
+  .block-content.open { display: block; }
+  .expand-icon.open { transform: rotate(180deg); }
+
+  /* TABLES */
+  table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 10px 0; }
+
+  th {
+    background: var(--ink);
+    color: white;
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-align: left;
+    padding: 9px 11px;
+    letter-spacing: 0.5px;
+  }
+
+  td { padding: 8px 11px; border-bottom: 1px solid var(--light-border); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #fafaf8; }
+
+  /* TASK BOXES */
+  .task-box {
+    background: #f9f7f3;
+    border: 1px solid var(--light-border);
+    padding: 13px 16px;
+    margin: 14px 0;
+  }
+
+  .task-box.pb { border-left: 3px solid var(--phys); }
+  .task-box.bb { border-left: 3px solid var(--bio); }
+
+  .task-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 6px;
+  }
+
+  .task-q {
+    font-size: 14.5px;
+    margin: 5px 0;
+    padding-left: 18px;
+    position: relative;
+  }
+
+  .task-q::before {
+    content: attr(data-n);
+    position: absolute;
+    left: 0;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--accent);
+    top: 3px;
+  }
+
+  /* ANSWER REVEAL */
+  .answer-reveal { margin-top: 12px; }
+
+  .reveal-btn {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--ink);
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    cursor: pointer;
+    border-radius: 2px;
+    letter-spacing: 0.5px;
+    transition: background 0.15s;
+  }
+
+  .reveal-btn:hover { background: #333; }
+
+  .answer-body {
+    display: none;
+    margin-top: 10px;
+    background: #eef7f0;
+    border: 1px solid #c3e6cb;
+    border-radius: 2px;
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+
+  .answer-body.show { display: block; }
+
+  .ans-item {
+    margin: 5px 0;
+    padding-left: 18px;
+    position: relative;
+  }
+
+  .ans-item::before {
+    content: attr(data-n);
+    position: absolute;
+    left: 0;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--success);
+    top: 2px;
+  }
+
+  /* RADIATION GRID */
+  .rad-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin: 12px 0;
+  }
+
+  @media (max-width: 600px) { .rad-grid { grid-template-columns: 1fr; } }
+
+  .rad-card {
+    border: 1px solid var(--light-border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .rad-card-head {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    padding: 8px 12px;
+    color: white;
+  }
+
+  .rad-card-head.alpha { background: #8b0000; }
+  .rad-card-head.beta  { background: #1a3a5c; }
+  .rad-card-head.gamma { background: #2d6a4f; }
+
+  .rad-card-body { padding: 10px 12px; font-size: 13px; }
+  .rad-row { margin: 3px 0; }
+  .rad-label { font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 700; color: var(--mid); text-transform: uppercase; letter-spacing: 1px; }
+
+  /* EQUATION BOX */
+  .eq-box {
+    background: var(--ink);
+    color: white;
+    padding: 14px 18px;
+    border-radius: 2px;
+    margin: 12px 0;
+    font-family: 'Courier New', monospace;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    text-align: center;
+  }
+
+  .eq-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 6px;
+  }
+
+  /* PATHWAY DIAGRAM */
+  .pathway {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin: 12px 0;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .path-node {
+    background: var(--phys);
+    color: white;
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 7px 10px;
+    border-radius: 2px;
+    text-align: center;
+    min-width: 80px;
+  }
+
+  .path-node.bio-node { background: var(--bio); }
+  .path-node.grey-node { background: #4b5563; }
+
+  .path-arrow {
+    font-size: 16px;
+    color: var(--mid);
+    padding: 0 2px;
+  }
+
+  /* WARN BOX */
+  .warn-box {
+    background: #fff8e7;
+    border: 1px solid #f0d080;
+    border-left: 3px solid var(--warn);
+    padding: 10px 14px;
+    font-size: 13.5px;
+    margin: 10px 0;
+  }
+
+  /* HABIT FOOTER */
+  .habit-box {
+    background: var(--ink);
+    color: white;
+    padding: 18px 22px;
+    margin-top: 36px;
+    border-left: 4px solid var(--gold);
+  }
+
+  .habit-box .habit-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  p { margin: 7px 0; }
+  ul, ol { padding-left: 20px; margin: 8px 0; }
+  li { margin: 3px 0; font-size: 14px; }
+  strong { font-weight: 600; }
+  .note { font-size: 13px; color: var(--mid); font-style: italic; }
+
+  sup { font-size: 10px; vertical-align: super; }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 10px 0;
+  }
+
+  @media (max-width: 550px) { .two-col { grid-template-columns: 1fr; } }
+
+  .info-card {
+    border: 1px solid var(--light-border);
+    padding: 12px 14px;
+    font-size: 13.5px;
+    border-radius: 2px;
+  }
+
+  .info-card .ic-head {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--mid);
+    margin-bottom: 6px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="label">AQA Physics 8463 &nbsp;|&nbsp; AQA Biology 8461</div>
+  <h1>Science Revision &mdash; 30 Minutes</h1>
+  <div class="meta">Radiation (Physics) &nbsp;&middot;&nbsp; Human Nervous System (Biology) &nbsp;&middot;&nbsp; Photosynthesis (Biology)</div>
+</header>
+
+<div class="container">
+
+  <div class="brief">
+    Three topics, roughly 10 minutes each. For every block: read the knowledge section, then cover it and do the recall task from memory. Do not look up answers until you have written something. Show all equations in full when asked for them.
+  </div>
+
+  <!-- =================== PHYSICS: RADIATION =================== -->
+
+  <div class="subject-header">
+    <span class="subject-badge phys-badge">PHYSICS</span>
+    <h2>Radiation &amp; Radioactive Decay</h2>
+    <div class="timer-pill">~10 minutes</div>
+  </div>
+
+  <!-- BLOCK 1: TYPES -->
+  <div class="block">
+    <div class="block-header" onclick="toggleBlock(this)">
+      <div class="block-num pn">1</div>
+      <div class="block-title">Types of Radiation &mdash; Properties and Penetration</div>
+      <div class="block-time">4 mins: read then recall</div>
+      <div class="expand-icon">&#9660;</div>
+    </div>
+    <div class="block-content open">
+      <p class="note">Learn all three columns for each type. The examiner will ask you to compare penetration, ionising ability, and what stops each one.</p>
+
+      <div class="rad-grid">
+        <div class="rad-card">
+          <div class="rad-card-head alpha">Alpha (&alpha;)</div>
+          <div class="rad-card-body">
+            <div class="rad-row"><div class="rad-label">What it is</div>2 protons + 2 neutrons (helium-4 nucleus)</div>
+            <div class="rad-row"><div class="rad-label">Stopped by</div>A few cm of air or a sheet of paper</div>
+            <div class="rad-row"><div class="rad-label">Ionising</div>Highly ionising</div>
+            <div class="rad-row"><div class="rad-label">Penetration</div>Very low</div>
+            <div class="rad-row"><div class="rad-label">Charge</div>+2</div>
+          </div>
+        </div>
+        <div class="rad-card">
+          <div class="rad-card-head beta">&beta; minus (&beta;&minus;)</div>
+          <div class="rad-card-body">
+            <div class="rad-row"><div class="rad-label">What it is</div>Fast-moving electron emitted from nucleus</div>
+            <div class="rad-row"><div class="rad-label">Stopped by</div>~3 mm of aluminium</div>
+            <div class="rad-row"><div class="rad-label">Ionising</div>Moderately ionising</div>
+            <div class="rad-row"><div class="rad-label">Penetration</div>Medium</div>
+            <div class="rad-row"><div class="rad-label">Charge</div>&minus;1</div>
+          </div>
+        </div>
+        <div class="rad-card">
+          <div class="rad-card-head gamma">Gamma (&gamma;)</div>
+          <div class="rad-card-body">
+            <div class="rad-row"><div class="rad-label">What it is</div>Electromagnetic wave from nucleus</div>
+            <div class="rad-row"><div class="rad-label">Stopped by</div>Several cm of lead or thick concrete</div>
+            <div class="rad-row"><div class="rad-label">Ionising</div>Weakly ionising</div>
+            <div class="rad-row"><div class="rad-label">Penetration</div>Very high</div>
+            <div class="rad-row"><div class="rad-label">Charge</div>0 (no charge)</div>
+          </div>
+        </div>
+      </div>
+
+      <p><strong>Nuclear equations &mdash; what changes:</strong></p>
+      <ul>
+        <li><strong>Alpha decay:</strong> mass number decreases by 4; atomic number decreases by 2. A helium-4 nucleus is released.</li>
+        <li><strong>Beta-minus decay:</strong> mass number stays the same; atomic number increases by 1. A neutron turns into a proton and an electron is emitted.</li>
+        <li><strong>Gamma decay:</strong> no change to mass number or atomic number. Energy is released as a photon.</li>
+      </ul>
+
+      <p><strong>Half-life:</strong> the time it takes for the number of radioactive nuclei in a sample to halve, or equivalently for the count rate to halve.</p>
+
+      <p><strong>Uses of radiation:</strong> smoke detectors (Am-241, alpha), medical tracers (gamma &mdash; detected outside the body), cancer radiotherapy (gamma or beta), sterilising medical equipment (gamma), thickness gauges in industry (beta).</p>
+
+      <div class="warn-box">
+        <strong>Easy marks to lose:</strong> Alpha is the most ionising and least penetrating. Gamma is the least ionising and most penetrating. Students often get this backwards.
+      </div>
+
+      <div class="task-box pb">
+        <div class="task-label">Recall Task &mdash; Cover everything above and answer from memory</div>
+        <div class="task-q" data-n="1">What particle is an alpha particle made of? What is its charge?</div>
+        <div class="task-q" data-n="2">What material stops beta radiation?</div>
+        <div class="task-q" data-n="3">Which type of radiation is the most ionising? Which has the highest penetrating power?</div>
+        <div class="task-q" data-n="4">In alpha decay, how does the mass number change? How does the atomic number change?</div>
+        <div class="task-q" data-n="5">Define half-life.</div>
+        <div class="task-q" data-n="6">A smoke detector uses americium-241. Which type of radiation does it emit and why is this type suitable?</div>
+
+        <div class="answer-reveal">
+          <button class="reveal-btn" onclick="revealAnswer(this)">Show Answers</button>
+          <div class="answer-body">
+            <div class="ans-item" data-n="1">An alpha particle is made of 2 protons and 2 neutrons (identical to a helium-4 nucleus). Its charge is +2.</div>
+            <div class="ans-item" data-n="2">Approximately 3 mm of aluminium stops beta radiation.</div>
+            <div class="ans-item" data-n="3">Alpha is the most ionising. Gamma has the highest penetrating power.</div>
+            <div class="ans-item" data-n="4">In alpha decay, the mass number decreases by 4 and the atomic number decreases by 2.</div>
+            <div class="ans-item" data-n="5">Half-life is the time it takes for the number of radioactive nuclei (or the count rate) in a sample to halve.</div>
+            <div class="ans-item" data-n="6">It emits alpha radiation. Alpha is suitable because it is highly ionising (it ionises the air in the detector chamber, completing a circuit) but has very low penetration, so it cannot escape the casing and harm people nearby.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK 2: Half-life calculation -->
+  <div class="block">
+    <div class="block-header" onclick="toggleBlock(this)">
+      <div class="block-num pn">2</div>
+      <div class="block-title">Half-Life Calculation &mdash; Exam-Style Question</div>
+      <div class="block-time">3 mins</div>
+      <div class="expand-icon">&#9660;</div>
+    </div>
+    <div class="block-content">
+      <p class="note">Show your working in full. The method marks are worth as much as the final answer.</p>
+
+      <div class="task-box pb">
+        <div class="task-label">Exam Question</div>
+        <div class="task-q" data-n="Q">A radioactive sample has an initial count rate of 800 counts per minute. After 60 years the count rate has fallen to 100 counts per minute. Calculate the half-life of the sample. Show all your working. [3 marks]</div>
+
+        <div class="answer-reveal">
+          <button class="reveal-btn" onclick="revealAnswer(this)">Show Answer</button>
+          <div class="answer-body">
+            <p><strong>Step 1:</strong> Work out how many times the count rate has halved.</p>
+            <p>800 &rarr; 400 &rarr; 200 &rarr; 100</p>
+            <p>The count rate has halved three times.</p>
+            <p><strong>Step 2:</strong> Divide the total time by the number of half-lives.</p>
+            <p>Half-life = 60 years &divide; 3 = <strong>20 years</strong></p>
+            <p style="margin-top:8px;font-style:italic;font-size:13px;">Marks: 1 mark for identifying 3 half-lives; 1 mark for dividing 60 by 3; 1 mark for correct answer with unit.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-box pb">
+        <div class="task-label">Second Question</div>
+        <div class="task-q" data-n="Q">A radioactive isotope has a half-life of 8 days. A hospital receives a sample with an activity of 3200 Bq. What will the activity be after 32 days? [2 marks]</div>
+
+        <div class="answer-reveal">
+          <button class="reveal-btn" onclick="revealAnswer(this)">Show Answer</button>
+          <div class="answer-body">
+            <p><strong>Step 1:</strong> Number of half-lives = 32 &divide; 8 = 4 half-lives.</p>
+            <p><strong>Step 2:</strong> 3200 &rarr; 1600 &rarr; 800 &rarr; 400 &rarr; <strong>200 Bq</strong></p>
+            <p style="margin-top:8px;font-style:italic;font-size:13px;">This is a real exam favourite because it tests whether you know to divide the time by the half-life before halving.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =================== BIOLOGY: NERVOUS SYSTEM =================== -->
+
+  <div class="subject-header">
+    <span class="subject-badge bio-badge">BIOLOGY</span>
+    <h2>The Human Nervous System</h2>
+    <div class="timer-pill">~10 minutes</div>
+  </div>
+
+  <!-- BLOCK 3: Structure -->
+  <div class="block">
+    <div class="block-header" onclick="toggleBlock(this)">
+      <div class="block-num bn">3</div>
+      <div class="block-title">Structure, Neurons &amp; the Reflex Arc</div>
+      <div class="block-time">5 mins: read then recall</div>
+      <div class="expand-icon">&#9660;</div>
+    </div>
+    <div class="block-content">
+
+      <div class="two-col">
+        <div class="info-card">
+          <div class="ic-head">Central Nervous System (CNS)</div>
+          <p>Brain + spinal cord. Processes information and coordinates responses.</p>
+        </div>
+        <div class="info-card">
+          <div class="ic-head">Peripheral Nervous System (PNS)</div>
+          <p>All nerves outside the CNS. Carries signals to and from the CNS.</p>
+        </div>
+      </div>
+
+      <p><strong>Three types of neuron:</strong></p>
+      <table>
+        <thead>
+          <tr><th>Neuron</th><th>Function</th><th>Location</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Sensory</strong></td>
+            <td>Carries impulses FROM receptors TO the CNS</td>
+            <td>PNS</td>
+          </tr>
+          <tr>
+            <td><strong>Relay</strong></td>
+            <td>Passes impulses within the CNS; links sensory to motor</td>
+            <td>CNS (brain and spinal cord)</td>
+          </tr>
+          <tr>
+            <td><strong>Motor</strong></td>
+            <td>Carries impulses FROM the CNS TO effectors (muscles/glands)</td>
+            <td>PNS</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>The reflex arc pathway (in order):</strong></p>
+      <div class="pathway">
+        <div class="path-node bio-node">Stimulus</div>
+        <div class="path-arrow">&#8594;</div>
+        <div class="path-node bio-node">Receptor</div>
+        <div class="path-arrow">&#8594;</div>
+        <div class="path-node bio-node">Sensory neuron</div>
+        <div class="path-arrow">&#8594;</div>
+        <div class="path-node bio-node">Relay neuron (spinal cord)</div>
+        <div class="path-arrow">&#8594;</div>
+        <div class="path-node bio-node">Motor neuron</div>
+        <div class="path-arrow">&#8594;</div>
+        <div class="path-node bio-node">Effector</div>
+        <div class="path-arrow">&#8594;</div>
+        <div class="path-node bio-node">Response</div>
+      </div>
+
+      <p><strong>Why does a reflex arc bypass the brain?</strong> Speed. The relay neuron is in the spinal cord, not the brain, so the signal does not have to travel all the way to the brain and back. This makes reflex responses much faster than conscious responses.</p>
+
+      <p><strong>Synapses:</strong> the gap between two neurons. When an electrical impulse reaches the end of a neuron, the presynaptic terminal releases neurotransmitter molecules into the synaptic cleft. These diffuse across and bind to receptors on the postsynaptic membrane, triggering a new electrical impulse. Signals can only travel in one direction across a synapse.</p>
+
+      <p><strong>Brain regions (required for Higher):</strong></p>
+      <ul>
+        <li><strong>Cerebral cortex:</strong> consciousness, memory, language, personality, voluntary movement</li>
+        <li><strong>Cerebellum:</strong> coordination, balance, fine motor control</li>
+        <li><strong>Medulla oblongata:</strong> automatic functions &mdash; heart rate, breathing rate</li>
+      </ul>
+
+      <div class="task-box bb">
+        <div class="task-label">Recall Task &mdash; Cover the section above</div>
+        <div class="task-q" data-n="1">Name the two parts of the CNS.</div>
+        <div class="task-q" data-n="2">What is the function of a sensory neuron?</div>
+        <div class="task-q" data-n="3">Write out the reflex arc in the correct order, from stimulus to response.</div>
+        <div class="task-q" data-n="4">Why are reflex responses faster than voluntary responses?</div>
+        <div class="task-q" data-n="5">How does a signal cross a synapse? Name the chemicals involved.</div>
+        <div class="task-q" data-n="6">Which part of the brain controls balance and coordination?</div>
+
+        <div class="answer-reveal">
+          <button class="reveal-btn" onclick="revealAnswer(this)">Show Answers</button>
+          <div class="answer-body">
+            <div class="ans-item" data-n="1">Brain and spinal cord.</div>
+            <div class="ans-item" data-n="2">A sensory neuron carries electrical impulses from receptors to the CNS.</div>
+            <div class="ans-item" data-n="3">Stimulus &rarr; receptor &rarr; sensory neuron &rarr; relay neuron (spinal cord) &rarr; motor neuron &rarr; effector &rarr; response.</div>
+            <div class="ans-item" data-n="4">In a reflex arc, the relay neuron is located in the spinal cord, not the brain. The signal does not need to travel all the way to the brain, so the response is much faster.</div>
+            <div class="ans-item" data-n="5">When an impulse reaches a synapse, the presynaptic terminal releases neurotransmitters into the synaptic cleft. These diffuse across and bind to receptors on the postsynaptic membrane, triggering a new electrical impulse.</div>
+            <div class="ans-item" data-n="6">The cerebellum.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK 4: Nervous system exam Q -->
+  <div class="block">
+    <div class="block-header" onclick="toggleBlock(this)">
+      <div class="block-num bn">4</div>
+      <div class="block-title">Exam-Style Questions &mdash; Nervous System</div>
+      <div class="block-time">3 mins</div>
+      <div class="expand-icon">&#9660;</div>
+    </div>
+    <div class="block-content">
+
+      <div class="task-box bb">
+        <div class="task-label">Question A &mdash; 3 marks</div>
+        <div class="task-q" data-n="Q">A student touches a hot plate and immediately pulls their hand away before they feel pain. Explain why the student pulls their hand away before they feel pain. [3 marks]</div>
+
+        <div class="answer-reveal">
+          <button class="reveal-btn" onclick="revealAnswer(this)">Show Answer</button>
+          <div class="answer-body">
+            <p>This is a reflex action. The impulse travels from the receptor in the hand along the sensory neuron to the spinal cord (relay neuron), then along the motor neuron to the effector (muscle), causing the hand to be pulled away. This pathway does not involve the brain, so the response happens before the signal reaches the brain to be consciously felt as pain. [1 mark: identifies reflex arc; 1 mark: explains route through spinal cord not brain; 1 mark: explains this is faster than a conscious response]</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-box bb">
+        <div class="task-label">Question B &mdash; 2 marks</div>
+        <div class="task-q" data-n="Q">Explain why signals can only travel in one direction across a synapse. [2 marks]</div>
+
+        <div class="answer-reveal">
+          <button class="reveal-btn" onclick="revealAnswer(this)">Show Answer</button>
+          <div class="answer-body">
+            <p>Neurotransmitters are only released from the presynaptic terminal (one side). Receptors for neurotransmitters are only present on the postsynaptic membrane (the other side). Therefore the signal can only travel from one neuron to the next, not backwards.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =================== BIOLOGY: PHOTOSYNTHESIS =================== -->
+
+  <div class="subject-header">
+    <span class="subject-badge bio-badge">BIOLOGY</span>
+    <h2>Photosynthesis</h2>
+    <div class="timer-pill">~10 minutes</div>
+  </div>
+
+  <!-- BLOCK 5: Core knowledge -->
+  <div class="block">
+    <div class="block-header" onclick="toggleBlock(this)">
+      <div class="block-num bn">5</div>
+      <div class="block-title">Equation, Limiting Factors &amp; Uses of Glucose</div>
+      <div class="block-time">5 mins: read then recall</div>
+      <div class="expand-icon">&#9660;</div>
+    </div>
+    <div class="block-content">
+
+      <div class="eq-label">PHOTOSYNTHESIS EQUATION</div>
+      <div class="eq-box">6CO&#8322; + 6H&#8322;O &rarr; C&#8326;H&#8321;&#8322;O&#8326; + 6O&#8322;&nbsp;&nbsp;&nbsp;(requires light energy)</div>
+      <p class="note">Word equation: carbon dioxide + water &rarr; glucose + oxygen (using light energy)</p>
+      <p>Photosynthesis takes place in the <strong>chloroplasts</strong>, specifically in the thylakoid membranes (light-dependent stage) and the stroma (light-independent stage / Calvin cycle).</p>
+
+      <p><strong>The three limiting factors &mdash; learn the graph shape for each:</strong></p>
+      <table>
+        <thead>
+          <tr><th>Limiting Factor</th><th>Effect on rate</th><th>Exam detail</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Light intensity</strong></td>
+            <td>As light increases, rate increases (up to a point, then levels off)</td>
+            <td>At low light, light is the limiting factor. When the graph flattens, something else is limiting.</td>
+          </tr>
+          <tr>
+            <td><strong>CO&#8322; concentration</strong></td>
+            <td>As CO&#8322; increases, rate increases (up to a point)</td>
+            <td>CO&#8322; is a raw material for photosynthesis. Without enough of it, rate cannot increase.</td>
+          </tr>
+          <tr>
+            <td><strong>Temperature</strong></td>
+            <td>Rate increases up to the optimum (~25&ndash;35&deg;C); falls sharply above optimum</td>
+            <td>Enzymes catalyse photosynthesis. Above optimum the enzymes denature. This is not just "slow down" &mdash; it is permanent denaturation.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>What does the plant do with the glucose?</strong></p>
+      <ul>
+        <li><strong>Respiration</strong> &mdash; releases energy for the plant's own processes</li>
+        <li><strong>Starch</strong> &mdash; insoluble storage molecule (converted from glucose)</li>
+        <li><strong>Cellulose</strong> &mdash; used to make cell walls</li>
+        <li><strong>Proteins</strong> &mdash; glucose + nitrate ions from the soil &rarr; amino acids &rarr; proteins</li>
+        <li><strong>Fats and oils</strong> &mdash; energy storage in seeds</li>
+      </ul>
+
+      <p><strong>For Higher tier &mdash; the two stages:</strong></p>
+      <div class="two-col">
+        <div class="info-card">
+          <div class="ic-head">Light-Dependent (thylakoid membranes)</div>
+          <ul>
+            <li>Light energy splits water (photolysis): 2H&#8322;O &rarr; O&#8322; + 4H&#8314; + 4e&#8315;</li>
+            <li>ATP is made</li>
+            <li>Oxygen is released as a by-product</li>
+            <li>NADPH is produced</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <div class="ic-head">Light-Independent / Calvin Cycle (stroma)</div>
+          <ul>
+            <li>CO&#8322; is fixed (combined with RuBP using enzyme RuBisCO)</li>
+            <li>ATP and NADPH from stage 1 are used</li>
+            <li>Glucose (GP &rarr; GALP &rarr; glucose) is produced</li>
+            <li>RuBP is regenerated</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="warn-box">
+        <strong>Examiner's favourite mistake:</strong> Students say temperature just "slows down" photosynthesis above the optimum. The correct answer is that the enzymes involved (including RuBisCO) are <em>denatured</em> above the optimum temperature &mdash; their active site permanently changes shape. This is worth an extra mark.
+      </div>
+
+      <div class="task-box bb">
+        <div class="task-label">Recall Task &mdash; Cover the section above</div>
+        <div class="task-q" data-n="1">Write the balanced symbol equation for photosynthesis.</div>
+        <div class="task-q" data-n="2">Where in the cell does photosynthesis take place?</div>
+        <div class="task-q" data-n="3">Name the three limiting factors of photosynthesis.</div>
+        <div class="task-q" data-n="4">Why does the rate of photosynthesis drop sharply above the optimum temperature?</div>
+        <div class="task-q" data-n="5">Name three uses of glucose in a plant.</div>
+        <div class="task-q" data-n="6">(Higher) What is produced in the light-dependent stage that is then used in the Calvin cycle?</div>
+
+        <div class="answer-reveal">
+          <button class="reveal-btn" onclick="revealAnswer(this)">Show Answers</button>
+          <div class="answer-body">
+            <div class="ans-item" data-n="1">6CO&#8322; + 6H&#8322;O &rarr; C&#8326;H&#8321;&#8322;O&#8326; + 6O&#8322; (using light energy)</div>
+            <div class="ans-item" data-n="2">In the chloroplasts. Specifically, the light-dependent stage occurs in the thylakoid membranes; the Calvin cycle occurs in the stroma.</div>
+            <div class="ans-item" data-n="3">Light intensity, CO&#8322; concentration, temperature.</div>
+            <div class="ans-item" data-n="4">Above the optimum temperature, the enzymes involved in photosynthesis (including RuBisCO) are denatured. Their active site changes shape permanently, so substrates can no longer bind and the reactions cannot proceed.</div>
+            <div class="ans-item" data-n="5">Any three from: respiration; converted to starch for storage; making cellulose for cell walls; combined with nitrates to make amino acids and proteins; converted to fats/oils.</div>
+            <div class="ans-item" data-n="6">ATP and NADPH (reduced NADP) are produced in the light-dependent stage. Both are used in the Calvin cycle to fix CO&#8322; and produce glucose.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK 6: Photosynthesis exam Qs -->
+  <div class="block">
+    <div class="block-header" onclick="toggleBlock(this)">
+      <div class="block-num bn">6</div>
+      <div class="block-title">Exam-Style Questions &mdash; Photosynthesis</div>
+      <div class="block-time">3 mins</div>
+      <div class="expand-icon">&#9660;</div>
+    </div>
+    <div class="block-content">
+
+      <div class="task-box bb">
+        <div class="task-label">Question A &mdash; 3 marks</div>
+        <div class="task-q" data-n="Q">A scientist measures the rate of photosynthesis in a plant at increasing light intensities. The rate increases at first, then levels off, even though light intensity continues to increase. Explain why the rate levels off. [3 marks]</div>
+
+        <div class="answer-reveal">
+          <button class="reveal-btn" onclick="revealAnswer(this)">Show Answer</button>
+          <div class="answer-body">
+            <p>When the graph levels off, light is no longer the limiting factor. Another factor &mdash; either CO&#8322; concentration or temperature &mdash; has become limiting. Even if light is increased further, the rate cannot increase because there is insufficient CO&#8322; for the Calvin cycle (or the enzymes are not working fast enough at the current temperature). [1 mark: identifies that another factor is now limiting; 1 mark: names a specific factor; 1 mark: explains mechanism, e.g. insufficient CO&#8322; for the light-independent reactions]</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-box bb">
+        <div class="task-label">Question B &mdash; 2 marks</div>
+        <div class="task-q" data-n="Q">Explain why plants need nitrate ions as well as glucose. [2 marks]</div>
+
+        <div class="answer-reveal">
+          <button class="reveal-btn" onclick="revealAnswer(this)">Show Answer</button>
+          <div class="answer-body">
+            <p>Glucose only contains carbon, hydrogen, and oxygen. Proteins also require nitrogen. Plants absorb nitrate ions from the soil and combine them with glucose derivatives to produce amino acids, which are then assembled into proteins. Without nitrate ions, plants cannot make proteins and will show stunted growth.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="habit-box">
+    <div class="habit-label">Single Most Important Habit Across All Three Topics</div>
+    <p>When an exam question asks you to "explain" something in science, the answer requires a mechanism, not just a description. "The rate goes down because it is too hot" is worth one mark. "The enzymes are denatured above the optimum temperature, permanently changing the shape of the active site so substrates can no longer bind" is worth two or three. In every explain question, ask yourself: what is physically or chemically happening at the molecular or cellular level? Write that.</p>
+  </div>
+
+</div>
+
+<script>
+  function toggleBlock(header) {
+    const content = header.nextElementSibling;
+    const icon = header.querySelector('.expand-icon');
+    const isOpen = content.classList.contains('open');
+    content.classList.toggle('open', !isOpen);
+    icon.classList.toggle('open', !isOpen);
+  }
+
+  function revealAnswer(btn) {
+    const body = btn.nextElementSibling;
+    const showing = body.classList.toggle('show');
+    btn.textContent = showing ? 'Hide Answers' : 'Show Answers';
+  }
+</script>
+
+</body>
+</html>

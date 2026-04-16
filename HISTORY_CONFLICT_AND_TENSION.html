@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AQA History | Conflict and Tension 1918–1939</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+
+  :root {
+    --ink: #1a1a2e;
+    --paper: #f7f4ef;
+    --accent: #c0392b;
+    --gold: #d4a017;
+    --mid: #6b7280;
+    --light-border: #ddd8cf;
+    --session1: #1a3a5c;
+    --session2: #2d6a4f;
+    --success: #27ae60;
+    --warn: #e67e22;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  header {
+    background: var(--ink);
+    color: white;
+    padding: 28px 40px 24px;
+    border-bottom: 4px solid var(--accent);
+  }
+
+  header .label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  header .meta {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #aaa;
+    font-family: 'Syne', sans-serif;
+  }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 32px 24px 60px; }
+
+  .brief {
+    background: white;
+    border: 1px solid var(--light-border);
+    border-left: 4px solid var(--gold);
+    padding: 16px 20px;
+    margin-bottom: 32px;
+    font-size: 15px;
+  }
+
+  .brief strong { font-weight: 600; }
+
+  /* SESSION HEADER */
+  .session-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 40px 0 20px;
+  }
+
+  .session-badge {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 3px;
+    white-space: nowrap;
+    color: white;
+  }
+
+  .s1 { background: var(--session1); }
+  .s2 { background: var(--session2); }
+
+  .session-header h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .timer-pill {
+    margin-left: auto;
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    background: var(--ink);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  /* BLOCKS */
+  .block {
+    background: white;
+    border: 1px solid var(--light-border);
+    margin-bottom: 20px;
+    border-radius: 2px;
+  }
+
+  .block-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--light-border);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .block-header:hover { background: #fafafa; }
+
+  .block-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    min-width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+  }
+
+  .s1 .block-num, .block.s1t .block-num { background: var(--session1); }
+  .s2 .block-num, .block.s2t .block-num { background: var(--session2); }
+  .block-num.s1n { background: var(--session1); }
+  .block-num.s2n { background: var(--session2); }
+
+  .block-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    flex: 1;
+  }
+
+  .block-time {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    background: #fdf0ee;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid #f5c6c0;
+  }
+
+  .expand-icon {
+    font-size: 16px;
+    color: var(--mid);
+    transition: transform 0.2s;
+    margin-left: 8px;
+  }
+
+  .block-content {
+    padding: 20px 22px;
+    display: none;
+  }
+
+  .block-content.open { display: block; }
+
+  .expand-icon.open { transform: rotate(180deg); }
+
+  /* KNOWLEDGE TABLE */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14.5px;
+    margin: 12px 0;
+  }
+
+  th {
+    background: var(--ink);
+    color: white;
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: left;
+    padding: 10px 12px;
+    letter-spacing: 0.5px;
+  }
+
+  td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--light-border);
+    vertical-align: top;
+  }
+
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #fafaf8; }
+
+  .key-date {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  /* RECALL TASKS */
+  .task-box {
+    background: #f9f7f3;
+    border: 1px solid var(--light-border);
+    border-left: 3px solid var(--session1);
+    padding: 14px 18px;
+    margin: 16px 0;
+  }
+
+  .task-box.s2b { border-left-color: var(--session2); }
+
+  .task-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 6px;
+  }
+
+  .task-q {
+    font-size: 15px;
+    margin: 6px 0;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .task-q::before {
+    content: attr(data-n);
+    position: absolute;
+    left: 0;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--accent);
+    top: 3px;
+  }
+
+  /* ANSWER REVEAL */
+  .answer-reveal {
+    margin-top: 14px;
+  }
+
+  .reveal-btn {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    background: var(--ink);
+    color: white;
+    border: none;
+    padding: 7px 16px;
+    cursor: pointer;
+    border-radius: 2px;
+    letter-spacing: 0.5px;
+    transition: background 0.15s;
+  }
+
+  .reveal-btn:hover { background: #333; }
+
+  .answer-body {
+    display: none;
+    margin-top: 12px;
+    background: #eef7f0;
+    border: 1px solid #c3e6cb;
+    border-radius: 2px;
+    padding: 14px 18px;
+    font-size: 14.5px;
+  }
+
+  .answer-body.show { display: block; }
+
+  .ans-item {
+    margin: 5px 0;
+    padding-left: 18px;
+    position: relative;
+  }
+
+  .ans-item::before {
+    content: attr(data-n);
+    position: absolute;
+    left: 0;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--success);
+    top: 2px;
+  }
+
+  /* GRADE COMPARISON */
+  .grade-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 14px 0;
+  }
+
+  @media (max-width: 600px) { .grade-compare { grid-template-columns: 1fr; } }
+
+  .grade-card {
+    border-radius: 2px;
+    padding: 14px 16px;
+    font-size: 14px;
+  }
+
+  .grade-card.g5 {
+    background: #fff8e7;
+    border: 1px solid #f0d080;
+    border-top: 3px solid #e6a817;
+  }
+
+  .grade-card.g9 {
+    background: #eef7f0;
+    border: 1px solid #b8dfc3;
+    border-top: 3px solid var(--success);
+  }
+
+  .grade-label {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .grade-card.g5 .grade-label { color: #9a7200; }
+  .grade-card.g9 .grade-label { color: var(--success); }
+
+  /* EXAM Q */
+  .exam-q-box {
+    background: var(--ink);
+    color: white;
+    padding: 16px 20px;
+    border-radius: 2px;
+    margin: 14px 0;
+  }
+
+  .exam-q-box .q-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .exam-q-box .q-text {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  .exam-q-box .q-marks {
+    margin-top: 8px;
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    color: #aaa;
+  }
+
+  /* MODEL ANSWER */
+  .model-answer {
+    background: white;
+    border: 1px solid var(--light-border);
+    padding: 18px 20px;
+    margin-top: 12px;
+    font-size: 14.5px;
+  }
+
+  .model-answer .ma-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--success);
+    margin-bottom: 10px;
+  }
+
+  .annotation {
+    display: inline;
+    background: #fff3cd;
+    border-bottom: 2px solid var(--gold);
+    cursor: pointer;
+    position: relative;
+  }
+
+  .anno-note {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    background: var(--ink);
+    color: white;
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    padding: 5px 8px;
+    border-radius: 2px;
+    white-space: nowrap;
+    z-index: 10;
+    line-height: 1.4;
+    max-width: 200px;
+    white-space: normal;
+    width: 180px;
+  }
+
+  .annotation:hover .anno-note { display: block; }
+
+  .anno-pill {
+    display: inline-block;
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    background: var(--gold);
+    color: white;
+    padding: 1px 5px;
+    border-radius: 2px;
+    margin-left: 2px;
+    vertical-align: middle;
+  }
+
+  /* STRUCTURE GUIDE */
+  .structure-row {
+    display: flex;
+    gap: 0;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+
+  .struct-cell {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid var(--light-border);
+    border-right: none;
+  }
+
+  .struct-cell:last-child { border-right: 1px solid var(--light-border); }
+
+  .struct-cell .sh {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .struct-cell .sb { font-size: 13px; }
+
+  /* WARNING BOX */
+  .warn-box {
+    background: #fff8e7;
+    border: 1px solid #f0d080;
+    border-left: 3px solid var(--warn);
+    padding: 10px 14px;
+    font-size: 14px;
+    margin: 12px 0;
+  }
+
+  .warn-box strong { font-weight: 600; }
+
+  /* HABIT FOOTER */
+  .habit-box {
+    background: var(--ink);
+    color: white;
+    padding: 20px 24px;
+    margin-top: 40px;
+    border-left: 4px solid var(--gold);
+  }
+
+  .habit-box .habit-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .habit-box p { font-size: 15px; line-height: 1.6; }
+
+  hr.divider {
+    border: none;
+    border-top: 1px solid var(--light-border);
+    margin: 24px 0;
+  }
+
+  p { margin: 8px 0; }
+
+  ul, ol { padding-left: 22px; margin: 8px 0; }
+  li { margin: 4px 0; }
+
+  strong { font-weight: 600; }
+
+  .note { font-size: 13px; color: var(--mid); font-style: italic; }
+
+  .inline-mark {
+    display: inline-block;
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 1px 6px;
+    border-radius: 2px;
+    vertical-align: middle;
+    margin-left: 4px;
+  }
+
+  .mark-point { background: #dbeafe; color: #1d4ed8; }
+  .mark-evidence { background: #fce7f3; color: #9d174d; }
+  .mark-explain { background: #d1fae5; color: #065f46; }
+  .mark-judge { background: #fef3c7; color: #92400e; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="label">AQA History 8145BC &nbsp;|&nbsp; Conflict and Tension 1918&ndash;1939</div>
+  <h1>Two 30-Minute Revision Sessions</h1>
+  <div class="meta">Session 1: Knowledge &amp; Recall &nbsp;&nbsp;|&nbsp;&nbsp; Session 2: Analytical Exam Practice</div>
+</header>
+
+<div class="container">
+
+  <div class="brief">
+    <strong>What these sessions cover:</strong> Paris Peace Conference aims (Wilson, Lloyd George, Clemenceau), Treaty of Versailles key terms, the League of Nations (aims, structure, weaknesses), the League in action (Upper Silesia, Corfu, Manchuria), and appeasement / countries that backed Hitler. Each task has a time allocation and answers are included. Do not skip to the answers &mdash; cover them and write from memory first.
+  </div>
+
+  <!-- ===================== SESSION 1 ===================== -->
+
+  <div class="session-header">
+    <span class="session-badge s1">SESSION 1</span>
+    <h2>Knowledge, Dates &amp; Recall</h2>
+    <div class="timer-pill">30 minutes total</div>
+  </div>
+
+  <!-- BLOCK 1 -->
+  <div class="block">
+    <div class="block-header" onclick="toggleBlock(this)">
+      <div class="block-num s1n">1</div>
+      <div class="block-title">The Big Three at Paris &mdash; Aims and Demands</div>
+      <div class="block-time">8 mins</div>
+      <div class="expand-icon">&#9660;</div>
+    </div>
+    <div class="block-content">
+      <p class="note">Read the table carefully. Then cover it and complete the recall task below without looking back.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Leader</th>
+            <th>Country</th>
+            <th>Key Aims</th>
+            <th>Why</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="key-date">Woodrow Wilson</span></td>
+            <td>USA</td>
+            <td>14 Points: self-determination, no punishing peace, League of Nations, arms reduction, freedom of the seas</td>
+            <td>USA entered late; Wilson believed a fair peace would prevent future war. He was an idealist.</td>
+          </tr>
+          <tr>
+            <td><span class="key-date">David Lloyd George</span></td>
+            <td>Britain</td>
+            <td>Punish Germany but not too harshly. Keep German trade alive. Protect British naval supremacy. Gain German colonies.</td>
+            <td>British public wanted revenge ("Hang the Kaiser"), but Lloyd George feared a crushed Germany would turn communist or seek revenge.</td>
+          </tr>
+          <tr>
+            <td><span class="key-date">Georges Clemenceau</span></td>
+            <td>France</td>
+            <td>Crush Germany permanently. Huge reparations. Demilitarised Rhineland. Return of Alsace-Lorraine. Reduce Germany's army to near zero.</td>
+            <td>France had been invaded twice in 50 years. Clemenceau represented a traumatised nation that wanted security above all else.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="warn-box">
+        <strong>Key conflict between the three:</strong> Wilson wanted a fair peace; Clemenceau wanted Germany destroyed; Lloyd George sat in the middle. This tension shaped every term of the Treaty of Versailles.
+      </div>
+
+      <div class="task-box">
+        <div class="task-label">Recall Task &mdash; Cover the table above. Write from memory.</div>
+        <div class="task-q" data-n="1">Name one key aim of Wilson, one of Lloyd George, and one of Clemenceau.</div>
+        <div class="task-q" data-n="2">Why did Clemenceau want to punish Germany so harshly? Give a specific reason.</div>
+        <div class="task-q" data-n="3">Why was Lloyd George in a difficult position at Paris? What two pressures was he balancing?</div>
+        <div class="task-q" data-n="4">Which leader proposed the League of Nations? Did his country end up joining it?</div>
+
+        <div class="answer-reveal">
+          <button class="reveal-btn" onclick="revealAnswer(this)">Show Answers</button>
+          <div class="answer-body">
+            <div class="ans-item" data-n="1">Wilson: a League of Nations / self-determination. Lloyd George: punish Germany but not too harshly / protect British trade. Clemenceau: return of Alsace-Lorraine / massive reparations / permanently weaken Germany.</div>
+            <div class="ans-item" data-n="2">France had been invaded twice by Germany in 50 years (1870 and 1914). Clemenceau's priority was French security.</div>
+            <div class="ans-item" data-n="3">The British public wanted revenge after four years of war. But Lloyd George feared that crushing Germany would either push it towards communism or store up resentment for a future war.</div>
+            <div class="ans-item" data-n="4">Wilson proposed the League. The USA did NOT join &mdash; the US Congress voted against membership in 1920, fearing involvement in European conflicts.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK 2 -->
+  <div class="block">
+    <div class="block-header" onclick="toggleBlock(this)">
+      <div class="block-num s1n">2</div>
+      <div class="block-title">Treaty of Versailles &mdash; Key Terms</div>
+      <div class="block-time">7 mins</div>
+      <div class="expand-icon">&#9660;</div>
+    </div>
+    <div class="block-content">
+      <p class="note">These are the terms the examiner expects you to know precisely. Use dates and figures, not vague descriptions.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Area</th>
+            <th>Term</th>
+            <th>Why Germany hated it</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>War Guilt</strong></td>
+            <td>Clause 231: Germany had to accept full blame for WWI</td>
+            <td>Germans saw this as a lie. They believed Austria-Hungary and Russia were equally to blame.</td>
+          </tr>
+          <tr>
+            <td><strong>Reparations</strong></td>
+            <td>&pound;6.6 billion (fixed 1921). Payable over decades.</td>
+            <td>Crippled the German economy. Led to hyperinflation by 1923.</td>
+          </tr>
+          <tr>
+            <td><strong>Military</strong></td>
+            <td>Army limited to 100,000 men. No air force. Navy limited to 6 battleships. Rhineland demilitarised.</td>
+            <td>Germany felt humiliated and defenceless.</td>
+          </tr>
+          <tr>
+            <td><strong>Territory</strong></td>
+            <td>Lost Alsace-Lorraine (to France), Posen and West Prussia (to Poland), all overseas colonies, Saarland under League control for 15 years.</td>
+            <td>Lost 10% of land and 12.5% of population. 3 million Germans in Poland, under foreign rule.</td>
+          </tr>
+          <tr>
+            <td><strong>League of Nations</strong></td>
+            <td>Germany not invited to join at first. League would enforce the treaty.</td>
+            <td>Germany excluded from the body meant to maintain world peace.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="task-box">
+        <div class="task-label">Rapid Recall &mdash; Write from memory without looking</div>
+        <div class="task-q" data-n="1">What was Article 231 and why did Germans resent it?</div>
+        <div class="task-q" data-n="2">How many soldiers was Germany's army limited to?</div>
+        <div class="task-q" data-n="3">Which territory was returned to France under the treaty?</div>
+        <div class="task-q" data-n="4">How much were reparations set at and when was this figure fixed?</div>
+
+        <div class="answer-reveal">
+          <button class="reveal-btn" onclick="revealAnswer(this)">Show Answers</button>
+          <div class="answer-body">
+            <div class="ans-item" data-n="1">Article 231 (the War Guilt Clause) forced Germany to accept full responsibility for causing WWI. Germans resented it because they believed other powers (Austria-Hungary, Russia) were equally responsible.</div>
+            <div class="ans-item" data-n="2">100,000 men.</div>
+            <div class="ans-item" data-n="3">Alsace-Lorraine.</div>
+            <div class="ans-item" data-n="4">&pound;6.6 billion, fixed in 1921.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK 3 -->
+  <div class="block">
+    <div class="block-header" onclick="toggleBlock(this)">
+      <div class="block-num s1n">3</div>
+      <div class="block-title">League of Nations &mdash; Aims, Structure &amp; Weaknesses</div>
+      <div class="block-time">8 mins</div>
+      <div class="expand-icon">&#9660;</div>
+    </div>
+    <div class="block-content">
+
+      <table>
+        <thead>
+          <tr>
+            <th>Aspect</th>
+            <th>Detail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Founded</strong></td>
+            <td>1920. Based in Geneva, Switzerland.</td>
+          </tr>
+          <tr>
+            <td><strong>Aims</strong></td>
+            <td>Maintain world peace through collective security; encourage disarmament; improve living and working conditions; enforce the Treaty of Versailles.</td>
+          </tr>
+          <tr>
+            <td><strong>Assembly</strong></td>
+            <td>All member nations. Met once a year. Unanimous votes required for major decisions.</td>
+          </tr>
+          <tr>
+            <td><strong>Council</strong></td>
+            <td>Permanent members: Britain, France, Italy, Japan. Met more frequently. Had power to recommend action.</td>
+          </tr>
+          <tr>
+            <td><strong>Permanent Court</strong></td>
+            <td>Settled legal disputes between nations. No enforcement power.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>The six structural weaknesses you must know:</strong></p>
+      <ol>
+        <li><strong>USA never joined</strong> &mdash; the world's largest economy was absent, making sanctions meaningless.</li>
+        <li><strong>No army</strong> &mdash; relied on member nations to contribute troops. They rarely did.</li>
+        <li><strong>Unanimous decisions needed</strong> &mdash; any single member could block action.</li>
+        <li><strong>Sanctions ignored</strong> &mdash; without US trade, targeted nations simply traded elsewhere.</li>
+        <li><strong>Germany and USSR excluded</strong> &mdash; weakened legitimacy and representation.</li>
+        <li><strong>Dominated by Britain and France</strong> &mdash; both had their own interests and were war-weary.</li>
+      </ol>
+
+      <div class="task-box">
+        <div class="task-label">Recall Task</div>
+        <div class="task-q" data-n="1">Name THREE structural weaknesses of the League of Nations.</div>
+        <div class="task-q" data-n="2">What were the two main bodies of the League? What was the difference between them?</div>
+        <div class="task-q" data-n="3">Why did the absence of the USA make economic sanctions almost useless?</div>
+
+        <div class="answer-reveal">
+          <button class="reveal-btn" onclick="revealAnswer(this)">Show Answers</button>
+          <div class="answer-body">
+            <div class="ans-item" data-n="1">Any three from: no USA; no army; unanimous decisions required; sanctions ignored; Germany/USSR excluded; dominated by Britain and France with their own interests.</div>
+            <div class="ans-item" data-n="2">The Assembly (all members, met annually) and the Council (permanent members, met more often and could recommend action). The Council had more decision-making power.</div>
+            <div class="ans-item" data-n="3">Any country hit by sanctions could simply trade with the USA instead. US businesses had no obligation to stop trading, so the sanctions had huge gaps from the start.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK 4 -->
+  <div class="block">
+    <div class="block-header" onclick="toggleBlock(this)">
+      <div class="block-num s1n">4</div>
+      <div class="block-title">League in Action &mdash; Key Crises and Successes</div>
+      <div class="block-time">7 mins</div>
+      <div class="expand-icon">&#9660;</div>
+    </div>
+    <div class="block-content">
+
+      <div class="warn-box">
+        <strong>Common error to fix now:</strong> The Manchurian Crisis (1931) is outside the 1920s timeframe. If an exam question asks about the League "in the 1920s", use Corfu (1923) and Upper Silesia (1921) as your failure examples, not Manchuria.
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>Date</th>
+            <th>What happened</th>
+            <th>Result</th>
+            <th>Success or failure?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Aaland Islands</strong></td>
+            <td class="key-date">1921</td>
+            <td>Finland and Sweden both claimed the islands. League ruled in Finland's favour.</td>
+            <td>Sweden accepted the ruling peacefully.</td>
+            <td style="color:var(--success);font-weight:700;">SUCCESS</td>
+          </tr>
+          <tr>
+            <td><strong>Upper Silesia</strong></td>
+            <td class="key-date">1921</td>
+            <td>Germany and Poland both wanted the industrial region. League held a vote, then divided the territory. Poland got the industrial areas; Germany got more land.</td>
+            <td>Both sides unhappy. The messy compromise created resentment.</td>
+            <td style="color:var(--warn);font-weight:700;">PARTIAL FAILURE</td>
+          </tr>
+          <tr>
+            <td><strong>Corfu Crisis</strong></td>
+            <td class="key-date">1923</td>
+            <td>Mussolini bombed and occupied the Greek island of Corfu after an Italian general was killed. Greece appealed to the League. League condemned Italy. Italy threatened to leave.</td>
+            <td>League backed down. Italy collected a fine from Greece directly. The bully won.</td>
+            <td style="color:var(--accent);font-weight:700;">FAILURE</td>
+          </tr>
+          <tr>
+            <td><strong>Greek&ndash;Bulgarian</strong></td>
+            <td class="key-date">1925</td>
+            <td>Greece invaded Bulgaria. League condemned Greece and ordered withdrawal.</td>
+            <td>Greece obeyed. A genuine success.</td>
+            <td style="color:var(--success);font-weight:700;">SUCCESS</td>
+          </tr>
+          <tr>
+            <td><strong>Manchurian Crisis</strong></td>
+            <td class="key-date">1931</td>
+            <td>Japan invaded Manchuria in China. League condemned Japan, set up the Lytton Commission. Japan ignored it and left the League.</td>
+            <td>No sanctions. Japan kept Manchuria. League shown to be powerless against a major power.</td>
+            <td style="color:var(--accent);font-weight:700;">FAILURE</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>The pattern to spot (essential for Level 4):</strong> The League succeeded when no major power had something to gain. It failed whenever a major power chose to ignore it. This is not a coincidence &mdash; it reflects the structural weakness that the League had no army and no real enforcement power.</p>
+
+      <div class="task-box">
+        <div class="task-label">Recall Task</div>
+        <div class="task-q" data-n="1">Name two genuine League successes in the 1920s.</div>
+        <div class="task-q" data-n="2">Why was the Corfu Crisis (1923) a serious failure for the League?</div>
+        <div class="task-q" data-n="3">What pattern explains why the League succeeded in some cases but failed in others?</div>
+
+        <div class="answer-reveal">
+          <button class="reveal-btn" onclick="revealAnswer(this)">Show Answers</button>
+          <div class="answer-body">
+            <div class="ans-item" data-n="1">Aaland Islands (1921): Finland vs Sweden, resolved peacefully. Greek-Bulgarian dispute (1925): League ordered Greece out of Bulgaria and Greece obeyed. Also: humanitarian work (freeing 200,000 slaves in Sierra Leone; founding what became the WHO; repatriating WWI prisoners).</div>
+            <div class="ans-item" data-n="2">Italy &mdash; a major power and a founding League member &mdash; broke international law. The League condemned Italy, but when Italy threatened to leave, the League backed down and let Italy collect a fine from Greece. The aggressor won. This sent a message to other nations that the League would not confront powerful countries.</div>
+            <div class="ans-item" data-n="3">The League succeeded only when no major power had a strong national interest at stake. When minor nations clashed with no powerful patron, the League could resolve it. When a major power (Italy in Corfu, Japan in Manchuria) had something to gain, it simply ignored the League, and the League had nothing to back up its condemnation.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== SESSION 2 ===================== -->
+
+  <div class="session-header">
+    <span class="session-badge s2">SESSION 2</span>
+    <h2>Analytical &amp; Exam Practice</h2>
+    <div class="timer-pill">30 minutes total</div>
+  </div>
+
+  <!-- BLOCK 5 -->
+  <div class="block">
+    <div class="block-header" onclick="toggleBlock(this)">
+      <div class="block-num s2n">5</div>
+      <div class="block-title">Short-Answer Drill &mdash; 4-mark Questions</div>
+      <div class="block-time">8 mins</div>
+      <div class="expand-icon">&#9660;</div>
+    </div>
+    <div class="block-content">
+      <p>These questions are worth 4 marks each. Aim for: one specific named example, one explanation of what it shows, one link to the broader problem. Do not bullet-point &mdash; write in sentences.</p>
+
+      <div class="task-box s2b">
+        <div class="task-label">Question A &mdash; 4 marks &mdash; Allow 3 minutes</div>
+        <div class="task-q" data-n="Q">Describe one way the Treaty of Versailles caused resentment in Germany.</div>
+
+        <div class="answer-reveal">
+          <button class="reveal-btn" onclick="revealAnswer(this)">Show Answer</button>
+          <div class="answer-body">
+            <p>The War Guilt Clause (Article 231) forced Germany to accept full responsibility for causing World War One. Germans deeply resented this because they believed Austria-Hungary had been equally responsible for starting the war. The clause was used to justify the enormous reparations bill of &pound;6.6 billion, which crippled the German economy and generated lasting anger that nationalist politicians, including Hitler, later exploited.</p>
+            <p style="margin-top:8px;font-style:italic;font-size:13px;">Marker note: award credit for naming the specific clause or figure, and for explaining why Germany considered it unjust. A bare statement without explanation scores 1&ndash;2 marks; explanation with evidence scores 3&ndash;4.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-box s2b">
+        <div class="task-label">Question B &mdash; 4 marks &mdash; Allow 3 minutes</div>
+        <div class="task-q" data-n="Q">Describe one reason why the League of Nations struggled to enforce its decisions.</div>
+
+        <div class="answer-reveal">
+          <button class="reveal-btn" onclick="revealAnswer(this)">Show Answer</button>
+          <div class="answer-body">
+            <p>The League had no army of its own. It relied entirely on member nations to contribute troops, but they were rarely willing to do so after the losses of World War One. This meant that whenever the League condemned a nation's aggression, it had nothing to back up its words. The Corfu Crisis of 1923 showed this clearly: Italy simply ignored the League's condemnation, and the League had no military force to compel compliance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK 6: GRADE COMPARE -->
+  <div class="block">
+    <div class="block-header" onclick="toggleBlock(this)">
+      <div class="block-num s2n">6</div>
+      <div class="block-title">Grade 5 vs Grade 9 &mdash; What "Sustained Judgement" Actually Means</div>
+      <div class="block-time">5 mins</div>
+      <div class="expand-icon">&#9660;</div>
+    </div>
+    <div class="block-content">
+      <p>Read both versions of the same paragraph. Notice what the Grade 9 version does that the Grade 5 version does not.</p>
+
+      <div class="grade-compare">
+        <div class="grade-card g5">
+          <div class="grade-label">Grade 5 &mdash; Describes but does not judge</div>
+          <p>The Corfu Crisis of 1923 showed the League failing. Italy invaded Corfu after an Italian general was killed. The League condemned Italy but Italy threatened to leave, so the League backed down. This shows that the League failed when major powers were involved.</p>
+        </div>
+        <div class="grade-card g9">
+          <div class="grade-label">Grade 9 &mdash; Explains, links, judges</div>
+          <p>The Corfu Crisis of 1923 provides the strongest evidence that the League failed more than it succeeded when major powers were involved. Italy &mdash; a founding member &mdash; bombed and occupied Corfu, was condemned by the League, and then simply refused to comply, threatening to leave. The League backed down. This links directly to the structural weakness identified above: without an army or US economic support, the League had nothing to back up its condemnation. This therefore supports the statement, because it shows that the League's authority was conditional on the agreement of those with power &mdash; and the moment a major power chose to resist, the League was helpless.</p>
+        </div>
+      </div>
+
+      <p><strong>The three moves that make the Grade 9 version work:</strong></p>
+      <ol>
+        <li>Names the structural weakness it links back to (no army, no USA).</li>
+        <li>Explains the significance, not just the event.</li>
+        <li>Ends by directly answering "how far" &mdash; this is the "sustained judgement" the mark scheme requires.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- BLOCK 7: MAIN EXAM Q -->
+  <div class="block">
+    <div class="block-header" onclick="toggleBlock(this)">
+      <div class="block-num s2n">7</div>
+      <div class="block-title">16-Mark Exam Question &mdash; Full Practice with Timed Structure</div>
+      <div class="block-time">17 mins</div>
+      <div class="expand-icon">&#9660;</div>
+    </div>
+    <div class="block-content">
+
+      <div class="exam-q-box">
+        <div class="q-label">AQA 8145BC &mdash; Conflict and Tension 1918&ndash;1939</div>
+        <div class="q-text">"The main reason the League of Nations failed in the 1920s was its structural weaknesses."<br>How far do you agree with this statement? Explain your answer.</div>
+        <div class="q-marks">[16 marks + 4 SPaG]</div>
+      </div>
+
+      <p><strong>Before you write anything, spend 2 minutes on this plan:</strong></p>
+
+      <div class="structure-row">
+        <div class="struct-cell">
+          <div class="sh">Intro</div>
+          <div class="sb">Take a position. Name 2 failure reasons and 1 success. (~3 mins)</div>
+        </div>
+        <div class="struct-cell">
+          <div class="sh">Para 1</div>
+          <div class="sb">Structural weakness (no USA). (~3 mins)</div>
+        </div>
+        <div class="struct-cell">
+          <div class="sh">Para 2</div>
+          <div class="sb">Corfu Crisis 1923. (~3 mins)</div>
+        </div>
+        <div class="struct-cell">
+          <div class="sh">Para 3</div>
+          <div class="sb">Vilna 1920 / Upper Silesia 1921. (~3 mins)</div>
+        </div>
+        <div class="struct-cell">
+          <div class="sh">Para 4</div>
+          <div class="sb">Successes + Clever However. (~3 mins)</div>
+        </div>
+        <div class="struct-cell">
+          <div class="sh">Conclusion</div>
+          <div class="sb">Degree statement. (~2 mins)</div>
+        </div>
+      </div>
+
+      <div class="warn-box">
+        <strong>Do not use Manchuria.</strong> The Manchurian Crisis was 1931 &mdash; outside the 1920s timeframe asked by this question. Use Corfu (1923) instead. Manchuria is valid for 1930s questions.
+      </div>
+
+      <p><strong>Write your answer now. Aim for 5 paragraphs in 15 minutes. Then use the final 2 minutes to check back against the question.</strong></p>
+
+      <hr class="divider">
+
+      <div class="answer-reveal">
+        <button class="reveal-btn" onclick="revealAnswer(this)">Show Grade 9 Model Answer</button>
+        <div class="answer-body">
+          <div class="model-answer">
+            <div class="ma-label">Grade 9 Model Answer &mdash; with annotations</div>
+
+            <p><span class="annotation">I largely agree that the League of Nations failed more often than it succeeded in the 1920s, primarily because its structural weaknesses made it unable to enforce its decisions against determined aggressors. <span class="anno-note">INTRO: clear position + two named reasons previewed</span></span> Although the League achieved genuine successes in resolving minor disputes and delivering important humanitarian work, these were only possible because no major power had a strong competing interest at stake. <span class="inline-mark mark-judge">POSITION</span></p>
+
+            <p><span class="annotation">The most important reason the League failed more than it succeeded was its fundamental structural weakness: the refusal of the United States to join. <span class="anno-note">POINT: names the specific weakness</span></span> Although the League had been proposed by American President Woodrow Wilson as part of his Fourteen Points, the US Congress voted against membership in 1920, fearing entanglement in European affairs. <span class="inline-mark mark-evidence">EVIDENCE</span> Without the world's largest economy, the League had neither the economic leverage to make sanctions effective nor the military credibility to deter aggressors. Any nation targeted by sanctions knew that the USA would continue to trade with them regardless. <span class="inline-mark mark-explain">EXPLAIN</span> This structural weakness meant the League was destined to fail whenever it faced a determined aggressor with something to gain, because it simply lacked the power to compel obedience. <span class="inline-mark mark-judge">JUDGEMENT</span></p>
+
+            <p>The Corfu Crisis of 1923 provides the clearest evidence that the League failed when major powers were involved. Following the murder of an Italian general on the Greek-Albanian border, Mussolini ordered the bombardment and occupation of the Greek island of Corfu. <span class="inline-mark mark-evidence">EVIDENCE</span> The League condemned Italy's action, but when Italy threatened to leave the organisation, the League backed down and allowed Italy to collect a financial penalty from Greece directly. This was a significant failure because the aggressor &mdash; a founding member of the League &mdash; had broken international law, faced condemnation, and then refused to comply. This links directly to the structural weakness: without an army and without the USA's economic weight, the League had nothing to back up its condemnation. <span class="inline-mark mark-explain">EXPLAIN + LINK</span> The Corfu Crisis sent a damaging message to other nations that aggression against smaller countries would go largely unpunished. <span class="inline-mark mark-judge">JUDGEMENT</span></p>
+
+            <p>The League also failed to resolve several territorial disputes in the 1920s. In 1920, Poland seized the Lithuanian capital of Vilna by force. Lithuania appealed to the League, but the League took no meaningful action, partly because France and Britain were reluctant to confront Poland, which they viewed as a buffer state against communist Russia. <span class="inline-mark mark-evidence">EVIDENCE</span> Similarly, the Upper Silesia crisis of 1921 showed the League struggling even when it did act: the League organised a vote and then divided the region, giving Poland the more valuable industrial areas while Germany received more land. Both sides were left dissatisfied. <span class="inline-mark mark-explain">EXPLAIN</span> These cases show that the League failed not only through inaction but also through ineffective action, suggesting its failures ran deeper than a simple lack of willpower. <span class="inline-mark mark-judge">JUDGEMENT</span></p>
+
+            <p>However, it would be wrong to say the League never succeeded. In 1921, the League successfully resolved the Aaland Islands dispute between Finland and Sweden. In 1925, it ordered Greece to withdraw from Bulgaria and Greece obeyed. The League's humanitarian agencies also produced real, lasting results: freeing over 200,000 slaves in Sierra Leone and founding what would later become the World Health Organisation. <span class="inline-mark mark-evidence">EVIDENCE</span> These were genuine achievements. However, they all share one crucial characteristic: they occurred in situations where no major power had a strong national interest at stake. By contrast, when Italy had something to gain in Corfu, it simply ignored the League. This reveals the fundamental limitation of the League's successes &mdash; they were conditional on the agreement of those with power. <span class="inline-mark mark-judge">CLEVER HOWEVER</span></p>
+
+            <p>In conclusion, I largely agree with the statement. Its successes &mdash; the Aaland Islands, the Greek-Bulgarian dispute, its humanitarian work &mdash; were genuine, but they were only possible because they did not require the League to confront a major power with something to lose. Its failures &mdash; Corfu, Vilna, Upper Silesia &mdash; all shared the same underlying cause: structural weaknesses that left the League unable to enforce its decisions. The absence of the USA was the critical factor, robbing the League of both the economic leverage and the international authority it needed. The League did not simply fail more than it succeeded &mdash; it was structurally set up in a way that made decisive success almost impossible whenever the stakes were high enough for a major power to care. <span class="inline-mark mark-judge">DEGREE STATEMENT</span></p>
+          </div>
+
+          <p style="margin-top:14px;"><strong>What to look for in your own answer:</strong></p>
+          <ul>
+            <li>Does every paragraph end with a sentence that answers "how far"?</li>
+            <li>Do you name the structural weakness in every failure paragraph?</li>
+            <li>Does your "However" paragraph identify the pattern in the successes, not just list them?</li>
+            <li>Does your conclusion give a "degree" statement &mdash; not just "mainly agree" but WHY the failures outweigh the successes?</li>
+            <li>Have you avoided Manchuria (1931) in a question about the 1920s?</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="habit-box">
+    <div class="habit-label">Single Most Important Habit</div>
+    <p>At the end of every paragraph in a "how far do you agree" question, write one sentence that directly answers the question. Do not describe and move on. After your evidence and explanation, stop and ask yourself: "does this support or challenge the statement, and how significant is it?" Write that answer as your final sentence in the paragraph. This is what "sustained judgement" means in the mark scheme, and it is the only thing that separates Level 3 from Level 4.</p>
+  </div>
+
+</div>
+
+<script>
+  function toggleBlock(header) {
+    const content = header.nextElementSibling;
+    const icon = header.querySelector('.expand-icon');
+    const isOpen = content.classList.contains('open');
+    content.classList.toggle('open', !isOpen);
+    icon.classList.toggle('open', !isOpen);
+  }
+
+  function revealAnswer(btn) {
+    const body = btn.nextElementSibling;
+    const isShown = body.classList.contains('show');
+    body.classList.toggle('show', !isShown);
+    btn.textContent = isShown ? 'Show Answers' : 'Hide Answers';
+    if (btn.textContent === 'Show Answer') btn.textContent = 'Hide Answer';
+    if (!isShown && btn.textContent === 'Hide Answers') {}
+    if (!isShown) {
+      btn.textContent = btn.dataset.single ? 'Hide Answer' : 'Hide Answers';
+    } else {
+      btn.textContent = btn.dataset.single ? 'Show Answer' : 'Show Answers';
+    }
+  }
+
+  // Open first block by default
+  document.querySelector('.block-content').classList.add('open');
+  document.querySelector('.expand-icon').classList.add('open');
+</script>
+
+</body>
+</html>

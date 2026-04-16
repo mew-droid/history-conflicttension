@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GCSE Music | Theory &amp; Terminology</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap');
+
+  :root {
+    --ink: #0f0f0f;
+    --bg: #f0ece4;
+    --card: #ffffff;
+    --accent: #d4193a;
+    --gold: #e8a820;
+    --blue: #1a3a5c;
+    --green: #2a7a4b;
+    --purple: #5b2d8e;
+    --mid: #6b7280;
+    --border: #ddd8cf;
+    --success-bg: #e8f5ec;
+    --fail-bg: #fdecea;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  .top-bar {
+    background: var(--ink);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  }
+
+  .top-bar-inner {
+    max-width: 980px;
+    margin: 0 auto;
+    display: flex;
+    align-items: stretch;
+  }
+
+  .top-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    color: white;
+    padding: 14px 20px;
+    border-right: 1px solid #333;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .top-title .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%,100% { opacity:1; transform:scale(1); }
+    50% { opacity:0.6; transform:scale(1.3); }
+  }
+
+  .nav-tabs {
+    display: flex;
+    flex: 1;
+    overflow-x: auto;
+  }
+
+  .nav-tab {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #999;
+    padding: 14px 18px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    transition: color 0.2s, background 0.2s;
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+    border-bottom: 3px solid transparent;
+  }
+
+  .nav-tab:hover { color: white; background: #1a1a1a; }
+  .nav-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+  /* PROGRESS BAR */
+  .progress-bar {
+    height: 3px;
+    background: #222;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+    width: 0%;
+    transition: width 0.5s ease;
+  }
+
+  /* MAIN CONTENT */
+  .page { max-width: 980px; margin: 0 auto; padding: 28px 16px 60px; display: none; }
+  .page.active { display: block; }
+
+  /* WELCOME PAGE */
+  .welcome-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    margin: 24px 0;
+  }
+
+  @media (max-width: 640px) { .welcome-grid { grid-template-columns: 1fr; } }
+
+  .welcome-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 20px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    text-align: center;
+  }
+
+  .welcome-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+
+  .wc-icon { font-size: 32px; margin-bottom: 10px; }
+
+  .wc-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    margin-bottom: 5px;
+  }
+
+  .wc-sub { font-size: 13px; color: var(--mid); }
+  .wc-time {
+    display: inline-block;
+    margin-top: 10px;
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--ink);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  .hero {
+    background: var(--ink);
+    color: white;
+    padding: 28px 32px;
+    border-radius: 4px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '♩ ♪ ♫ ♬';
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 36px;
+    opacity: 0.12;
+    letter-spacing: 8px;
+  }
+
+  .hero-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .hero p { font-size: 14px; color: #ccc; line-height: 1.6; }
+
+  /* SECTION LABELS */
+  .section-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin: 0 0 14px;
+  }
+
+  /* FLASHCARDS */
+  .fc-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .fc-counter {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--mid);
+    margin-left: auto;
+  }
+
+  .btn {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+    letter-spacing: 0.3px;
+  }
+
+  .btn:active { transform: scale(0.97); }
+  .btn:hover { opacity: 0.85; }
+
+  .btn-dark { background: var(--ink); color: white; }
+  .btn-accent { background: var(--accent); color: white; }
+  .btn-gold { background: var(--gold); color: var(--ink); }
+  .btn-outline { background: transparent; color: var(--ink); border: 1.5px solid var(--border); }
+
+  /* CATEGORY FILTER */
+  .cat-filters {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .cat-btn {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1.5px solid var(--border);
+    background: white;
+    cursor: pointer;
+    transition: all 0.15s;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .cat-btn.active-cat { color: white; border-color: transparent; }
+  .cat-btn[data-cat="ALL"].active-cat { background: var(--ink); }
+  .cat-btn[data-cat="MELODY"].active-cat { background: var(--accent); }
+  .cat-btn[data-cat="HARMONY"].active-cat { background: var(--blue); }
+  .cat-btn[data-cat="RHYTHM"].active-cat { background: var(--purple); }
+  .cat-btn[data-cat="TEXTURE"].active-cat { background: var(--green); }
+  .cat-btn[data-cat="STRUCTURE"].active-cat { background: #b45309; }
+  .cat-btn[data-cat="DYNAMICS"].active-cat { background: #0e7490; }
+  .cat-btn[data-cat="TEMPO"].active-cat { background: #7c3aed; }
+
+  /* FLASHCARD */
+  .flashcard-scene {
+    perspective: 1200px;
+    width: 100%;
+    height: 220px;
+    cursor: pointer;
+    margin-bottom: 16px;
+  }
+
+  .flashcard-inner {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
+  }
+
+  .flashcard-scene.flipped .flashcard-inner {
+    transform: rotateY(180deg);
+  }
+
+  .fc-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 32px;
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+
+  .fc-front {
+    background: var(--card);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+
+  .fc-back {
+    background: var(--ink);
+    color: white;
+    transform: rotateY(180deg);
+  }
+
+  .fc-cat-tag {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    color: white;
+  }
+
+  .fc-term {
+    font-family: 'Syne', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+
+  .fc-hint {
+    font-size: 12px;
+    color: var(--mid);
+    margin-top: 10px;
+  }
+
+  .fc-def {
+    font-size: 16px;
+    line-height: 1.55;
+    color: #e8e8e8;
+    margin-bottom: 10px;
+  }
+
+  .fc-example {
+    font-size: 12px;
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .fc-nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .fc-known {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--mid);
+    font-family: 'Syne', sans-serif;
+  }
+
+  .known-count { color: var(--green); font-weight: 700; }
+  .unsure-count { color: var(--accent); font-weight: 700; }
+
+  /* QUIZ */
+  .quiz-q-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--mid);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .quiz-question {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 6px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 20px 22px;
+    border-radius: 4px;
+    border-left: 4px solid var(--accent);
+  }
+
+  .quiz-context {
+    font-size: 13px;
+    color: var(--mid);
+    font-style: italic;
+    padding: 8px 22px 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    margin-bottom: 16px;
+    margin-top: -1px;
+  }
+
+  .quiz-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: 550px) { .quiz-options { grid-template-columns: 1fr; } }
+
+  .quiz-opt {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    padding: 14px 18px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: border-color 0.15s, background 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .quiz-opt:hover:not(.answered) { border-color: var(--accent); background: #fdf5f6; }
+
+  .opt-letter {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--border);
+  }
+
+  .quiz-opt.correct { background: var(--success-bg); border-color: var(--green); }
+  .quiz-opt.correct .opt-letter { background: var(--green); color: white; border-color: var(--green); }
+  .quiz-opt.wrong { background: var(--fail-bg); border-color: var(--accent); }
+  .quiz-opt.wrong .opt-letter { background: var(--accent); color: white; border-color: var(--accent); }
+  .quiz-opt.answered { cursor: default; }
+
+  .quiz-feedback {
+    display: none;
+    padding: 12px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+
+  .quiz-feedback.show { display: block; }
+  .quiz-feedback.correct-fb { background: var(--success-bg); border: 1px solid #a3d9b4; border-left: 3px solid var(--green); }
+  .quiz-feedback.wrong-fb { background: var(--fail-bg); border: 1px solid #f5b8b3; border-left: 3px solid var(--accent); }
+
+  .score-bar-wrap {
+    background: #e5e7eb;
+    border-radius: 20px;
+    height: 8px;
+    margin: 10px 0;
+    overflow: hidden;
+  }
+
+  .score-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--green), #4ade80);
+    border-radius: 20px;
+    transition: width 0.4s ease;
+  }
+
+  /* RESULTS */
+  .results-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 32px;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .result-score {
+    font-family: 'Syne', sans-serif;
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1;
+    margin: 16px 0 8px;
+  }
+
+  .result-grade {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 6px 20px;
+    border-radius: 3px;
+    display: inline-block;
+    margin: 8px 0;
+  }
+
+  .grade-9 { background: #fef3c7; color: #92400e; }
+  .grade-8 { background: #d1fae5; color: #065f46; }
+  .grade-7 { background: #dbeafe; color: #1e40af; }
+  .grade-low { background: #fee2e2; color: #991b1b; }
+
+  /* SPOT THE TECHNIQUE */
+  .spot-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+
+  .spot-header {
+    background: var(--ink);
+    color: white;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .spot-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    background: var(--gold);
+    color: var(--ink);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .spot-artist {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .spot-body { padding: 16px 18px; }
+
+  .spot-extract {
+    background: #fafaf8;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 12px 16px;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+    font-style: italic;
+    color: #333;
+  }
+
+  .spot-q {
+    font-size: 14.5px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .spot-input {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+
+  .spot-input input {
+    flex: 1;
+    min-width: 180px;
+    padding: 9px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 3px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .spot-input input:focus { border-color: var(--accent); }
+
+  .spot-answer {
+    display: none;
+    background: var(--success-bg);
+    border: 1px solid #a3d9b4;
+    border-left: 3px solid var(--green);
+    padding: 12px 16px;
+    font-size: 14px;
+    border-radius: 2px;
+    line-height: 1.6;
+  }
+
+  .spot-answer.show { display: block; }
+
+  .spot-term {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    color: var(--green);
+  }
+
+  /* GLOSSARY */
+  .gloss-search {
+    width: 100%;
+    padding: 11px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    outline: none;
+    margin-bottom: 16px;
+    transition: border-color 0.15s;
+    background: white;
+  }
+
+  .gloss-search:focus { border-color: var(--accent); }
+
+  .gloss-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  @media (max-width: 550px) { .gloss-grid { grid-template-columns: 1fr; } }
+
+  .gloss-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 10px 14px;
+    font-size: 13.5px;
+  }
+
+  .gloss-term {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+
+  .gloss-def { color: #444; line-height: 1.5; }
+
+  .gloss-cat-tag {
+    display: inline-block;
+    font-family: 'Syne', sans-serif;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 20px;
+    color: white;
+    margin-top: 4px;
+  }
+
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="top-title">
+      <div class="dot"></div>
+      GCSE MUSIC
+    </div>
+    <div class="nav-tabs">
+      <button class="nav-tab active" onclick="showPage('home', this)">Home</button>
+      <button class="nav-tab" onclick="showPage('flashcards', this)">Flashcards</button>
+      <button class="nav-tab" onclick="showPage('quiz', this)">Quiz</button>
+      <button class="nav-tab" onclick="showPage('spot', this)">Spot the Technique</button>
+      <button class="nav-tab" onclick="showPage('glossary', this)">Glossary</button>
+    </div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+</div>
+
+<!-- ============ HOME ============ -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-label">EDUQAS GCSE Music &nbsp;|&nbsp; Target: Grade 8&ndash;9</div>
+    <h1>Music Theory &amp; Terminology</h1>
+    <p>20-minute session. Four modes: Flashcards, Quiz, Spot the Technique, and a full Glossary. Start with Flashcards to learn the terms, then test yourself with the Quiz.</p>
+  </div>
+
+  <div class="welcome-grid">
+    <div class="welcome-card" onclick="showPage('flashcards', document.querySelector('[onclick*=flashcards]'))">
+      <div class="wc-icon">🃏</div>
+      <div class="wc-title">Flashcards</div>
+      <div class="wc-sub">50 terms across all musical elements. Flip to reveal definition and musical example.</div>
+      <div class="wc-time">~8 mins</div>
+    </div>
+    <div class="welcome-card" onclick="showPage('quiz', document.querySelector('[onclick*=\'quiz\']'))">
+      <div class="wc-icon">🎯</div>
+      <div class="wc-title">Quiz</div>
+      <div class="wc-sub">12 multiple-choice questions. Includes Beatles, Toto, and Kanye West contexts. Scored and explained.</div>
+      <div class="wc-time">~7 mins</div>
+    </div>
+    <div class="welcome-card" onclick="showPage('spot', document.querySelector('[onclick*=spot]'))">
+      <div class="wc-icon">🔍</div>
+      <div class="wc-title">Spot the Technique</div>
+      <div class="wc-sub">Musical descriptions. Name the correct term. Grade 8&ndash;9 style questions.</div>
+      <div class="wc-time">~5 mins</div>
+    </div>
+  </div>
+
+  <p style="font-size:13px;color:var(--mid);text-align:center;margin-top:8px;">Tip: use the Glossary tab as a reference at any point.</p>
+</div>
+
+<!-- ============ FLASHCARDS ============ -->
+<div class="page" id="page-flashcards">
+  <div class="section-label">Flashcards &mdash; Click card to flip &mdash; Mark yourself ✓ or ✗</div>
+
+  <div class="cat-filters" id="catFilters">
+    <button class="cat-btn active-cat" data-cat="ALL" onclick="filterCat('ALL', this)">All</button>
+    <button class="cat-btn" data-cat="MELODY" onclick="filterCat('MELODY', this)">Melody</button>
+    <button class="cat-btn" data-cat="HARMONY" onclick="filterCat('HARMONY', this)">Harmony</button>
+    <button class="cat-btn" data-cat="RHYTHM" onclick="filterCat('RHYTHM', this)">Rhythm</button>
+    <button class="cat-btn" data-cat="TEXTURE" onclick="filterCat('TEXTURE', this)">Texture</button>
+    <button class="cat-btn" data-cat="STRUCTURE" onclick="filterCat('STRUCTURE', this)">Structure</button>
+    <button class="cat-btn" data-cat="DYNAMICS" onclick="filterCat('DYNAMICS', this)">Dynamics</button>
+    <button class="cat-btn" data-cat="TEMPO" onclick="filterCat('TEMPO', this)">Tempo</button>
+  </div>
+
+  <div class="fc-controls">
+    <button class="btn btn-outline" onclick="prevCard()">&#8592; Prev</button>
+    <button class="btn btn-outline" onclick="nextCard()">Next &#8594;</button>
+    <button class="btn btn-dark" onclick="shuffleCards()">Shuffle</button>
+    <div class="fc-counter" id="fcCounter">1 / 50</div>
+  </div>
+
+  <div class="flashcard-scene" id="flashcardScene" onclick="flipCard()">
+    <div class="flashcard-inner" id="flashcardInner">
+      <div class="fc-face fc-front">
+        <div class="fc-cat-tag" id="fcCatTag">MELODY</div>
+        <div class="fc-term" id="fcTerm">Sequence</div>
+        <div class="fc-hint">Click to see the definition</div>
+      </div>
+      <div class="fc-face fc-back">
+        <div class="fc-def" id="fcDef">A short melodic or rhythmic idea that is repeated at a higher or lower pitch.</div>
+        <div class="fc-example" id="fcExample">Example: The opening of Badinerie &mdash; Bach uses a sequence to develop the flute melody.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fc-nav">
+    <button class="btn btn-accent" onclick="markCard(true)" title="I know this">✓ Got it</button>
+    <button class="btn btn-outline" onclick="markCard(false)" title="Not sure yet">✗ Not sure</button>
+  </div>
+
+  <div class="fc-known">
+    <span>Known: <span class="known-count" id="knownCount">0</span></span>
+    <span>To review: <span class="unsure-count" id="unsureCount">0</span></span>
+    <span style="margin-left:auto;"><button class="btn btn-outline" style="font-size:11px;padding:4px 10px;" onclick="showUnsureOnly()">Unsure only</button></span>
+  </div>
+</div>
+
+<!-- ============ QUIZ ============ -->
+<div class="page" id="page-quiz">
+  <div id="quizContent">
+    <div class="section-label">Multiple Choice Quiz &mdash; 12 Questions</div>
+    <div class="quiz-q-num" id="quizQNum">QUESTION 1 OF 12</div>
+    <div class="score-bar-wrap"><div class="score-bar-fill" id="quizScoreBar" style="width:0%"></div></div>
+
+    <div style="height:14px"></div>
+
+    <div class="quiz-question" id="quizQ">Loading...</div>
+    <div class="quiz-context" id="quizCtx" style="display:none"></div>
+
+    <div class="quiz-options" id="quizOpts"></div>
+    <div class="quiz-feedback" id="quizFeedback"></div>
+
+    <div style="text-align:right;margin-top:8px;">
+      <button class="btn btn-dark" id="quizNextBtn" onclick="nextQuestion()" style="display:none">Next Question &#8594;</button>
+    </div>
+  </div>
+
+  <div id="quizResults" style="display:none;padding-top:24px;">
+    <div class="results-card">
+      <div style="font-size:32px">🎵</div>
+      <div style="font-family:'Syne',sans-serif;font-size:13px;color:var(--mid);letter-spacing:2px;text-transform:uppercase;margin-top:12px;">Your Score</div>
+      <div class="result-score" id="resultScore">0/12</div>
+      <div class="result-grade" id="resultGrade">Loading...</div>
+      <p id="resultMsg" style="font-size:14px;color:var(--mid);margin-top:12px;line-height:1.6;"></p>
+      <button class="btn btn-dark" style="margin-top:20px;" onclick="restartQuiz()">Try Again</button>
+      <button class="btn btn-outline" style="margin-top:20px;margin-left:8px;" onclick="showPage('spot', document.querySelector('[onclick*=spot]'))">Spot the Technique &rarr;</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SPOT THE TECHNIQUE ============ -->
+<div class="page" id="page-spot">
+  <div class="section-label">Spot the Technique &mdash; Read the extract, name the technique</div>
+
+  <div class="spot-card">
+    <div class="spot-header">
+      <div class="spot-num">1</div>
+      <div>
+        <div class="spot-artist">The Beatles &mdash; "Eleanor Rigby" (1966)</div>
+      </div>
+    </div>
+    <div class="spot-body">
+      <div class="spot-extract">"Eleanor Rigby" uses a string octet throughout. There is no guitar, bass or drums. The strings play chords together in the same rhythm as the vocal melody, moving in block chords. There is no independent instrumental melody running against the voice.</div>
+      <div class="spot-q">What texture does this describe? Name it precisely.</div>
+      <div class="spot-input">
+        <input type="text" placeholder="Your answer..." id="spot1input">
+        <button class="btn btn-accent" onclick="revealSpot(1)">Reveal</button>
+      </div>
+      <div class="spot-answer" id="spot1ans">
+        <div class="spot-term">Homophonic texture (melody and accompaniment / chordal texture)</div>
+        <p>The strings play chords in the same rhythm as the vocal &mdash; this is homophonic texture, specifically chordal homophony. For Grade 8&ndash;9, note that this texture directs full attention to the vocal melody, making the stark, isolated lyrics ("died in the church and was buried along with her name") even more affecting. Contrast this with polyphonic texture, where multiple independent lines would compete for the listener's attention.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="spot-card">
+    <div class="spot-header">
+      <div class="spot-num">2</div>
+      <div>
+        <div class="spot-artist">Kanye West &mdash; "Gold Digger" (2005)</div>
+      </div>
+    </div>
+    <div class="spot-body">
+      <div class="spot-extract">Throughout "Gold Digger", the same two-bar piano figure from Ray Charles's "I Got a Woman" (1954) repeats continuously underneath Kanye's rapping. The figure never changes; it anchors the entire track from beginning to end.</div>
+      <div class="spot-q">Name the technique AND the broader compositional device this figure represents.</div>
+      <div class="spot-input">
+        <input type="text" placeholder="Your answer..." id="spot2input">
+        <button class="btn btn-accent" onclick="revealSpot(2)">Reveal</button>
+      </div>
+      <div class="spot-answer" id="spot2ans">
+        <div class="spot-term">Ostinato (also: the track uses sampling)</div>
+        <p>An ostinato is a short melodic or rhythmic pattern that repeats continuously throughout a piece or section. The piano loop is a melodic ostinato. For full marks, you should also mention that Kanye uses <em>sampling</em> &mdash; incorporating a pre-recorded extract from another track. Sampling is a key compositional technique in hip-hop. In the exam, if asked about texture, the repeated piano creates a homophonic foundation with the rap melody on top.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="spot-card">
+    <div class="spot-header">
+      <div class="spot-num">3</div>
+      <div>
+        <div class="spot-artist">J.S. Bach &mdash; Badinerie (Set Work)</div>
+      </div>
+    </div>
+    <div class="spot-body">
+      <div class="spot-extract">In bars 1&ndash;4 of the Badinerie, the flute plays a four-note descending motif. In bars 5&ndash;8, the same four-note shape appears again, but starting two steps lower. The shape of the figure is identical; only the pitch level changes.</div>
+      <div class="spot-q">Identify the melodic device used and explain what makes it distinctive.</div>
+      <div class="spot-input">
+        <input type="text" placeholder="Your answer..." id="spot3input">
+        <button class="btn btn-accent" onclick="revealSpot(3)">Reveal</button>
+      </div>
+      <div class="spot-answer" id="spot3ans">
+        <div class="spot-term">Sequence (melodic sequence)</div>
+        <p>A sequence is when a melodic idea is repeated at a different pitch level, preserving the same intervals and rhythmic shape. This is one of the most important devices in Baroque music. Bach uses sequences to develop short motifs rather than constantly introducing new material &mdash; it gives the piece forward momentum while keeping it compact. If the sequence moves downward in pitch, it is a descending sequence; upward is an ascending sequence.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="spot-card">
+    <div class="spot-header">
+      <div class="spot-num">4</div>
+      <div>
+        <div class="spot-artist">The Beatles &mdash; "Here Comes the Sun" (1969)</div>
+      </div>
+    </div>
+    <div class="spot-body">
+      <div class="spot-extract">At the end of the chorus in "Here Comes the Sun", the harmony moves from chord IV to chord I. This progression has a calm, devotional quality and is associated with the word "Amen" in church music.</div>
+      <div class="spot-q">Name the cadence and describe what it sounds like compared to a perfect cadence.</div>
+      <div class="spot-input">
+        <input type="text" placeholder="Your answer..." id="spot4input">
+        <button class="btn btn-accent" onclick="revealSpot(4)">Reveal</button>
+      </div>
+      <div class="spot-answer" id="spot4ans">
+        <div class="spot-term">Plagal cadence (IV&ndash;I)</div>
+        <p>A plagal cadence moves from chord IV to chord I. It sounds softer and more gentle than a perfect cadence (V&ndash;I). The perfect cadence has a strong sense of resolution and finality; the plagal cadence feels more peaceful and understated. In an exam, always give the chord numerals (IV&ndash;I) as well as the name. The Beatles used plagal cadences frequently &mdash; it gives their music a hymn-like quality. This is also called the "Amen cadence".</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="spot-card">
+    <div class="spot-header">
+      <div class="spot-num">5</div>
+      <div>
+        <div class="spot-artist">Toto &mdash; "Africa" (Set Work)</div>
+      </div>
+    </div>
+    <div class="spot-body">
+      <div class="spot-extract">In the introduction to "Africa", the keyboard plays a repeated rhythmic and melodic figure while the drums provide a separate rhythm beneath it. The accents in the keyboard part do not fall on the main beats of the bar; instead they fall between the main beats, creating a sense of rhythmic tension and forward motion.</div>
+      <div class="spot-q">Name the rhythmic device and explain why it creates tension.</div>
+      <div class="spot-input">
+        <input type="text" placeholder="Your answer..." id="spot5input">
+        <button class="btn btn-accent" onclick="revealSpot(5)">Reveal</button>
+      </div>
+      <div class="spot-answer" id="spot5ans">
+        <div class="spot-term">Syncopation</div>
+        <p>Syncopation is the displacement of the regular beat, so that accents fall on normally weak beats or between main beats. It creates tension because the listener's ear anticipates the main beat but the accent arrives somewhere else, creating rhythmic friction. In "Africa", the syncopated keyboard intro is a melodic ostinato with syncopated rhythm &mdash; two techniques in one. In the exam, always explain the <em>effect</em>: syncopation creates a sense of momentum and rhythmic interest, common in pop, jazz, and African-influenced music.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="spot-card">
+    <div class="spot-header">
+      <div class="spot-num">6</div>
+      <div>
+        <div class="spot-artist">Trumpet technique &mdash; identify the extended technique</div>
+      </div>
+    </div>
+    <div class="spot-body">
+      <div class="spot-extract">A trumpet player rapidly alternates their tongue between a "t" and "r" sound while blowing through the instrument, producing a rapid, fluttering tone quality rather than a clear, sustained note. This was used extensively by jazz trumpeters and appears in some contemporary orchestral writing.</div>
+      <div class="spot-q">Name the technique and name one other extended technique used by brass players.</div>
+      <div class="spot-input">
+        <input type="text" placeholder="Your answer..." id="spot6input">
+        <button class="btn btn-accent" onclick="revealSpot(6)">Reveal</button>
+      </div>
+      <div class="spot-answer" id="spot6ans">
+        <div class="spot-term">Flutter tonguing (flutter-tongue)</div>
+        <p>Flutter tonguing creates a rapid, buzzing quality by rolling or fluttering the tongue while playing. Other brass extended techniques include: <strong>muting</strong> (inserting a straight, cup, or harmon mute into the bell to change timbre &mdash; written "con sordino"); <strong>half-valving</strong> (depressing valves halfway to produce a distorted pitch); <strong>multiphonics</strong> (producing more than one pitch simultaneously). Timbre questions in the exam want specific technical vocabulary, not vague descriptions like "breathy" or "buzzy".</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ GLOSSARY ============ -->
+<div class="page" id="page-glossary">
+  <div class="section-label">Full Glossary &mdash; Search any term</div>
+  <input class="gloss-search" type="text" placeholder="Search terms, definitions..." id="glossSearch" oninput="filterGloss()">
+  <div class="gloss-grid" id="glossGrid"></div>
+</div>
+
+
+<script>
+// ==============================
+// DATA
+// ==============================
+const catColors = {
+  MELODY: '#c0392b',
+  HARMONY: '#1a3a5c',
+  RHYTHM: '#5b2d8e',
+  TEXTURE: '#2a7a4b',
+  STRUCTURE: '#b45309',
+  DYNAMICS: '#0e7490',
+  TEMPO: '#7c3aed',
+  TIMBRE: '#374151'
+};
+
+const cards = [
+  // MELODY
+  { cat:'MELODY', term:'Sequence', def:'A melodic or rhythmic idea repeated at a higher or lower pitch level, keeping the same shape.', ex:'Bach uses descending sequences throughout Badinerie to generate forward momentum.' },
+  { cat:'MELODY', term:'Conjunct motion', def:'A melody that moves by step (adjacent notes in the scale). Smooth and flowing.', ex:'Many Beatles ballad melodies, such as "Yesterday", use conjunct motion.' },
+  { cat:'MELODY', term:'Disjunct motion', def:'A melody that moves by leaps (intervals larger than a step). More dramatic and angular.', ex:'A trumpet fanfare uses disjunct motion — arpeggios and large leaps.' },
+  { cat:'MELODY', term:'Augmentation', def:'A melodic idea played with note values doubled in length — each note lasts twice as long.', ex:'Common in Baroque counterpoint, including Bach fugues.' },
+  { cat:'MELODY', term:'Diminution', def:'A melodic idea played with note values halved — each note is twice as fast.', ex:'Used to create excitement or urgency, often in development sections.' },
+  { cat:'MELODY', term:'Inversion', def:'A melody turned upside down — every interval goes in the opposite direction.', ex:'Bach uses inversion in fugue subjects to vary the theme.' },
+  { cat:'MELODY', term:'Retrograde', def:'A melody played backwards.', ex:'Used in serial/12-tone music and sometimes in Baroque counterpoint.' },
+  { cat:'MELODY', term:'Ornament / Trill', def:'A rapid alternation between a note and the note one step above. Written as "tr" above the note.', ex:'The Badinerie flute part is decorated with trills throughout — typical of Baroque style.' },
+  { cat:'MELODY', term:'Acciaccatura', def:'A very short grace note crushed quickly onto the main note. Written as a small note with a slash.', ex:'Common in jazz and Baroque keyboard music.' },
+  { cat:'MELODY', term:'Glissando', def:'A slide between two pitches, either up or down. On trumpet, achieved with lip pressure changes.', ex:'Used in jazz and blues; George Harrison uses slide guitar glissandos on some Beatles tracks.' },
+
+  // HARMONY
+  { cat:'HARMONY', term:'Diatonic', def:'Using only the notes belonging to the current key — no accidentals outside the scale.', ex:'The main melody of Africa by Toto is largely diatonic.' },
+  { cat:'HARMONY', term:'Chromatic', def:'Using notes outside the home key, including sharps/flats not in the scale.', ex:'Chromatic passing notes add colour and tension to jazz harmony.' },
+  { cat:'HARMONY', term:'Perfect cadence', def:'Chord V resolving to chord I (G–C in C major). Sounds finished and conclusive.', ex:'Used at the end of most phrases in Badinerie.' },
+  { cat:'HARMONY', term:'Imperfect cadence', def:'Any chord resolving to chord V. Sounds unfinished — like a question.', ex:'Used mid-phrase to create suspense before continuing.' },
+  { cat:'HARMONY', term:'Plagal cadence', def:'Chord IV to chord I. Soft and gentle. Also called the "Amen cadence".', ex:'The Beatles use plagal cadences frequently — "Here Comes the Sun" and the ending of "Hey Jude".' },
+  { cat:'HARMONY', term:'Interrupted cadence', def:'Chord V resolving unexpectedly to chord VI instead of I. Creates surprise.', ex:'Used to avoid a perfect cadence and extend the phrase.' },
+  { cat:'HARMONY', term:'Tierce de Picardie', def:'A piece in a minor key that ends on a major chord (the tonic major). Sounds unexpectedly bright.', ex:'Common in Baroque music, including some Bach pieces.' },
+  { cat:'HARMONY', term:'Pedal note', def:'A sustained or repeated note (usually in the bass) held while harmonies change above it.', ex:'A tonic pedal creates a sense of stability; a dominant pedal creates tension.' },
+  { cat:'HARMONY', term:'Modulation', def:'Moving from one key to another within a piece.', ex:'Badinerie modulates to the relative minor in its B section — typical binary form.' },
+  { cat:'HARMONY', term:'Dissonance', def:'Clashing, tense-sounding harmony — notes that sound unstable together.', ex:'Dissonance creates tension that resolves to consonance for effect.' },
+
+  // RHYTHM
+  { cat:'RHYTHM', term:'Syncopation', def:'Accents fall on normally weak beats or off-beats, creating rhythmic tension.', ex:'The keyboard intro in Africa by Toto is heavily syncopated. Essential in jazz, hip-hop and R&B.' },
+  { cat:'RHYTHM', term:'Ostinato', def:'A short melodic, harmonic or rhythmic pattern repeated continuously throughout a section.', ex:'The opening keyboard riff in Africa is a melodic ostinato. Kanye uses sampled ostinatos extensively.' },
+  { cat:'RHYTHM', term:'Triplet', def:'Three notes played in the time usually occupied by two.', ex:'Swing rhythm in jazz is built from triplet patterns.' },
+  { cat:'RHYTHM', term:'Cross-rhythm', def:'Two or more contrasting rhythmic patterns played simultaneously.', ex:'Common in African music and music influenced by it, including Toto\'s Africa.' },
+  { cat:'RHYTHM', term:'Hemiola', def:'A rhythmic device where three groups of two beats are felt as two groups of three (or vice versa).', ex:'Common in Baroque and Renaissance music, particularly at cadence points.' },
+  { cat:'RHYTHM', term:'Polyrhythm', def:'Multiple different rhythms played simultaneously by different parts.', ex:'African drumming and drum kit patterns in rock and pop use polyrhythm.' },
+  { cat:'RHYTHM', term:'Anacrusis', def:'A note or notes before the first full bar — a "pickup" or "upbeat".', ex:'Many Beatles melodies begin on an anacrusis (e.g. "Yeah yeah yeah" before the first full bar).' },
+
+  // TEXTURE
+  { cat:'TEXTURE', term:'Monophonic', def:'A single melody with no accompaniment or other parts.', ex:'A solo trumpet playing a tune with no backing. A Gregorian chant.' },
+  { cat:'TEXTURE', term:'Homophonic', def:'A melody with an accompaniment that moves in a similar rhythm. Or all parts moving in the same rhythm (chordal).', ex:'Eleanor Rigby: strings support the vocal melody in block chords — chordal homophony.' },
+  { cat:'TEXTURE', term:'Polyphonic / Contrapuntal', def:'Multiple independent melodic lines heard simultaneously, each with its own rhythm.', ex:'Badinerie: the flute melody and the bass line are independent — polyphonic texture.' },
+  { cat:'TEXTURE', term:'Call and response', def:'A phrase played/sung by one performer (call) answered by another performer or group (response).', ex:'Africa by Toto: the lead vocal and backing vocals alternate in call and response.' },
+  { cat:'TEXTURE', term:'Basso continuo', def:'Baroque accompaniment: a bass instrument (cello/bassoon) + a keyboard instrument (harpsichord) playing harmonies, notated as a figured bass line.', ex:'The harpsichord and bass in Badinerie form the continuo texture.' },
+  { cat:'TEXTURE', term:'Heterophonic', def:'The same melody played by two or more parts simultaneously, but with slight differences in ornament or rhythm.', ex:'Common in South Asian and Middle Eastern music.' },
+
+  // STRUCTURE
+  { cat:'STRUCTURE', term:'Binary form', def:'Two sections: A and B, each usually repeated (AABB). Common in Baroque dance music.', ex:'Badinerie is in binary form — A section in the tonic, B section modulating to relative minor.' },
+  { cat:'STRUCTURE', term:'Ternary form', def:'Three sections: A, B, A. The opening material returns after a contrasting middle section.', ex:'Many pop songs and classical pieces. The return of A gives a sense of completeness.' },
+  { cat:'STRUCTURE', term:'Rondo form', def:'A main theme (A) that keeps returning between contrasting sections: A B A C A D A...', ex:'Common in Classical period music; the A theme always brings the listener home.' },
+  { cat:'STRUCTURE', term:'Strophic', def:'The same music is repeated for each verse of a song, like a hymn.', ex:'Many folk songs and Beatles early tracks use strophic structure.' },
+  { cat:'STRUCTURE', term:'Through-composed', def:'Music that does not repeat sections — new music throughout.', ex:'Creates a sense of continuous development. Common in art songs (Lieder).' },
+  { cat:'STRUCTURE', term:'12-bar blues', def:'A repeating 12-bar chord progression: I-I-I-I / IV-IV-I-I / V-IV-I-I (or V). Foundation of blues and rock.', ex:'The Beatles\' early recordings and Chuck Berry heavily use 12-bar blues.' },
+  { cat:'STRUCTURE', term:'Ground bass / Passacaglia', def:'A short bass line that repeats continuously while the upper parts vary freely above it.', ex:'Pachelbel\'s Canon; Purcell\'s "Dido\'s Lament". Related to ostinato.' },
+
+  // DYNAMICS
+  { cat:'DYNAMICS', term:'Terraced dynamics', def:'Sudden shifts between dynamic levels with no gradual crescendo/diminuendo — typical of Baroque music.', ex:'Badinerie: no written crescendos; dynamics change abruptly between forte and piano sections.' },
+  { cat:'DYNAMICS', term:'Sforzando (sfz)', def:'A sudden, strong accent on a single note or chord.', ex:'Used for dramatic effect in Classical and Romantic music.' },
+  { cat:'DYNAMICS', term:'Fortepiano (fp)', def:'Suddenly loud, then immediately quiet.', ex:'Haydn and Mozart use fp for surprise effects.' },
+  { cat:'DYNAMICS', term:'Crescendo', def:'Gradually getting louder.', ex:'The famous crescendo in Ravel\'s Bolero is the most extended example in the repertoire.' },
+  { cat:'DYNAMICS', term:'Diminuendo / Decrescendo', def:'Gradually getting quieter.', ex:'A phrase ending with a diminuendo gives a sense of fading away or resolution.' },
+
+  // TEMPO
+  { cat:'TEMPO', term:'Tempo markings (range)', def:'Largo (very slow) → Lento → Adagio → Andante → Moderato → Allegretto → Allegro → Vivace → Presto → Prestissimo (extremely fast)', ex:'Badinerie is marked Allegro — fast and light.' },
+  { cat:'TEMPO', term:'Rallentando / Ritardando', def:'Gradually slowing down. Rall. or Rit.', ex:'Used at the end of pieces or phrases to indicate a cadence.' },
+  { cat:'TEMPO', term:'Accelerando', def:'Gradually speeding up. Accel.', ex:'Used to build tension or excitement.' },
+  { cat:'TEMPO', term:'Rubato', def:'Flexible tempo — the performer speeds up and slows down freely for expressive effect.', ex:'Common in Romantic piano music (Chopin). Not common in Baroque music like Badinerie.' },
+  { cat:'TEMPO', term:'A tempo', def:'Return to the original tempo after a change.', ex:'Follows a rallentando or rubato passage to signal the return to the main speed.' },
+];
+
+// QUIZ DATA
+const questions = [
+  {
+    q: 'A melody moves mainly by step — from C to D to E to F. What is the correct term for this type of melodic movement?',
+    ctx: '',
+    opts: ['Disjunct motion','Conjunct motion','Sequence','Inversion'],
+    ans: 1,
+    fb: 'Conjunct motion describes stepwise movement — notes moving up or down by one scale degree. Disjunct motion involves leaps of a third or more. Examiners often give a mark for the specific term rather than a description.'
+  },
+  {
+    q: 'In Bach\'s Badinerie, a four-note motif appears, then the same shape appears again starting two notes lower. What device is Bach using?',
+    ctx: 'Set Work: Badinerie, J.S. Bach',
+    opts: ['Retrograde','Augmentation','Sequence','Imitation'],
+    ans: 2,
+    fb: 'A sequence repeats a melodic shape at a different pitch level. Retrograde is the melody backwards; augmentation doubles the note lengths. This is one of the most important devices in the Badinerie — you must name it correctly in the exam.'
+  },
+  {
+    q: 'The chord progression at the end of a phrase moves IV → I. What is the name of this cadence?',
+    ctx: '',
+    opts: ['Perfect cadence','Imperfect cadence','Interrupted cadence','Plagal cadence'],
+    ans: 3,
+    fb: 'A plagal cadence (IV–I) has a soft, gentle quality sometimes called the "Amen cadence". The Beatles used plagal cadences frequently. A perfect cadence is V–I; interrupted is V–VI; imperfect ends on chord V.'
+  },
+  {
+    q: 'In "Africa" by Toto, the same two-bar keyboard figure repeats throughout the introduction without change. What is this called?',
+    ctx: 'Set Work: Africa, Toto',
+    opts: ['Pedal note','Ostinato','Ground bass','Terraced dynamics'],
+    ans: 1,
+    fb: 'An ostinato is a short pattern (melodic, rhythmic or harmonic) that repeats continuously. A ground bass is specifically a repeating bass line in Baroque music. A pedal note is a sustained single pitch. Ostinato is the right term here.'
+  },
+  {
+    q: 'In Badinerie, the bass instruments and harpsichord provide continuous harmonic support beneath the flute melody. What is the Baroque term for this type of accompaniment?',
+    ctx: 'Set Work: Badinerie, J.S. Bach',
+    opts: ['Monophony','Basso continuo','Ostinato','Heterophony'],
+    ans: 1,
+    fb: 'Basso continuo is a defining feature of Baroque music. It consists of a bass line instrument (cello, bassoon) plus a keyboard instrument (harpsichord, organ) that fills in the harmonies. The keyboard part is often improvised from a figured bass notation.'
+  },
+  {
+    q: 'A trumpet player produces a buzzing, fluttering tone by rapidly rolling their tongue while blowing. What technique is this?',
+    ctx: 'Extended techniques for brass instruments',
+    opts: ['Sul ponticello','Flutter tonguing','Pizzicato','Harmonics'],
+    ans: 1,
+    fb: 'Flutter tonguing creates a rapidly oscillating, buzzing sound. Sul ponticello is a string technique (bowing near the bridge). Pizzicato is plucking strings. Harmonics on brass involve over-blowing to produce a higher node of the harmonic series.'
+  },
+  {
+    q: 'The accents in a drum part consistently fall on the "and" of the beat — between the main beats rather than on them. What term describes this?',
+    ctx: '',
+    opts: ['Polyrhythm','Ostinato','Syncopation','Hemiola'],
+    ans: 2,
+    fb: 'Syncopation displaces the regular beat — accents fall on weak beats or between the main beats. This creates rhythmic tension and a sense of forward drive. It is fundamental to jazz, R&B, hip-hop and African music.'
+  },
+  {
+    q: 'A piece is in a minor key throughout, but the final chord is a major chord on the same tonic. What is the term for this?',
+    ctx: '',
+    opts: ['Modulation','Tierce de Picardie','Interrupted cadence','Chromatic harmony'],
+    ans: 1,
+    fb: 'Tierce de Picardie (Picardy third) is the term for raising the third of the final chord from minor to major in an otherwise minor-key piece. It creates a sudden, unexpected brightening at the end. Common in Baroque music.'
+  },
+  {
+    q: 'In "Eleanor Rigby" by The Beatles, all parts move in the same rhythm throughout, with the strings supporting the vocal in block chords. What texture is this?',
+    ctx: 'The Beatles — "Eleanor Rigby" (1966)',
+    opts: ['Polyphonic','Monophonic','Homophonic','Heterophonic'],
+    ans: 2,
+    fb: 'Homophonic texture means the parts move together in the same rhythm, with a clear melody supported by chords. Polyphonic texture would have multiple independent lines with different rhythms. This is sometimes called "chordal homophony" when all parts move in the same rhythm.'
+  },
+  {
+    q: 'In Badinerie, the dynamic level changes suddenly from loud to quiet with no gradual transition. What Baroque term describes this?',
+    ctx: 'Set Work: Badinerie, J.S. Bach',
+    opts: ['Rubato','Terraced dynamics','Sforzando','Crescendo'],
+    ans: 1,
+    fb: 'Terraced dynamics are a defining feature of Baroque music. Because harpsichords cannot vary touch-pressure like pianos, dynamic changes in the Baroque era tended to be sudden (terraced) rather than gradual. Crescendos and diminuendos became much more common in the Classical period.'
+  },
+  {
+    q: 'A piece has the structure A B A, where the opening section returns unchanged after a contrasting middle section. What is this form called?',
+    ctx: '',
+    opts: ['Binary form','Rondo form','Ternary form','Strophic form'],
+    ans: 2,
+    fb: 'Ternary form (A B A) has three sections: opening, contrasting, return. Binary form is just A B. Rondo is A B A C A D A... Strophic repeats the same music for different verses. Make sure you can describe each form and give a musical example.'
+  },
+  {
+    q: 'Kanye West\'s "Gold Digger" incorporates a piano phrase from Ray Charles\' 1954 recording of "I Got a Woman". What production technique is this?',
+    ctx: 'Kanye West — "Gold Digger" (2005)',
+    opts: ['Improvisation','Sampling','Modulation','Inversion'],
+    ans: 1,
+    fb: 'Sampling is the technique of taking a portion of a pre-existing recording and incorporating it into a new composition. It is one of the defining features of hip-hop production. The sampled phrase in "Gold Digger" also functions as a melodic ostinato — so you could mention both terms in an exam answer for full marks.'
+  }
+];
+
+// ==============================
+// STATE
+// ==============================
+let currentCat = 'ALL';
+let filteredCards = [...cards];
+let cardIndex = 0;
+let knownCards = new Set();
+let unsureCards = new Set();
+let showingUnsureOnly = false;
+
+let quizIndex = 0;
+let quizScore = 0;
+let quizAnswered = false;
+
+// ==============================
+// PAGE NAVIGATION
+// ==============================
+function showPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  if (btn) btn.classList.add('active');
+  updateProgress();
+  if (id === 'glossary') renderGloss();
+  if (id === 'flashcards') renderCard();
+  if (id === 'quiz' && quizIndex === 0) renderQuestion();
+}
+
+function updateProgress() {
+  const done = (knownCards.size / cards.length) * 50 + (quizScore / questions.length) * 50;
+  document.getElementById('progressFill').style.width = Math.min(done, 100) + '%';
+}
+
+// ==============================
+// FLASHCARDS
+// ==============================
+function filterCat(cat, btn) {
+  currentCat = cat;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active-cat'));
+  btn.classList.add('active-cat');
+  filteredCards = cat === 'ALL' ? [...cards] : cards.filter(c => c.cat === cat);
+  if (showingUnsureOnly) {
+    filteredCards = filteredCards.filter((c, i) => unsureCards.has(cards.indexOf(c)));
+  }
+  cardIndex = 0;
+  renderCard();
+}
+
+function renderCard() {
+  if (filteredCards.length === 0) {
+    document.getElementById('fcTerm').textContent = 'No cards in this filter';
+    document.getElementById('fcDef').textContent = '';
+    document.getElementById('fcExample').textContent = '';
+    document.getElementById('fcCounter').textContent = '0 / 0';
+    return;
+  }
+  const c = filteredCards[cardIndex];
+  document.getElementById('fcTerm').textContent = c.term;
+  document.getElementById('fcDef').textContent = c.def;
+  document.getElementById('fcExample').textContent = c.ex;
+  const tag = document.getElementById('fcCatTag');
+  tag.textContent = c.cat;
+  tag.style.background = catColors[c.cat] || '#374151';
+  document.getElementById('fcCounter').textContent = (cardIndex + 1) + ' / ' + filteredCards.length;
+  document.getElementById('flashcardScene').classList.remove('flipped');
+  document.getElementById('knownCount').textContent = knownCards.size;
+  document.getElementById('unsureCount').textContent = unsureCards.size;
+}
+
+function flipCard() {
+  document.getElementById('flashcardScene').classList.toggle('flipped');
+}
+
+function nextCard() {
+  cardIndex = (cardIndex + 1) % filteredCards.length;
+  renderCard();
+}
+
+function prevCard() {
+  cardIndex = (cardIndex - 1 + filteredCards.length) % filteredCards.length;
+  renderCard();
+}
+
+function shuffleCards() {
+  for (let i = filteredCards.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [filteredCards[i], filteredCards[j]] = [filteredCards[j], filteredCards[i]];
+  }
+  cardIndex = 0;
+  renderCard();
+}
+
+function markCard(known) {
+  const c = filteredCards[cardIndex];
+  const idx = cards.indexOf(c);
+  if (known) { knownCards.add(idx); unsureCards.delete(idx); }
+  else { unsureCards.add(idx); knownCards.delete(idx); }
+  document.getElementById('knownCount').textContent = knownCards.size;
+  document.getElementById('unsureCount').textContent = unsureCards.size;
+  updateProgress();
+  nextCard();
+}
+
+function showUnsureOnly() {
+  showingUnsureOnly = !showingUnsureOnly;
+  if (showingUnsureOnly) {
+    filteredCards = cards.filter((c, i) => unsureCards.has(i));
+    if (filteredCards.length === 0) { showingUnsureOnly = false; filteredCards = [...cards]; }
+  } else {
+    filteredCards = currentCat === 'ALL' ? [...cards] : cards.filter(c => c.cat === currentCat);
+  }
+  cardIndex = 0;
+  renderCard();
+}
+
+// ==============================
+// QUIZ
+// ==============================
+function renderQuestion() {
+  if (quizIndex >= questions.length) { showResults(); return; }
+  quizAnswered = false;
+  const q = questions[quizIndex];
+  document.getElementById('quizQNum').textContent = 'QUESTION ' + (quizIndex + 1) + ' OF ' + questions.length;
+  document.getElementById('quizQ').textContent = q.q;
+  const ctx = document.getElementById('quizCtx');
+  if (q.ctx) { ctx.textContent = q.ctx; ctx.style.display = 'block'; }
+  else { ctx.style.display = 'none'; }
+
+  const opts = document.getElementById('quizOpts');
+  opts.innerHTML = '';
+  const letters = ['A','B','C','D'];
+  q.opts.forEach((o, i) => {
+    const btn = document.createElement('div');
+    btn.className = 'quiz-opt';
+    btn.innerHTML = '<span class="opt-letter">' + letters[i] + '</span><span>' + o + '</span>';
+    btn.onclick = () => selectAnswer(i, btn);
+    opts.appendChild(btn);
+  });
+
+  document.getElementById('quizFeedback').className = 'quiz-feedback';
+  document.getElementById('quizFeedback').textContent = '';
+  document.getElementById('quizNextBtn').style.display = 'none';
+  document.getElementById('quizScoreBar').style.width = ((quizIndex / questions.length) * 100) + '%';
+}
+
+function selectAnswer(i, btn) {
+  if (quizAnswered) return;
+  quizAnswered = true;
+  const q = questions[quizIndex];
+  const allOpts = document.querySelectorAll('.quiz-opt');
+  allOpts.forEach(o => o.classList.add('answered'));
+
+  const fb = document.getElementById('quizFeedback');
+  if (i === q.ans) {
+    btn.classList.add('correct');
+    quizScore++;
+    fb.className = 'quiz-feedback correct-fb show';
+    fb.innerHTML = '<strong>Correct.</strong> ' + q.fb;
+  } else {
+    btn.classList.add('wrong');
+    allOpts[q.ans].classList.add('correct');
+    fb.className = 'quiz-feedback wrong-fb show';
+    fb.innerHTML = '<strong>Not quite.</strong> ' + q.fb;
+  }
+  document.getElementById('quizNextBtn').style.display = 'inline-block';
+  updateProgress();
+}
+
+function nextQuestion() {
+  quizIndex++;
+  renderQuestion();
+}
+
+function showResults() {
+  document.getElementById('quizContent').style.display = 'none';
+  document.getElementById('quizResults').style.display = 'block';
+  const pct = quizScore / questions.length;
+  document.getElementById('resultScore').textContent = quizScore + '/' + questions.length;
+  const gradeEl = document.getElementById('resultGrade');
+  const msgEl = document.getElementById('resultMsg');
+  if (pct >= 0.92) {
+    gradeEl.textContent = 'Grade 9 level'; gradeEl.className = 'result-grade grade-9';
+    msgEl.textContent = 'Excellent. You know the terminology precisely and can apply it to musical contexts. Keep building on this by using the Spot the Technique section and the Glossary.';
+  } else if (pct >= 0.75) {
+    gradeEl.textContent = 'Grade 7–8 level'; gradeEl.className = 'result-grade grade-8';
+    msgEl.textContent = 'Strong performance. Review the questions you missed using the flashcards. Focus on the Harmony and Structure categories — these are where the hardest marks sit.';
+  } else if (pct >= 0.5) {
+    gradeEl.textContent = 'Grade 5–6 level'; gradeEl.className = 'result-grade grade-7';
+    msgEl.textContent = 'A reasonable start. Go back to the flashcard section and focus on Harmony cadences and set work terminology. Then retake the quiz.';
+  } else {
+    gradeEl.textContent = 'Grade 4 or below'; gradeEl.className = 'result-grade grade-low';
+    msgEl.textContent = 'Spend more time with the flashcards before retaking. Focus on the most common exam terms: sequence, ostinato, syncopation, cadence types, and texture names.';
+  }
+}
+
+function restartQuiz() {
+  quizIndex = 0; quizScore = 0;
+  document.getElementById('quizContent').style.display = 'block';
+  document.getElementById('quizResults').style.display = 'none';
+  renderQuestion();
+}
+
+// ==============================
+// SPOT THE TECHNIQUE
+// ==============================
+function revealSpot(n) {
+  document.getElementById('spot' + n + 'ans').classList.add('show');
+}
+
+// ==============================
+// GLOSSARY
+// ==============================
+function renderGloss(filter) {
+  const grid = document.getElementById('glossGrid');
+  const search = (filter || '').toLowerCase();
+  grid.innerHTML = '';
+  cards.filter(c =>
+    !search || c.term.toLowerCase().includes(search) || c.def.toLowerCase().includes(search) || c.cat.toLowerCase().includes(search)
+  ).forEach(c => {
+    const el = document.createElement('div');
+    el.className = 'gloss-item';
+    el.innerHTML = '<div class="gloss-term">' + c.term + '</div><div class="gloss-def">' + c.def + '</div><div class="gloss-cat-tag" style="background:' + (catColors[c.cat]||'#374151') + '">' + c.cat + '</div>';
+    grid.appendChild(el);
+  });
+}
+
+function filterGloss() {
+  renderGloss(document.getElementById('glossSearch').value);
+}
+
+// INIT
+renderCard();
+renderQuestion();
+</script>
+</body>
+</html>

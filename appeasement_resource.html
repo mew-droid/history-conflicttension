@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appeasement: Sources C & D | Year 10 History</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4ede0;
+    --paper-warm: #ede2cc;
+    --ink: #1a1714;
+    --ink-soft: #3a342c;
+    --rule: #c6b99f;
+    --accent: #8f2a1f;
+    --accent-soft: #bc5a3c;
+    --ochre: #a87a2c;
+    --seal: #5c7a5a;
+    --highlight: #ffe9a8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Newsreader', Georgia, serif;
+    background: var(--paper);
+    background-image:
+      radial-gradient(ellipse at 20% 10%, rgba(168, 122, 44, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(143, 42, 31, 0.05) 0%, transparent 50%);
+    color: var(--ink);
+    font-size: 18px;
+    line-height: 1.65;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 3rem 2rem 6rem;
+  }
+
+  header.masthead {
+    border-top: 6px double var(--ink);
+    border-bottom: 1px solid var(--rule);
+    padding: 2rem 0 1.5rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+
+  .kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.6rem;
+  }
+
+  .subtitle {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 60ch;
+  }
+
+  .meta-bar {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.74rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .meta-bar strong { color: var(--ink); font-weight: 500; }
+
+  section.part {
+    margin-top: 3.5rem;
+    scroll-margin-top: 2rem;
+  }
+
+  .part-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: 2rem;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    margin-bottom: 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.35rem;
+    margin: 1.8rem 0 0.6rem;
+    color: var(--ink);
+  }
+
+  h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 1.4rem 0 0.4rem;
+    font-weight: 500;
+  }
+
+  p { margin-bottom: 1rem; }
+
+  strong { font-weight: 600; color: var(--ink); }
+  em { font-style: italic; }
+
+  .drop-cap::first-letter {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: 4.2rem;
+    line-height: 0.85;
+    float: left;
+    padding: 0.4rem 0.7rem 0 0;
+    color: var(--accent);
+  }
+
+  .pullquote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.45rem;
+    line-height: 1.35;
+    color: var(--ink);
+    border-left: 4px solid var(--accent);
+    padding: 0.4rem 0 0.4rem 1.4rem;
+    margin: 1.5rem 0;
+  }
+  .pullquote cite {
+    display: block;
+    margin-top: 0.7rem;
+    font-style: normal;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--ink);
+  }
+  .tl-item {
+    position: relative;
+    padding: 0.6rem 0 0.6rem 1rem;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -1.9rem;
+    top: 1.1rem;
+    width: 12px;
+    height: 12px;
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+  }
+  .tl-item.key::before {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .tl-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+  .tl-body { line-height: 1.5; }
+
+  /* Source cards */
+  .source-card {
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-top: 6px solid var(--accent);
+    padding: 1.8rem 1.8rem 1.5rem;
+    margin: 1.2rem 0 2rem;
+    position: relative;
+  }
+  .source-card[data-source="D"] {
+    border-top-color: var(--seal);
+  }
+  .source-tag {
+    position: absolute;
+    top: -0.8rem;
+    left: 1.5rem;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    padding: 0.3rem 0.8rem;
+  }
+
+  /* Analysis grid */
+  .analysis-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  @media (min-width: 720px) {
+    .analysis-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .analysis-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 1rem 1.2rem;
+  }
+  .analysis-card .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+  }
+
+  /* Accordion (details/summary) */
+  details {
+    border: 1px solid var(--rule);
+    background: var(--paper-warm);
+    padding: 0;
+    margin-bottom: 0.8rem;
+  }
+  details summary {
+    padding: 1rem 1.3rem;
+    cursor: pointer;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.08rem;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.15s;
+  }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::after {
+    content: '+';
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.3rem;
+    color: var(--accent);
+    transition: transform 0.2s;
+  }
+  details[open] summary::after {
+    content: '−';
+  }
+  details summary:hover { background: var(--paper); }
+  details .content {
+    padding: 0 1.3rem 1.3rem;
+    border-top: 1px dashed var(--rule);
+    padding-top: 1rem;
+    margin-top: -0.2rem;
+  }
+
+  /* Callouts */
+  .callout {
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    padding: 1.2rem 1.4rem;
+    margin: 1.3rem 0;
+    position: relative;
+  }
+  .callout.warn {
+    border-left: 4px solid var(--accent);
+  }
+  .callout.tip {
+    border-left: 4px solid var(--seal);
+  }
+  .callout .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .callout.warn .tag { color: var(--accent); }
+  .callout.tip .tag { color: var(--seal); }
+
+  /* Plan table */
+  .plan {
+    border: 1px solid var(--rule);
+    margin: 1rem 0;
+  }
+  .plan-row {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    border-bottom: 1px solid var(--rule);
+  }
+  .plan-row:last-child { border-bottom: none; }
+  .plan-row.header {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.74rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .plan-time, .plan-task {
+    padding: 0.9rem 1.1rem;
+  }
+  .plan-time {
+    background: var(--paper-warm);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border-right: 1px solid var(--rule);
+  }
+  .plan-row.header .plan-time,
+  .plan-row.header .plan-task {
+    background: var(--ink);
+    border: none;
+    color: var(--paper);
+  }
+
+  /* Phrase bank */
+  .phrase-list {
+    list-style: none;
+    padding: 0;
+  }
+  .phrase-list li {
+    padding: 0.55rem 0 0.55rem 1.6rem;
+    border-bottom: 1px dashed var(--rule);
+    position: relative;
+    font-style: italic;
+  }
+  .phrase-list li:last-child { border-bottom: none; }
+  .phrase-list li::before {
+    content: '§';
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    color: var(--accent);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* Key words */
+  .keyword {
+    background: linear-gradient(to bottom, transparent 55%, var(--highlight) 55%, var(--highlight) 92%, transparent 92%);
+    padding: 0 2px;
+    font-weight: 500;
+  }
+
+  /* Navigation */
+  nav.toc {
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+  nav.toc h5 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.7rem;
+    font-weight: 500;
+  }
+  nav.toc ol {
+    list-style: none;
+    padding: 0;
+    counter-reset: toc;
+    font-family: 'Fraunces', serif;
+  }
+  nav.toc ol li {
+    counter-increment: toc;
+    padding: 0.25rem 0;
+  }
+  nav.toc ol li::before {
+    content: counter(toc, decimal-leading-zero) ".  ";
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--ochre);
+    margin-right: 0.4rem;
+  }
+  nav.toc a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s;
+  }
+  nav.toc a:hover { border-bottom-color: var(--accent); }
+
+  /* Footer */
+  footer.colophon {
+    margin-top: 5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+
+  /* Checklist */
+  .checklist {
+    list-style: none;
+    padding: 0;
+    font-family: 'Newsreader', serif;
+  }
+  .checklist li {
+    padding: 0.6rem 0 0.6rem 2rem;
+    position: relative;
+    border-bottom: 1px dashed var(--rule);
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.85rem;
+    width: 1.1rem;
+    height: 1.1rem;
+    border: 1.5px solid var(--ink);
+    background: var(--paper);
+  }
+
+  /* Framework table for four questions */
+  .four-q {
+    border: 2px solid var(--ink);
+    margin: 1rem 0 1.5rem;
+  }
+  .four-q-row {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    border-bottom: 1px solid var(--ink);
+  }
+  .four-q-row:last-child { border-bottom: none; }
+  .four-q-num {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 1rem 0.5rem;
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+  }
+  .four-q-body {
+    padding: 0.9rem 1.2rem;
+  }
+  .four-q-body strong {
+    display: block;
+    margin-bottom: 0.2rem;
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+  }
+
+  a { color: var(--accent); }
+
+  ul.plain, ol.plain {
+    margin: 0.5rem 0 1rem 1.3rem;
+  }
+  ul.plain li, ol.plain li {
+    padding: 0.25rem 0;
+  }
+
+  @media print {
+    body { background: white; }
+    details { border: 1px solid #666; }
+    details[open] summary::after { content: ''; }
+    details summary::after { content: ''; }
+    .source-card, .callout, .plan-row { break-inside: avoid; }
+  }
+
+  @media (max-width: 620px) {
+    body { font-size: 17px; }
+    .container { padding: 2rem 1.2rem 4rem; }
+    h1 { font-size: 2rem; }
+    .pullquote { font-size: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="masthead">
+  <div class="kicker">AQA 8145BC · Conflict and Tension 1918–1939</div>
+  <h1>Appeasement</h1>
+  <p class="subtitle">A briefing for the missing lesson, with everything Milo needs to analyse Sources C and D and talk for two minutes on each.</p>
+  <div class="meta-bar">
+    <span>Set <strong>Wed 22 Apr</strong></span>
+    <span>Due <strong>Fri 24 Apr, 09:00</strong></span>
+    <span>Sources <strong>C &amp; D</strong></span>
+    <span>Time needed <strong>45 min</strong></span>
+  </div>
+</header>
+
+<nav class="toc">
+  <h5>In this briefing</h5>
+  <ol>
+    <li><a href="#what">What is appeasement?</a></li>
+    <li><a href="#timeline">1938: the key year</a></li>
+    <li><a href="#method">How to analyse a source (the four questions)</a></li>
+    <li><a href="#source-c">Source C: Dr Seuss cartoon</a></li>
+    <li><a href="#source-d">Source D: Daladier, April 1938</a></li>
+    <li><a href="#talk">How to structure a two-minute talk</a></li>
+    <li><a href="#plan">45-minute plan</a></li>
+    <li><a href="#phrases">Phrase bank for source analysis</a></li>
+  </ol>
+</nav>
+
+<section class="part" id="what">
+  <div class="part-num">01</div>
+  <h2>What is appeasement?</h2>
+  <p class="drop-cap">Appeasement is the name historians give to the foreign policy pursued by Britain and France towards Nazi Germany during the 1930s, especially under Prime Minister Neville Chamberlain. The idea was simple: rather than confronting Hitler over his demands, Britain and France would give in to reasonable-sounding requests to keep the peace, on the assumption that Hitler had limited aims and could be satisfied.</p>
+
+  <h3>Why did Britain and France appease Hitler?</h3>
+  <ul class="plain">
+    <li><strong>Memory of the First World War.</strong> A generation had been killed in the trenches. The public, politicians and press were desperate to avoid another war.</li>
+    <li><strong>Military unpreparedness.</strong> Britain had disarmed heavily after 1918 and was only beginning to rearm in 1936–39.</li>
+    <li><strong>Economic pressure.</strong> The Great Depression had cut defence budgets and public appetite for war spending.</li>
+    <li><strong>Guilt about Versailles.</strong> Many in Britain believed the Treaty of Versailles had been unfair on Germany. Letting Hitler reverse parts of it seemed reasonable.</li>
+    <li><strong>Fear of communism.</strong> A strong Germany was seen as a useful buffer against the Soviet Union.</li>
+    <li><strong>Miscalculation.</strong> Chamberlain believed Hitler was a rational statesman who would keep his word. He was wrong.</li>
+  </ul>
+
+  <div class="callout tip">
+    <span class="tag">Exam pattern to remember</span>
+    <p>Every appeasement source you see will be arguing <em>for</em> appeasement (it keeps the peace), <em>against</em> appeasement (it rewards aggression), or reflecting on it <em>afterwards</em> (it failed and led to war). Identifying which of these three positions your source takes is the fastest way into the message.</p>
+  </div>
+</section>
+
+<section class="part" id="timeline">
+  <div class="part-num">02</div>
+  <h2>1938: the key year</h2>
+  <p>The homework sheet has a timeline on it that has been scribbled out. Here it is again, with the important events. Both Sources C and D sit inside this story.</p>
+
+  <div class="timeline">
+    <div class="tl-item key">
+      <span class="tl-date">13 March 1938</span>
+      <div class="tl-body"><strong>Anschluss.</strong> Germany annexes Austria. Britain and France do not act. Hitler has now broken the Treaty of Versailles in plain sight.</div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-date">Late April 1938</span>
+      <div class="tl-body"><strong>Daladier warns the British</strong> that Hitler's real aim is the domination of Europe and that Czechoslovakia, Poland and Romania will follow. <em>This is Source D.</em></div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-date">Summer 1938</span>
+      <div class="tl-body">Hitler demands the Sudetenland, the German-speaking border region of Czechoslovakia. Sudeten Nazis stir up unrest.</div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-date">15 September 1938</span>
+      <div class="tl-body">Chamberlain flies to Berchtesgaden to meet Hitler. Hitler demands the Sudetenland.</div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-date">22 September 1938</span>
+      <div class="tl-body">Chamberlain meets Hitler again at Bad Godesberg. Hitler's demands have grown.</div>
+    </div>
+    <div class="tl-item key">
+      <span class="tl-date">29–30 September 1938</span>
+      <div class="tl-body"><strong>The Munich Agreement.</strong> Chamberlain, Daladier, Hitler and Mussolini meet in Munich. Czechoslovakia is not invited. The Sudetenland is handed over to Germany. Chamberlain returns to London claiming &ldquo;peace for our time.&rdquo;</div>
+    </div>
+    <div class="tl-item key">
+      <span class="tl-date">15 March 1939</span>
+      <div class="tl-body"><strong>Appeasement fails.</strong> Hitler invades the rest of Czechoslovakia. Britain and France now realise the policy has failed. Daladier&rsquo;s warning from April 1938 has been proved right.</div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-date">1 September 1939</span>
+      <div class="tl-body">Germany invades Poland. Two days later, Britain and France declare war.</div>
+    </div>
+  </div>
+
+  <div class="callout warn">
+    <span class="tag">Date trap to avoid</span>
+    <p>Do not reach for Manchuria (1931) in this homework. Manchuria is a League of Nations / 1930s crisis, not an appeasement source. Keep the focus on 1938, with supporting references to the Anschluss (March 1938) and Munich (September 1938).</p>
+  </div>
+</section>
+
+<section class="part" id="method">
+  <div class="part-num">03</div>
+  <h2>How to analyse a source</h2>
+  <p>The teacher has given four questions. These are the standard AQA source questions, so getting the structure right here will pay off in the real exam too.</p>
+
+  <div class="four-q">
+    <div class="four-q-row">
+      <div class="four-q-num">1</div>
+      <div class="four-q-body">
+        <strong>What does the source show or tell us?</strong>
+        Give a short quote or directly describe what is shown. This is the <em>content</em>.
+      </div>
+    </div>
+    <div class="four-q-row">
+      <div class="four-q-num">2</div>
+      <div class="four-q-body">
+        <strong>What is the overall message?</strong>
+        This is not just what is shown. It is the argument the source is making. Ask: what does the creator <em>want me to think</em>?
+      </div>
+    </div>
+    <div class="four-q-row">
+      <div class="four-q-num">3</div>
+      <div class="four-q-body">
+        <strong>How useful is the provenance?</strong>
+        Provenance means: who made it, when, where, for what audience and why. Useful for what purpose? Honest but biased is still useful; reliable but vague is less useful.
+      </div>
+    </div>
+    <div class="four-q-row">
+      <div class="four-q-num">4</div>
+      <div class="four-q-body">
+        <strong>What is happening at this time?</strong>
+        Place the source on the timeline. Dates are essential. If you cannot say what was going on in the wider world when the source was made, you have not done question 4.
+      </div>
+    </div>
+  </div>
+
+  <div class="callout tip">
+    <span class="tag">The link that lifts the grade</span>
+    <p>After every point, connect the source to the wider story. A Grade 5 answer describes the source. A Grade 8 answer explains how the source fits into the argument about whether appeasement worked. Always link back to the events on the timeline.</p>
+  </div>
+</section>
+
+<section class="part" id="source-c">
+  <div class="part-num">04</div>
+  <h2>Source C: Dr Seuss, &ldquo;I Was Weak and Run-Down&rdquo;</h2>
+
+  <div class="source-card" data-source="C">
+    <span class="source-tag">SOURCE C</span>
+    <h4>The source at a glance</h4>
+    <p>An American political cartoon in the style of a patent-medicine advertisement. Two eagle-like birds in Uncle Sam top hats. The &ldquo;before&rdquo; bird is weak, drooping and has &ldquo;a foul case of appeasement.&rdquo; The &ldquo;after&rdquo; bird is upright and muscled after taking a tonic called &ldquo;GUTS,&rdquo; strong enough to &ldquo;punch Mister Hitler right in the snoot.&rdquo; The cartoon is signed &ldquo;Dr Seuss.&rdquo;</p>
+  </div>
+
+  <h3>What the source shows (Q1)</h3>
+  <p>The cartoon mocks appeasement as an illness. Describe the before/after structure and the phrase <span class="keyword">&ldquo;a foul case of Appeasement&rdquo;</span>. Note the Uncle Sam hats, which mark the birds as representing America. Note the aggressive final line: <span class="keyword">&ldquo;punch Mister Hitler right in the snoot.&rdquo;</span></p>
+
+  <h3>The overall message (Q2)</h3>
+  <p>Dr Seuss is arguing that appeasement is a sickness that weakens America, and that the cure is strength, courage and a willingness to confront Hitler directly. The cartoon attacks American isolationism and appeasement-style thinking and calls for a tougher stance against Nazi Germany.</p>
+  <div class="pullquote">
+    The message is a clear anti-appeasement argument: only courage, not compromise, will stop Hitler.
+  </div>
+
+  <h3>Provenance and usefulness (Q3)</h3>
+  <div class="analysis-grid">
+    <div class="analysis-card">
+      <div class="label">Who made it</div>
+      <p>Theodor Seuss Geisel, known as Dr Seuss. An American cartoonist who drew political cartoons for the New York newspaper <em>PM</em> during the early 1940s, before becoming famous for children&rsquo;s books.</p>
+    </div>
+    <div class="analysis-card">
+      <div class="label">When</div>
+      <p>Early 1940s, during the period when America was debating whether to enter the war. Most Dr Seuss war cartoons were published between 1941 and 1943.</p>
+    </div>
+    <div class="analysis-card">
+      <div class="label">Audience and purpose</div>
+      <p>American newspaper readers. Designed to persuade Americans to abandon isolationism and support action against Hitler. It is satire, not reporting.</p>
+    </div>
+    <div class="analysis-card">
+      <div class="label">What it is useful for</div>
+      <p>Very useful for showing how appeasement was viewed critically at the time by those who wanted America to fight. Less useful as a factual account of what appeasement actually achieved.</p>
+    </div>
+  </div>
+
+  <details>
+    <summary>Model provenance sentence (Grade 8 language)</summary>
+    <div class="content">
+      <p>This source is useful because it shows how appeasement was being attacked as cowardice in the American press in the early 1940s. However, it is a satirical cartoon by a cartoonist known for his anti-isolationist views, so it is useful for showing opinion and propaganda rather than an objective account of appeasement&rsquo;s results. Its usefulness lies precisely in its bias: it captures the mood turning against appeasement.</p>
+    </div>
+  </details>
+
+  <h3>What is happening at this time (Q4)</h3>
+  <p>By the early 1940s, appeasement had been fully discredited. Hitler had already invaded Czechoslovakia (March 1939), Poland (September 1939), France (May 1940) and was bombing Britain. America was still officially neutral but public opinion was shifting. The cartoon belongs to the wider argument in America about whether to stay out of the war or fight Hitler. Dr Seuss was firmly on the anti-Hitler side.</p>
+
+  <details>
+    <summary>Two-minute talking points for Source C</summary>
+    <div class="content">
+      <ol class="plain">
+        <li>Describe the cartoon: before and after, the birds with Uncle Sam hats, the fake-advert style, the key phrases.</li>
+        <li>State the message: appeasement is a disease, strength is the cure, America must be ready to hit Hitler.</li>
+        <li>Explain the provenance: Dr Seuss, American, early 1940s, satirical newspaper cartoon aimed at persuading Americans.</li>
+        <li>Judge its usefulness: very useful for showing the anti-appeasement mood, less useful as factual history.</li>
+        <li>Place it in time: after Munich had already failed, when the consequences of appeasement were becoming clear.</li>
+      </ol>
+    </div>
+  </details>
+</section>
+
+<section class="part" id="source-d">
+  <div class="part-num">05</div>
+  <h2>Source D: Daladier, late April 1938</h2>
+
+  <div class="source-card" data-source="D">
+    <span class="source-tag">SOURCE D</span>
+    <h4>The source at a glance</h4>
+    <p>A primary extract from &Eacute;douard Daladier, the French Prime Minister, speaking to the British in late April 1938. Daladier warns that Hitler aims at &ldquo;a domination of the continent in comparison with which the ambitions of Napoleon were feeble,&rdquo; and predicts that after Czechoslovakia will come Poland, then Romania, then the West. He argues that Britain and France must stand firm and safeguard Czechoslovakia, or they will only &ldquo;precipitate the war they wish to avoid.&rdquo;</p>
+  </div>
+
+  <h3>What the source shows (Q1)</h3>
+  <p>Daladier is telling Britain that Hitler&rsquo;s aims are not limited. He uses the Napoleon comparison to stress the <span class="keyword">scale</span> of Hitler&rsquo;s ambitions. He lists the next likely victims in order: <span class="keyword">Czechoslovakia, Poland, Romania, the West</span>. He warns that giving in (capitulating) will not prevent war, it will <em>cause</em> war.</p>
+
+  <h3>The overall message (Q2)</h3>
+  <p>Daladier is making an anti-appeasement argument from inside the French government. The message is that Hitler will not stop at one concession, so concessions will not buy peace. He is calling on Britain to stand with France in defending Czechoslovakia.</p>
+  <div class="pullquote">
+    &ldquo;If... the Western Powers capitulate again they will only precipitate the war they wish to avoid.&rdquo;
+    <cite>Daladier to the British, late April 1938</cite>
+  </div>
+
+  <h3>Provenance and usefulness (Q3)</h3>
+  <div class="analysis-grid">
+    <div class="analysis-card">
+      <div class="label">Who made it</div>
+      <p>&Eacute;douard Daladier, French Prime Minister. Head of the French government and one of the people who would sign the Munich Agreement five months later.</p>
+    </div>
+    <div class="analysis-card">
+      <div class="label">When</div>
+      <p>Late April 1938. After the Anschluss, before the Sudeten crisis fully boiled over, several months before Munich.</p>
+    </div>
+    <div class="analysis-card">
+      <div class="label">Audience and purpose</div>
+      <p>A private warning to the British government. Not a speech to the public. The purpose is to persuade Britain to resist Hitler rather than appease him.</p>
+    </div>
+    <div class="analysis-card">
+      <div class="label">What it is useful for</div>
+      <p>Very useful. It shows that at least one senior Western leader saw through Hitler&rsquo;s aims before Munich. It refutes any claim that &ldquo;nobody could have predicted&rdquo; what Hitler would do.</p>
+    </div>
+  </div>
+
+  <div class="callout warn">
+    <span class="tag">The twist to mention</span>
+    <p>Daladier warned against appeasement in April 1938, yet in September 1938 he personally signed the Munich Agreement, handing the Sudetenland to Hitler. This gap between what he said and what he did is worth pointing out in your talk. It shows how powerful the pressure to appease was, even on those who knew better.</p>
+  </div>
+
+  <details>
+    <summary>Model provenance sentence (Grade 8 language)</summary>
+    <div class="content">
+      <p>This source is highly useful because it comes from the French Prime Minister himself in April 1938, which is contemporary with the crisis and from the top of the French government. It shows Western leaders were warned of Hitler&rsquo;s full ambitions before Munich. However, Daladier went on to sign the Munich Agreement anyway, which suggests that even those who saw the danger felt politically unable to act. The usefulness of this source is that it destroys the later excuse that Hitler&rsquo;s plans were unknowable.</p>
+    </div>
+  </details>
+
+  <h3>What is happening at this time (Q4)</h3>
+  <p>Late April 1938 sits between two moments. The Anschluss had just happened in March 1938, showing Hitler was willing to break Versailles and swallow a whole country with no Western response. Ahead lay the summer Sudeten crisis and the Munich conference in September. Daladier is speaking at exactly the point when Britain and France had to decide whether the Anschluss was a one-off or part of a pattern. Daladier&rsquo;s answer was clear: it was a pattern, and the pattern would lead to war.</p>
+
+  <details>
+    <summary>Two-minute talking points for Source D</summary>
+    <div class="content">
+      <ol class="plain">
+        <li>Introduce: &Eacute;douard Daladier, French Prime Minister, late April 1938, private warning to Britain.</li>
+        <li>Quote the Napoleon line and the list of countries to show Daladier saw Hitler&rsquo;s ambition clearly.</li>
+        <li>State the message: appeasement will not prevent war, it will cause it. Britain and France must stand firm.</li>
+        <li>Judge provenance: extremely useful because it is a primary source from a head of government at the time of the crisis.</li>
+        <li>Add the twist: Daladier later signed Munich anyway, showing how strong the pull of appeasement was.</li>
+        <li>Place in time: after the Anschluss (March 1938), before Munich (September 1938). The warning was not heeded, and by 1939 it had been proved right.</li>
+      </ol>
+    </div>
+  </details>
+</section>
+
+<section class="part" id="talk">
+  <div class="part-num">06</div>
+  <h2>How to structure a two-minute talk</h2>
+  <p>Two minutes is roughly 250 to 300 spoken words. That is tight. The structure below will keep the talk focused and cover everything the teacher has asked for.</p>
+
+  <div class="four-q">
+    <div class="four-q-row">
+      <div class="four-q-num">A</div>
+      <div class="four-q-body">
+        <strong>Opening (20 seconds)</strong>
+        Introduce the source in one sentence. Say what it is, who made it, and when.
+      </div>
+    </div>
+    <div class="four-q-row">
+      <div class="four-q-num">B</div>
+      <div class="four-q-body">
+        <strong>Content (30 seconds)</strong>
+        Describe what is shown. Include one short direct quote or a clear description of a specific detail.
+      </div>
+    </div>
+    <div class="four-q-row">
+      <div class="four-q-num">C</div>
+      <div class="four-q-body">
+        <strong>Message (30 seconds)</strong>
+        Say clearly what the source is arguing and who it is trying to persuade.
+      </div>
+    </div>
+    <div class="four-q-row">
+      <div class="four-q-num">D</div>
+      <div class="four-q-body">
+        <strong>Provenance and context (30 seconds)</strong>
+        Say when it sits on the timeline, and judge how useful it is and for what purpose.
+      </div>
+    </div>
+    <div class="four-q-row">
+      <div class="four-q-num">E</div>
+      <div class="four-q-body">
+        <strong>Closing judgement (10 seconds)</strong>
+        One sentence tying the source to the bigger story of appeasement.
+      </div>
+    </div>
+  </div>
+
+  <div class="callout tip">
+    <span class="tag">Delivery tip</span>
+    <p>Write each section as a single sentence on a cue card. Five cue cards, one per section. Do not write out the full speech, because it will sound read-aloud. Bullet points on a card force natural speech.</p>
+  </div>
+</section>
+
+<section class="part" id="plan">
+  <div class="part-num">07</div>
+  <h2>45-minute plan</h2>
+  <p>This plan assumes the resource has been read once already. It sequences the work so that the hardest thinking happens when focus is freshest.</p>
+
+  <div class="plan">
+    <div class="plan-row header">
+      <div class="plan-time">Minutes</div>
+      <div class="plan-task">Task</div>
+    </div>
+    <div class="plan-row">
+      <div class="plan-time">0 – 5</div>
+      <div class="plan-task"><strong>Read Sources C and D carefully.</strong> Underline any key phrases. For Source C, note the before/after and the key punchlines. For Source D, note the Napoleon comparison and the list of countries.</div>
+    </div>
+    <div class="plan-row">
+      <div class="plan-time">5 – 20</div>
+      <div class="plan-task"><strong>Source C: write the four answers.</strong> One short paragraph for each of the four questions. Aim for three to four sentences each. Use the phrase bank below.</div>
+    </div>
+    <div class="plan-row">
+      <div class="plan-time">20 – 35</div>
+      <div class="plan-task"><strong>Source D: write the four answers.</strong> Same format. Include the Napoleon quote and the point about Daladier later signing Munich.</div>
+    </div>
+    <div class="plan-row">
+      <div class="plan-time">35 – 42</div>
+      <div class="plan-task"><strong>Build two cue cards.</strong> One cue card per source. Five bullet points each: opening, content, message, provenance and context, closing judgement.</div>
+    </div>
+    <div class="plan-row">
+      <div class="plan-time">42 – 45</div>
+      <div class="plan-task"><strong>Time yourself once for each source.</strong> Read the cue cards and speak each source through. Aim for two minutes. Adjust if too short or too long.</div>
+    </div>
+  </div>
+</section>
+
+<section class="part" id="phrases">
+  <div class="part-num">08</div>
+  <h2>Phrase bank for source analysis</h2>
+  <p>These are the sentence openings the teacher is looking for. Use four or more across the two answers.</p>
+
+  <h4>For the message</h4>
+  <ul class="phrase-list">
+    <li>The overall message of this source is that...</li>
+    <li>The creator is arguing that...</li>
+    <li>The source is trying to persuade the audience to...</li>
+    <li>At its core, this source attacks the idea that...</li>
+  </ul>
+
+  <h4>For provenance</h4>
+  <ul class="phrase-list">
+    <li>This source is useful because it comes from...</li>
+    <li>However, the source is limited because...</li>
+    <li>Its usefulness lies in what it reveals about opinion at the time, rather than...</li>
+    <li>Because the creator was a..., the source tells us more about... than about...</li>
+  </ul>
+
+  <h4>For context</h4>
+  <ul class="phrase-list">
+    <li>At the time this source was produced, Hitler had just...</li>
+    <li>This source sits between two key events:... and...</li>
+    <li>This needs to be read against the background of...</li>
+    <li>The events that followed proved the source right or wrong, because...</li>
+  </ul>
+
+  <h4>For the closing judgement</h4>
+  <ul class="phrase-list">
+    <li>Ultimately, this source shows that appeasement was seen as...</li>
+    <li>Taken together with the events of 1938 and 1939, this source helps explain why...</li>
+    <li>This is why the source is important to the story of appeasement:...</li>
+  </ul>
+</section>
+
+<section class="part">
+  <div class="part-num">09</div>
+  <h2>Before handing in</h2>
+  <ul class="checklist">
+    <li>Answered all four questions for Source C?</li>
+    <li>Answered all four questions for Source D?</li>
+    <li>Used at least one direct quote or specific detail per source?</li>
+    <li>Given a specific date or time window for each source?</li>
+    <li>Said what each source is useful for (not just that it is biased)?</li>
+    <li>Built two cue cards, one per source, with five bullets each?</li>
+    <li>Timed at least one read-through and stayed close to two minutes?</li>
+  </ul>
+</section>
+
+<footer class="colophon">
+  Prepared for Milo · Year 10 History · AQA 8145BC Conflict and Tension 1918–1939
+</footer>
+
+</div>
+</body>
+</html>

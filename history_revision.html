@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GCSE History Revision — AQA 8145BC</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0b0e1e;--card:rgba(255,255,255,0.055);--cb:rgba(255,255,255,0.1);
+  --blue:#4d9de0;--gold:#f0c040;--grn:#52c788;--red:#e05555;--lav:#9b8ecf;
+  --txt:#e8eaf6;--mu:rgba(232,234,246,0.5);--r:12px;--rs:8px;
+  --ger:#4d9de0;--con:#9b8ecf;--skl:#f0c040;
+}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;top:-200px;left:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(77,157,224,0.07) 0%,transparent 65%);pointer-events:none;z-index:0}
+body::after{content:'';position:fixed;bottom:-200px;right:-150px;width:550px;height:550px;background:radial-gradient(circle,rgba(240,192,64,0.05) 0%,transparent 65%);pointer-events:none;z-index:0}
+#app{position:relative;z-index:1;max-width:540px;margin:0 auto;padding:22px 16px 60px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes popIn{0%{transform:scale(0.3)}65%{transform:scale(1.08)}100%{transform:scale(1)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.6}}
+.fu{animation:fadeUp 0.38s ease both}
+/* HOME */
+.h-icon{font-size:36px;display:block;text-align:center;margin-bottom:10px}
+.h-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;text-align:center;margin-bottom:4px;background:linear-gradient(135deg,var(--blue) 0%,var(--lav) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.2}
+.h-sub{font-size:12px;color:var(--mu);text-align:center;margin-bottom:6px;line-height:1.5}
+.h-warn{background:rgba(240,192,64,0.1);border:1px solid rgba(240,192,64,0.25);border-radius:var(--rs);padding:10px 14px;font-size:12px;color:var(--gold);line-height:1.6;margin-bottom:20px;text-align:center}
+/* PROGRESS */
+.mp{background:var(--card);border:1px solid var(--cb);border-radius:var(--r);padding:14px 16px;margin-bottom:20px}
+.mp-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.mp-lbl{font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--mu)}
+.mp-pct{font-size:18px;font-weight:600;color:var(--blue)}
+.ptrack{height:5px;background:rgba(255,255,255,0.08);border-radius:99px;overflow:hidden}
+.pfill{height:100%;border-radius:99px;transition:width 0.7s cubic-bezier(0.34,1.56,0.64,1)}
+.pfill-main{background:linear-gradient(90deg,var(--blue),var(--lav))}
+/* SECTION CARDS */
+.sec-cards{display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
+.sc{background:var(--card);border:1px solid var(--cb);border-radius:var(--r);padding:18px 20px;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden;display:flex;align-items:center;gap:16px}
+.sc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:2px 0 0 2px}
+.sc:hover{background:rgba(255,255,255,0.08);transform:translateX(3px)}
+.sc-ico{font-size:28px;flex-shrink:0}
+.sc-body{flex:1}
+.sc-tag{font-size:9px;font-weight:600;letter-spacing:0.13em;text-transform:uppercase;margin-bottom:4px;opacity:0.7}
+.sc-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:5px;line-height:1.2}
+.sc-desc{font-size:12px;color:var(--mu);line-height:1.5}
+.sc-prog{margin-top:8px}
+.sc-ptrack{height:3px;background:rgba(255,255,255,0.08);border-radius:99px;overflow:hidden}
+.sc-pfill{height:100%;border-radius:99px;transition:width 0.5s}
+.sc-arr{color:var(--mu);font-size:18px;flex-shrink:0}
+/* NAV */
+.nav{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.back{background:none;border:none;color:var(--mu);cursor:pointer;font:13px 'Outfit',sans-serif;padding:0;transition:color 0.15s}
+.back:hover{color:var(--txt)}
+.nav-trail{font-size:11px;color:var(--mu);margin-left:auto}
+/* SECTION HEADER */
+.sh{background:var(--card);border:1px solid var(--cb);border-radius:var(--r);padding:18px;margin-bottom:14px;position:relative;overflow:hidden}
+.sh-bar{position:absolute;top:0;left:0;right:0;height:3px}
+.sh-icon{font-size:28px;margin-bottom:8px;display:block}
+.sh-tag{font-size:9px;font-weight:600;letter-spacing:0.13em;text-transform:uppercase;color:var(--mu);margin-bottom:4px}
+.sh-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:6px}
+.sh-sub{font-size:12px;color:var(--mu);line-height:1.55}
+/* TOPIC CARDS */
+.tc{background:var(--card);border:1px solid var(--cb);border-radius:var(--r);padding:14px 16px;cursor:pointer;transition:all 0.2s;margin-bottom:9px;display:flex;align-items:center;gap:12px;position:relative;overflow:hidden}
+.tc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:2px 0 0 2px}
+.tc:hover{background:rgba(255,255,255,0.08);transform:translateX(3px)}
+.tc-body{flex:1}
+.tc-num{font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--mu);margin-bottom:3px}
+.tc-name{font-size:14px;font-weight:500}
+.tc-dates{font-size:11px;color:var(--mu);margin-top:3px}
+.tc-icon{font-size:20px;flex-shrink:0}
+.tc-badge{font-size:10px;padding:3px 9px;border-radius:99px;background:rgba(255,255,255,0.06);color:var(--mu);flex-shrink:0}
+/* TABS */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.tab{padding:6px 14px;border-radius:99px;font:13px 'Outfit',sans-serif;cursor:pointer;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:var(--mu);transition:all 0.18s}
+.tab:hover:not(.active){background:rgba(255,255,255,0.07)}
+.tab.active{font-weight:500}
+.tab.done-t{background:rgba(82,199,136,0.08);border-color:rgba(82,199,136,0.3);color:var(--grn)}
+/* FLASHCARDS */
+.fc-intro{font-size:12px;color:var(--mu);margin-bottom:12px;line-height:1.6}
+.fc-list{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.fc{background:var(--card);border:1px solid var(--cb);border-radius:var(--rs);padding:13px 15px;cursor:pointer;transition:all 0.18s}
+.fc:hover{background:rgba(255,255,255,0.07)}
+.fc.open{border-color:rgba(77,157,224,0.35);background:rgba(77,157,224,0.07)}
+.fc-term{font-size:14px;font-weight:500;line-height:1.3;margin-bottom:0}
+.fc-def{font-size:13px;color:var(--mu);line-height:1.65;margin-top:9px;padding-top:9px;border-top:1px solid rgba(255,255,255,0.07);display:none;white-space:pre-line}
+.fc.open .fc-def{display:block}
+.fc-hint{font-size:10px;color:rgba(232,234,246,0.3);margin-top:4px}
+/* TIMELINE */
+.tl{display:flex;flex-direction:column;gap:0;margin-bottom:16px}
+.tl-item{display:flex;gap:12px;padding:0 0 12px 0}
+.tl-left{display:flex;flex-direction:column;align-items:center;width:52px;flex-shrink:0}
+.tl-year{font-size:11px;font-weight:600;color:var(--blue);text-align:center;line-height:1.2;margin-bottom:4px}
+.tl-dot{width:8px;height:8px;border-radius:50%;background:var(--blue);flex-shrink:0}
+.tl-line{width:1px;flex:1;background:rgba(77,157,224,0.2);margin-top:4px}
+.tl-content{flex:1;padding-top:0}
+.tl-event{font-size:13px;font-weight:500;line-height:1.3;margin-bottom:3px}
+.tl-detail{font-size:12px;color:var(--mu);line-height:1.5}
+/* QUESTIONS */
+.q-card{background:var(--card);border:1px solid var(--cb);border-radius:var(--r);padding:16px;margin-bottom:12px}
+.q-meta{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.q-type{font-size:9px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:3px 9px;border-radius:99px;background:rgba(255,255,255,0.06);color:var(--mu)}
+.q-marks{font-size:11px;font-weight:600;padding:3px 9px;border-radius:99px;background:rgba(240,192,64,0.12);color:var(--gold);border:1px solid rgba(240,192,64,0.2)}
+.q-time{font-size:11px;padding:3px 9px;border-radius:99px;background:rgba(82,199,136,0.1);color:var(--grn);border:1px solid rgba(82,199,136,0.2)}
+.q-text{font-size:14px;font-weight:500;line-height:1.55;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.07)}
+.q-bullets{margin-bottom:12px}
+.q-bullet{display:flex;gap:8px;font-size:12px;color:var(--mu);padding:4px 0;line-height:1.5}
+.q-bdot{color:var(--blue);flex-shrink:0}
+.q-timer-btn{display:flex;align-items:center;gap:8px;padding:9px 16px;border-radius:var(--rs);background:rgba(77,157,224,0.12);border:1px solid rgba(77,157,224,0.3);color:var(--blue);font:500 13px 'Outfit',sans-serif;cursor:pointer;transition:all 0.18s;width:100%;justify-content:center;margin-bottom:10px}
+.q-timer-btn:hover{background:rgba(77,157,224,0.2)}
+/* TIMER */
+.timer-panel{background:rgba(10,15,35,0.98);border:1px solid var(--cb);border-radius:var(--r);padding:16px;margin-bottom:14px;position:sticky;top:8px;z-index:100}
+.timer-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.timer-display{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;min-width:80px}
+.timer-display.green{color:var(--grn)}
+.timer-display.amber{color:var(--gold)}
+.timer-display.red{color:var(--red);animation:pulse 0.8s infinite}
+.timer-label{font-size:11px;color:var(--mu);line-height:1.4}
+.timer-label strong{display:block;font-size:13px;color:var(--txt)}
+.timer-prog{height:5px;background:rgba(255,255,255,0.08);border-radius:99px;overflow:hidden;margin-bottom:10px}
+.timer-pfill{height:100%;border-radius:99px;transition:width 0.9s linear,background 0.5s}
+.timer-btns{display:flex;gap:8px}
+.tbtn{padding:7px 14px;border-radius:var(--rs);font:12px 'Outfit',sans-serif;cursor:pointer;transition:all 0.18s;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);color:var(--mu)}
+.tbtn:hover{background:rgba(255,255,255,0.08);color:var(--txt)}
+.tbtn.stop{color:var(--red);border-color:rgba(224,85,85,0.3)}
+.timer-hints{margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.07)}
+.timer-hints p{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+.hint-item{font-size:11px;color:var(--mu);padding:3px 0;line-height:1.4}
+.hint-item span{color:var(--blue);font-weight:500}
+/* MODEL ANSWERS */
+.grade-compare{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.gc-panel{border-radius:var(--rs);padding:14px;font-size:12px;line-height:1.7}
+.gc-panel.grade5{background:rgba(224,85,85,0.06);border:1px solid rgba(224,85,85,0.2)}
+.gc-panel.grade8{background:rgba(82,199,136,0.07);border:1px solid rgba(82,199,136,0.2)}
+.gc-label{font-size:9px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px}
+.gc-label.l5{color:var(--red)}
+.gc-label.l8{color:var(--grn)}
+.gc-text{color:var(--mu)}
+.gc-text strong{color:var(--txt);font-weight:500}
+.gc-diff{background:rgba(255,255,255,0.04);border-radius:var(--rs);padding:12px;margin-top:10px}
+.gc-diff p{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.gc-diff-item{display:flex;gap:8px;font-size:12px;color:var(--mu);padding:4px 0;line-height:1.5}
+.gc-diff-dot{color:var(--gold);flex-shrink:0}
+.reveal-btn{padding:8px 16px;border-radius:var(--rs);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);font:12px 'Outfit',sans-serif;color:var(--mu);cursor:pointer;transition:all 0.18s;margin-top:8px}
+.reveal-btn:hover{background:rgba(255,255,255,0.07);color:var(--txt)}
+/* SPELLINGS */
+.sp-intro{font-size:12px;color:var(--mu);margin-bottom:14px;line-height:1.6}
+.sp-card{background:var(--card);border:1px solid var(--cb);border-radius:var(--r);padding:14px 16px;margin-bottom:10px}
+.sp-clue{font-size:13px;color:var(--mu);margin-bottom:10px;line-height:1.5}
+.sp-clue strong{color:var(--txt);font-weight:500}
+.sp-input-row{display:flex;gap:8px;align-items:stretch}
+.sp-input{flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:var(--rs);padding:9px 12px;font:14px 'Outfit',sans-serif;color:var(--txt);outline:none;transition:border-color 0.18s}
+.sp-input:focus{border-color:rgba(77,157,224,0.5)}
+.sp-input.correct{border-color:rgba(82,199,136,0.5);background:rgba(82,199,136,0.07)}
+.sp-input.wrong{border-color:rgba(224,85,85,0.5);background:rgba(224,85,85,0.07)}
+.sp-check{padding:9px 16px;border-radius:var(--rs);background:rgba(77,157,224,0.12);border:1px solid rgba(77,157,224,0.3);color:var(--blue);font:500 12px 'Outfit',sans-serif;cursor:pointer;white-space:nowrap;transition:all 0.18s}
+.sp-check:hover{background:rgba(77,157,224,0.2)}
+.sp-result{font-size:12px;margin-top:8px;line-height:1.5;display:none}
+.sp-result.show{display:block}
+.sp-result.ok{color:var(--grn)}
+.sp-result.bad{color:var(--red)}
+/* SUSTAINED JUDGEMENT */
+.sj-box{background:rgba(240,192,64,0.07);border:1px solid rgba(240,192,64,0.2);border-radius:var(--r);padding:16px;margin-bottom:12px}
+.sj-head{font-size:10px;font-weight:600;letter-spacing:0.13em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.sj-body{font-size:13px;color:var(--mu);line-height:1.7}
+.sj-body strong{color:var(--txt);font-weight:500}
+.sj-compare{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.sj-row{padding:10px 12px;border-radius:var(--rs);font-size:12px;line-height:1.6}
+.sj-row.bad{background:rgba(224,85,85,0.07);border:1px solid rgba(224,85,85,0.2)}
+.sj-row.good{background:rgba(82,199,136,0.07);border:1px solid rgba(82,199,136,0.2)}
+.sj-row-lbl{font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:5px}
+.sj-row.bad .sj-row-lbl{color:var(--red)}
+.sj-row.good .sj-row-lbl{color:var(--grn)}
+.sj-row-text{color:var(--mu)}
+.sj-row-text em{color:var(--txt);font-style:normal;font-weight:500}
+/* STRUCTURE GUIDE */
+.struct-item{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06)}
+.struct-item:last-child{border-bottom:none}
+.struct-num{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(77,157,224,0.12);color:var(--blue);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center}
+.struct-body{flex:1}
+.struct-title{font-size:13px;font-weight:500;margin-bottom:4px}
+.struct-desc{font-size:12px;color:var(--mu);line-height:1.55}
+.struct-time{font-size:10px;color:var(--gold);font-weight:600;margin-top:3px}
+/* SOURCE ANALYSIS */
+.sa-step{background:var(--card);border:1px solid var(--cb);border-radius:var(--rs);padding:12px 14px;margin-bottom:8px}
+.sa-step-num{font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--lav);margin-bottom:6px}
+.sa-step-title{font-size:13px;font-weight:500;margin-bottom:5px}
+.sa-step-text{font-size:12px;color:var(--mu);line-height:1.6}
+.sa-template{background:rgba(155,142,207,0.08);border:1px solid rgba(155,142,207,0.25);border-radius:var(--rs);padding:12px;margin:10px 0;font-size:13px;line-height:1.7;color:var(--mu)}
+.sa-template em{color:var(--lav)}
+/* PHRASES BANK */
+.phrases{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.phrase{background:rgba(77,157,224,0.07);border:1px solid rgba(77,157,224,0.2);border-radius:var(--rs);padding:9px 12px;font-size:13px;color:var(--blue);cursor:pointer;transition:all 0.18s}
+.phrase:hover{background:rgba(77,157,224,0.14)}
+.phrase-copied{background:rgba(82,199,136,0.1);border-color:rgba(82,199,136,0.3);color:var(--grn)}
+/* KEY PEOPLE */
+.people-grid{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.person{background:var(--card);border:1px solid var(--cb);border-radius:var(--rs);padding:12px 14px}
+.person-name{font-size:13px;font-weight:600;margin-bottom:3px}
+.person-role{font-size:10px;color:var(--gold);font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px}
+.person-sig{font-size:12px;color:var(--mu);line-height:1.55}
+/* GENERAL */
+.sec-title{font-size:9px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--mu);margin:16px 0 10px}
+.div{height:1px;background:rgba(255,255,255,0.06);margin:14px 0}
+.warn-box{background:rgba(224,85,85,0.08);border:1px solid rgba(224,85,85,0.2);border-radius:var(--rs);padding:11px 14px;font-size:12px;color:rgba(224,85,85,0.85);line-height:1.6;margin-bottom:12px}
+.info-box{background:rgba(77,157,224,0.07);border:1px solid rgba(77,157,224,0.2);border-radius:var(--rs);padding:11px 14px;font-size:12px;color:var(--mu);line-height:1.6;margin-bottom:10px}
+.info-box strong{color:var(--blue)}
+.spag-tip{background:rgba(155,142,207,0.07);border:1px solid rgba(155,142,207,0.2);border-radius:var(--rs);padding:10px 12px;font-size:12px;color:var(--mu);line-height:1.6;margin-bottom:8px}
+.spag-tip strong{color:var(--lav)}
+.btn-p{display:block;width:100%;padding:12px;border-radius:var(--rs);background:linear-gradient(135deg,var(--blue),var(--lav));border:none;font:500 13px 'Outfit',sans-serif;color:#fff;cursor:pointer;transition:opacity 0.18s;margin-top:12px}
+.btn-p:hover{opacity:0.88}
+.btn-g{padding:8px 16px;border-radius:var(--rs);background:var(--card);border:1px solid var(--cb);font:12px 'Outfit',sans-serif;color:var(--mu);cursor:pointer;transition:all 0.18s}
+.btn-g:hover{background:rgba(255,255,255,0.07);color:var(--txt)}
+.act-done{text-align:center;padding:14px;background:rgba(82,199,136,0.07);border:1px solid rgba(82,199,136,0.2);border-radius:var(--r);margin-top:10px}
+/* CHECKLIST */
+.cl-item{display:flex;gap:10px;padding:8px 12px;background:var(--card);border:1px solid var(--cb);border-radius:var(--rs);margin-bottom:6px;cursor:pointer;transition:all 0.18s}
+.cl-item.checked{background:rgba(82,199,136,0.07);border-color:rgba(82,199,136,0.25)}
+.cl-box{flex-shrink:0;width:18px;height:18px;border-radius:4px;border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:10px;margin-top:1px;transition:all 0.18s}
+.cl-item.checked .cl-box{background:var(--grn);border-color:var(--grn)}
+.cl-text{font-size:12px;color:var(--mu);line-height:1.5}
+.cl-item.checked .cl-text{color:var(--txt)}
+@media(max-width:380px){.sp-input-row{flex-direction:column}.sp-check{width:100%}}
+</style>
+</head>
+<body><div id="app"></div>
+<script>
+const D={
+sections:[
+{id:'ger',icon:'🏛️',tag:'AQA 8145BC — Section A',title:'Germany 1890–1945',desc:'Weimar Republic · Rise of Hitler · Nazi Germany',col:'var(--ger)',
+topics:[
+{id:'weimar',num:1,title:'The Weimar Republic',dates:'1919–1929',icon:'📜',
+facts:[
+['The Weimar Republic is established (1919)','Formed after Kaiser Wilhelm II abdicated on 9 November 1918. Germany became a democratic republic with a new constitution. Friedrich Ebert became the first President. Named after the town of Weimar where the constitution was drawn up. Germany faced enormous problems from the start — it was associated with defeat and the hated Treaty of Versailles.'],
+['The Treaty of Versailles (June 1919)','Imposed on Germany without negotiation (a "diktat"). Key terms: War Guilt Clause (Article 231) forced Germany to accept blame for WWI; £6.6 billion reparations; army limited to 100,000 men, no air force, limited navy; loss of 13% of land (Rhineland demilitarised, Alsace-Lorraine to France, Polish Corridor created, colonies lost). Germans called it a "stab in the back."'],
+['The Spartacist Revolt (January 1919)','Left-wing communist uprising led by Rosa Luxemburg and Karl Liebknecht. Attempted to seize power in Berlin. Ebert used the Freikorps (right-wing ex-soldiers) to crush it — Luxemburg and Liebknecht were murdered. This showed the Weimar government would use extreme right-wing forces against the left, making the Weimar Republic enemies on both sides.'],
+['The Kapp Putsch (March 1920)','Right-wing nationalist Wolfgang Kapp marched on Berlin with Freikorps troops and declared a new government. The army refused to fire on Freikorps. The putsch was defeated by a GENERAL STRIKE — workers stopped transport and utilities. Showed right-wing threat was real, but also that the working class could defend democracy.'],
+['The Crises of 1923','January: France and Belgium occupied the Ruhr (Germany\'s industrial heartland) after Germany defaulted on reparations. Ebert ordered "passive resistance" (workers went on strike). This caused massive printing of money — hyperinflation. By November 1923, 4.2 trillion marks = $1. Savings became worthless. Middle class hardest hit. November: Munich (Beer Hall) Putsch — Hitler\'s failed coup.'],
+['The Munich Putsch (November 1923)','Hitler attempted to seize power in Bavaria. Marched on Munich with 2,000 SA men. The army opened fire — 16 Nazis killed. Hitler was arrested, tried for treason (lenient judges — 5 year sentence, served 9 months). In prison wrote Mein Kampf. The failure taught Hitler to seek power through democratic means.'],
+['The Stresemann Era / "Golden Twenties" (1924–1929)','Stresemann became Chancellor (1923), then Foreign Minister. Key achievements: Rentenmark replaced worthless currency; Dawes Plan (1924) — US loans to Germany, reparations restructured; Locarno Treaties (1925) — improved relations with France/Britain; Germany joins League of Nations (1926); Young Plan (1929) — reparations reduced. Germany experienced relative stability and cultural flowering.'],
+['Weimar Germany\'s structural weaknesses','Proportional representation meant many small parties — coalition governments were unstable. Article 48 allowed President to rule by emergency decree — bypassing parliament. Many judges, civil servants, and military officers were conservative/anti-democratic. The republic was associated with defeat and the hated Versailles Treaty from the start.']
+],
+dates:[
+['9 Nov 1918','Kaiser Wilhelm II abdicates; Weimar Republic proclaimed'],
+['Jan 1919','Spartacist Revolt — crushed by Freikorps; Rosa Luxemburg murdered'],
+['Jun 1919','Treaty of Versailles signed — German delegation forced to accept'],
+['Mar 1920','Kapp Putsch — defeated by general strike'],
+['Jan 1923','French/Belgian troops occupy the Ruhr; passive resistance begins; hyperinflation peaks'],
+['Nov 1923','Munich Putsch fails; Hitler arrested'],
+['Aug 1924','Dawes Plan — US loans stabilise German economy'],
+['1925','Locarno Treaties — Germany accepted western borders'],
+['Sep 1926','Germany joins League of Nations'],
+['Oct 1929','Wall Street Crash — US loans recalled; German economic crisis begins']
+],
+people:[
+{name:'Friedrich Ebert',role:'First President of Weimar Republic (1919–1925)',sig:'Faced impossible task of establishing democracy in a country in chaos. Used Freikorps to crush Spartacists — alienated the left. Accepted "diktat" of Versailles — labelled a traitor by nationalists.'},
+{name:'Gustav Stresemann',role:'Chancellor (1923) then Foreign Minister (1923–1929)',sig:'The man who stabilised Weimar Germany. Ended passive resistance in Ruhr, introduced Rentenmark, negotiated Dawes Plan, Locarno Treaties, Young Plan. Germany\'s "golden age" — but built on unstable US loans.'},
+{name:'Paul von Hindenburg',role:'President of Weimar Republic (1925–1934)',sig:'WWI military hero — conservative nationalist who disliked Hitler but eventually appointed him Chancellor in January 1933. His death in August 1934 allowed Hitler to merge Chancellor and President roles.'}
+],
+questions:[
+{type:'EXPLAIN WHY',marks:12,mins:15,q:'Explain why the Weimar Republic faced so many problems in the years 1919–1923. You may use the following in your answer: the Treaty of Versailles; hyperinflation. You must also use information of your own.',bullets:['The Versailles Treaty caused resentment — Germany blamed the republic','Hyperinflation destroyed savings — hit the middle class hardest','The Kapp Putsch showed right-wing opposition; Spartacists showed left-wing threat','US loan dependency (Dawes Plan) left Germany vulnerable'],
+g5:'The Weimar Republic faced many problems. One problem was the Treaty of Versailles which was very harsh on Germany. Germany had to pay reparations of £6.6 billion and lost territory. This made people angry. Another problem was hyperinflation in 1923 when prices rose very quickly. People\'s savings became worthless. The republic also faced the Kapp Putsch in 1920 when right-wing soldiers tried to take over Berlin. In conclusion the Weimar Republic faced many problems because of the Treaty of Versailles and economic problems.',
+g8:'The Weimar Republic faced enormous problems in this period, primarily because it was born in defeat and immediately associated with the humiliation of the Versailles Treaty. The War Guilt Clause (Article 231) forced Germany to accept sole blame for WWI and pay £6.6 billion in reparations — terms that the German public considered outrageous and unjust. Consequently, the republic was politically poisoned from birth: nationalists labelled its leaders the "November Criminals" who had "stabbed Germany in the back," making stable government almost impossible.\n\nThe reparations crisis directly caused the second major problem: the hyperinflation of 1923. When Germany defaulted on reparations payments, France occupied the Ruhr. Ebert\'s policy of passive resistance — encouraging workers to strike — meant the government had to print money to pay strikers. By November 1923, 4.2 trillion marks equalled just one dollar, wiping out the savings of the middle class entirely. This was not simply an economic crisis — it destroyed confidence in the republic itself, as millions of Germans who had previously supported Weimar now turned against it.\n\nThird, the republic\'s own structural weaknesses made it unable to deal effectively with these challenges. Proportional representation produced fragile coalition governments, while Article 48 — allowing presidential rule by decree — undermined parliamentary democracy. The republic thus faced external shocks (Versailles, reparations, foreign occupation) and internal enemies (Spartacists on the left, Freikorps on the right) while simultaneously suffering from a constitution that made strong, consistent government nearly impossible. These problems combined to make the early Weimar years a period of chronic instability.',
+diff:['Grade 5 lists problems without explaining WHY each one mattered to the republic\'s survival','Grade 8 shows HOW problems connected — Versailles → reparations crisis → occupation → hyperinflation is one chain, not three separate points','Grade 5 concludes without judgement. Grade 8 makes a sustained argument throughout: the republic was fatally weakened from the start','Grade 8 uses specific evidence: "4.2 trillion marks = $1", "Article 48", "November Criminals" — names and numbers demonstrate precise knowledge']},
+{type:'HOW FAR DO YOU AGREE',marks:20,mins:22,q:'"The main reason for the weakness of the Weimar Republic was the Treaty of Versailles." How far do you agree with this statement? Explain your answer.',bullets:['Treaty of Versailles — economic and political impact','Proportional representation and Article 48 — structural weaknesses','Opposition from extremists — left (Spartacists) and right (Kapp, Hitler)','Economic crises of 1923 — hyperinflation'],
+g5:'I largely agree with this statement. The Treaty of Versailles was very important because it forced Germany to pay reparations and accept the War Guilt Clause. This made Germans angry. However, there were other reasons too. The Weimar Republic had problems with its constitution. Proportional representation meant many parties and unstable governments. There was also opposition from extremists like the Spartacists and the Kapp Putsch. The economic problems of 1923 were also important. In conclusion, the Treaty of Versailles was the main reason but there were other reasons too.',
+g8:'I largely agree that the Treaty of Versailles was the most significant reason for the Weimar Republic\'s weakness, though the republic\'s own constitutional flaws compounded this external pressure in ways that made stable government almost impossible.\n\nThe Treaty of Versailles was catastrophic for Weimar democracy because it politically delegitimised the republic before it had even established itself. The War Guilt Clause forced Germany to accept sole blame for WWI and pay £6.6 billion in reparations — terms that the German public considered a national humiliation. Nationalists immediately branded Weimar\'s leaders the "November Criminals," associating the republic with defeat and betrayal. This therefore supports the statement because it shows that Versailles did not merely create economic problems — it fundamentally undermined the republic\'s political legitimacy in the eyes of many German citizens.\n\nHowever, the republic\'s own structural weaknesses were an independent source of vulnerability that would have threatened any democratic government. Proportional representation produced chronic governmental instability: by 1933, Germany had had twenty separate coalition governments in fourteen years. Article 48 of the Weimar constitution allowed the President to rule by emergency decree, bypassing the Reichstag — a mechanism that Hitler would later exploit to dismantle democracy from within. These were not products of Versailles but self-inflicted constitutional flaws. Nevertheless, these weaknesses became fatal only when combined with the external pressures created by Versailles, suggesting that both factors were necessary conditions for the republic\'s collapse.\n\nIn conclusion, I largely agree with the statement, but the degree of agreement requires qualification. The Treaty of Versailles was the primary cause because it poisoned public attitudes towards the republic and created the economic conditions (reparations → hyperinflation) that destroyed popular confidence. However, without the republic\'s own constitutional vulnerabilities — particularly proportional representation and Article 48 — Versailles alone might have been survivable. The Weimar Republic was not simply a victim of external forces: it was structurally designed in a way that made it unable to withstand them.',
+diff:['Grade 5 conclusion says "mainly agree but other reasons too" — gives NO DEGREE. Grade 8 gives a degree: identifies specifically what Versailles did that constitutional flaws could not do alone','Grade 5 never links paragraphs back to the question. Grade 8 ends every paragraph with "this therefore supports/challenges the statement BECAUSE..."','Grade 8 has a "clever however": acknowledges constitutional flaws were serious, but then shows why Versailles was STILL most important (necessary conditions argument)','Grade 8 uses linking language throughout: "This therefore supports," "Nevertheless," "compounded this"']}
+],
+spellings:[['reparations','Payments demanded from Germany after WWI (rhymes with "preparations" — same letters, add "r")'],['hyperinflation','When money becomes almost worthless very quickly (hyper + inflation — think "hyper" like hyperactive)'],['plebiscite','A vote by the people on a specific political issue (plee-bi-site — not "plebi-cit-e")'],['Spartacist','Member of the communist revolutionary group (Spar-ta-cist — three syllables)'],['armistice','The agreement to stop fighting at the end of WWI (arm-is-tice — three syllables)'],['sovereignty','Supreme power of a state — self-governance (sov-er-eign-ty — the "eign" is the tricky part)']]},
+
+{id:'rise',num:2,title:'The Rise of Hitler',dates:'1929–1933',icon:'📈',
+facts:[
+['Impact of the Wall Street Crash (1929)','US stock market collapsed in October 1929 — US banks recalled their loans to Germany. German businesses collapsed, unemployment rose from 1.3 million (1929) to 6 million by 1932. The Great Depression destroyed the economic stability that Stresemann had built. It destroyed Weimar\'s credibility and created conditions for extremism.'],
+['Nazi electoral breakthrough (1930–1932)','In 1928, Nazis had just 12 Reichstag seats (2.6%). By September 1930 they had 107 seats (18.3%). By July 1932 they had 230 seats (37.4%) — the largest single party. In November 1932 they fell slightly to 196 seats (33.1%) — showing Nazi support may have peaked. Hitler demanded to be made Chancellor; Hindenburg initially refused, calling him "the Bohemian corporal."'],
+['Hitler\'s appeal','Hitler\'s speeches offered simple explanations for complex problems: blamed Jews and communists for Germany\'s suffering; promised to tear up Versailles, restore German greatness, and eliminate unemployment. His oratory was electrifying — carefully staged rallies, dramatic lighting, rousing music. SA provided excitement and a sense of order. For unemployed young men, the Nazi movement offered purpose and belonging.'],
+['Role of Goebbels and Nazi propaganda','Joseph Goebbels orchestrated Nazi electoral campaigns from 1930 onwards. Hitler was portrayed as a messianic saviour — "Der Führer." Posters, rallies, and newsreel films created a powerful modern propaganda machine. Key message was different for different audiences: to farmers (protect agricultural prices), to middle class (anti-communist order), to workers (national community and jobs).'],
+['Why Hindenburg appointed Hitler Chancellor (January 1933)','By November 1932, Nazis had slightly declined. Franz von Papen (former Chancellor) convinced Hindenburg that Hitler could be "controlled" if given office with conservatives around him. Hindenburg appointed Hitler as Chancellor on 30 January 1933, with von Papen as Vice Chancellor. Conservatives thought they could use Hitler — one of the most catastrophic miscalculations in history.'],
+['The Reichstag Fire (February 1933)','On 27 February 1933, the Reichstag building burned down. A young Dutch communist, Marinus van der Lubbe, was found at the scene. Hitler immediately blamed communist conspiracy and persuaded Hindenburg to sign the Reichstag Fire Decree, suspending civil liberties (free speech, right to fair trial). Historians debate whether the Nazis started the fire themselves.'],
+['The Enabling Act (March 1933)','On 23 March 1933, the Reichstag voted to give Hitler power to make laws without consulting parliament for 4 years. Passed 444 to 94 — only the Social Democrats voted against. SA men surrounded the chamber — intimidating opposition. The Enabling Act was the legal foundation of the Nazi dictatorship: Hitler could now rule by decree. All parties banned by July 1933.'],
+['Why the Weimar Republic fell','Multiple interconnected reasons: economic crisis (Depression) destroyed public confidence; Nazi propaganda exploited resentment; SA violence intimidated opponents; conservatives (Hindenburg, Papen) underestimated Hitler; Weimar constitution\'s weaknesses (Article 48, proportional representation) left it vulnerable; democratic parties failed to unite against the Nazi threat.']
+],
+dates:[
+['Oct 1929','Wall Street Crash — US loans to Germany recalled; unemployment soars'],
+['Sep 1930','Nazis win 107 Reichstag seats (up from 12 in 1928)'],
+['Jul 1932','Nazis win 230 seats — largest single party in Reichstag'],
+['Nov 1932','Nazis fall to 196 seats — showing possible decline'],
+['30 Jan 1933','Hindenburg appoints Hitler as Chancellor'],
+['27 Feb 1933','Reichstag Fire — van der Lubbe arrested; emergency decree suspends civil liberties'],
+['5 Mar 1933','General election — Nazis win 44% (still not a majority)'],
+['23 Mar 1933','Enabling Act passed 444–94; Hitler can make laws without Reichstag']
+],
+people:[
+{name:'Adolf Hitler',role:'NSDAP leader and Chancellor from 30 January 1933',sig:'Charismatic orator who could read and exploit his audience. Wrote Mein Kampf in prison (1924). Decided after Munich Putsch to seek power legally. Exploited the Great Depression brilliantly, offering simple explanations and scapegoats.'},
+{name:'Paul von Hindenburg',role:'President of Germany (1925–1934)',sig:'Initially refused to appoint Hitler Chancellor, calling him an "Austrian corporal." Was eventually persuaded by von Papen that conservatives could control Hitler. His miscalculation opened the door to dictatorship.'},
+{name:'Franz von Papen',role:'Former Chancellor and Hindenburg\'s advisor',sig:'Convinced Hindenburg to appoint Hitler. Believed conservatives could "tame" Hitler with senior positions around him. Instead became increasingly sidelined as Hitler consolidated power.'}
+],
+questions:[
+{type:'HOW FAR DO YOU AGREE',marks:20,mins:22,q:'"The main reason for Hitler\'s rise to power was the economic depression of 1929–1932." How far do you agree with this statement? Explain your answer.',bullets:['The Great Depression — 6 million unemployed by 1932; confidence in Weimar collapsed','Nazi propaganda and Hitler\'s personal appeal','Weakness of opposition — conservatives underestimating Hitler','Weimar\'s structural weaknesses — coalition instability, Article 48'],
+g5:'I agree with this statement to a large extent. The economic depression of 1929 was very important because it caused unemployment of 6 million by 1932. People lost faith in the Weimar Republic and turned to extremists like Hitler. However, there were other reasons. Nazi propaganda was also important as Goebbels ran effective campaigns. The Enabling Act also helped Hitler take power. In conclusion, the depression was the main reason but other factors also contributed.',
+g8:'I largely agree that the Great Depression was the most significant factor in Hitler\'s rise to power, because without it the structural weakness of Weimar and the appeal of Nazi propaganda would not have been sufficient to bring Hitler to the chancellorship. However, the depression alone cannot fully explain his rise — it was the combination of economic crisis and pre-existing political vulnerabilities that made the outcome possible.\n\nThe Wall Street Crash of 1929 triggered a catastrophic economic collapse in Germany: unemployment rose from 1.3 million in 1929 to 6 million by 1932, wiping out any confidence in the Weimar Republic that Stresemann had painstakingly built. The Nazi vote surged in direct proportion — from 12 seats in 1928 to 230 by July 1932. This correlation demonstrates that economic desperation, not ideological conviction, drove most Nazi support. Voters turned to Hitler because democratic alternatives had failed them, not because they fully endorsed Nazi ideology. This therefore supports the statement: without the depression, the Nazis were a fringe party going nowhere.\n\nHowever, the depression alone does not explain why Hitler specifically — as opposed to other right-wing parties — benefited most. This requires recognising the significance of Nazi propaganda and Hitler\'s personal appeal. Goebbels created a modern, sophisticated propaganda machine that tailored different messages to different audiences: economic security for the middle class, anti-communism for conservatives, national greatness for all. Hitler\'s oratorical power — staged rallies, dramatic lighting, rousing speeches — created a quasi-religious political movement that offered belonging to the desperate and the displaced. The communists (KPD) also grew in the early 1930s, suggesting the depression drove voters towards extremism generally; what made the difference was the Nazis\' superior organisation and propaganda.\n\nIn conclusion, I largely agree with the statement to the extent that the depression was the necessary precondition for Nazi electoral success — without mass unemployment and the collapse of confidence in Weimar, Hitler\'s appeal would have remained marginal. However, the depression was not sufficient on its own: it was the combination of economic catastrophe, the Weimar Republic\'s constitutional vulnerabilities, and the Nazis\' extraordinary propaganda operation that together allowed Hitler to reach the chancellorship. The depression opened the door; Nazi organisation and conservative miscalculation pushed it open.',
+diff:['Grade 5 agrees then lists other factors, with no judgement about relative importance. Grade 8 gives a clear "necessary but not sufficient" argument throughout','Grade 8 identifies HOW the depression drove Nazi support — using the statistical correlation of seats (12 → 230) and dates','Grade 8\'s "clever however" on propaganda actually acknowledges the depression drove extremism generally, then explains what made Nazis specifically benefit — a sophisticated distinction','Grade 8 conclusion gives DEGREE: depression was necessary precondition but not sufficient — identifies exactly what else was required']}
+],
+spellings:[['chancellor','The head of government in Germany (chan-cel-lor — two Ls at the end)'],['Reichstag','The German parliament building (Reichs-tag — "Reich" = empire/realm, "tag" = day/meeting)'],['propaganda','Information used to promote a political cause — often misleading (prop-a-gan-da — four syllables)'],['Führer','Leader/Guide — Hitler\'s title (füh-rer — the ü is pronounced like "ew")'],['Weimar','The town where Germany\'s constitution was written (Vy-mar — not "Wee-mar")']]},
+
+{id:'nazi',num:3,title:'Nazi Germany',dates:'1933–1945',icon:'⚠️',
+facts:[
+['Night of Long Knives (30 June – 2 July 1934)','Hitler ordered the SS to kill the SA leadership, including Ernst Röhm, the SA commander. Around 400 people were murdered. Reasons: the army (essential for rearmament) wanted the SA eliminated; Röhm was calling for a "second revolution" threatening the conservative establishment; Hitler feared a rival power base. The army was now loyal to Hitler personally.'],
+['Hitler becomes Führer (August 1934)','When President Hindenburg died on 2 August 1934, Hitler merged the roles of Chancellor and President, declaring himself Führer (Supreme Leader). The army swore a personal oath of loyalty to Hitler — not to Germany or the constitution. Hitler now had supreme political and military authority with no institutional checks remaining.'],
+['The Nazi police state — terror and control','Heinrich Himmler commanded the SS (Schutzstaffel) and the Gestapo (secret police). By 1937 there were an estimated 160,000 paid informers in Germany — neighbour reported neighbour. The SD (intelligence service) monitored opposition. Concentration camps held political opponents. Fear of arrest made open opposition almost impossible. The regime relied on both genuine popularity AND fear.'],
+['Goebbels and Nazi propaganda','Joseph Goebbels was Minister of Public Enlightenment and Propaganda from 1933. He controlled all media: radio (cheap "people\'s receivers" sold widely), cinema (newsreels, propaganda films including Riefenstahl\'s "Triumph of the Will"), newspapers, art, music. Nuremberg Rallies — massive staged events attended by hundreds of thousands — projected an image of invincible power and national unity.'],
+['Nazi racial policy — Nuremberg Laws (1935)','The Nuremberg Laws (September 1935) stripped German Jews of citizenship and banned marriage between Jews and non-Jews. Jews were increasingly excluded from public life — fired from professions, banned from public places, businesses boycotted. The laws provided a "legal" framework for discrimination. By 1938, approximately 150,000 Jews had emigrated.'],
+['Kristallnacht (9–10 November 1938)','The "Night of Broken Glass." Following the murder of a German diplomat in Paris by a young Jewish man, the Nazis orchestrated a nationwide pogrom: 7,500 Jewish businesses smashed, 400 synagogues burned, 91 Jews killed, 30,000 sent to concentration camps. Kristallnacht marked a sharp escalation in anti-Jewish violence — the beginning of systematic destruction rather than discrimination.'],
+['Life for women and young people in Nazi Germany','Women: Kinder, Küche, Kirche (Children, Kitchen, Church). Incentivised to have children — marriage loans (reduced for each child), Mother\'s Cross medal for large families. Removed from professions. Young People: Hitler Youth (boys — military fitness, ideological training), League of German Girls/BdM (girls — homemaking, fitness). Membership effectively compulsory by 1939 — 8 million members by 1939.'],
+['The Nazi economy','Hjalmar Schacht (Economics Minister) introduced the "New Plan" (1934): strict control of imports, bilateral trade deals, rearmament spending. Unemployment fell from 6 million (1933) to under 1 million by 1938 — though partly through labour schemes (autobahns, RAD) and rearmament. By 1939 Germany was spending 25% of national income on arms. Standard of living for most Germans improved in the 1930s.']
+],
+dates:[
+['Mar 1933','Enabling Act — Hitler can make law without Reichstag; dictatorship begins'],
+['Jul 1933','All political parties banned except NSDAP'],
+['30 Jun 1934','Night of Long Knives — SA leadership murdered; army\'s loyalty secured'],
+['Aug 1934','Hindenburg dies; Hitler becomes Führer; army swears oath to Hitler personally'],
+['Sep 1935','Nuremberg Laws — Jews stripped of citizenship; marriage between Jews and non-Jews banned'],
+['Mar 1936','Remilitarisation of Rhineland — Hitler gambles correctly Britain/France will not act'],
+['Nov 1938','Kristallnacht — 7,500 Jewish businesses destroyed, 30,000 Jews arrested'],
+['Sep 1939','WWII begins; Nazi policies intensify against Jews and occupied peoples']
+],
+people:[
+{name:'Joseph Goebbels',role:'Minister of Public Enlightenment and Propaganda (1933–1945)',sig:'Controlled all German media with extraordinary efficiency. Created the cult of Hitler as messianic leader. The Nuremberg Rallies were his masterpiece — creating a sense of irresistible national unity.'},
+{name:'Heinrich Himmler',role:'Head of SS and Gestapo',sig:'Built the terror apparatus that made opposition almost impossible. Supervised concentration camps. The Gestapo\'s network of informers created a climate of fear — you never knew who was watching.'},
+{name:'Hjalmar Schacht',role:'Economics Minister (1933–1937)',sig:'Brilliant economist who managed Germany\'s recovery. Reduced unemployment from 6 million to under 1 million through rearmament, public works, and strict trade controls. Resigned in 1937 when he felt rearmament spending was unsustainable.'}
+],
+questions:[
+{type:'EXPLAIN WHY',marks:12,mins:15,q:'Explain why Hitler was able to consolidate his power in Germany in the years 1933–1934. You may use the following in your answer: the Reichstag Fire; the Night of Long Knives. You must also use information of your own.',bullets:['Reichstag Fire → Emergency Decree → suspended civil liberties March 1933','Enabling Act (March 1933) — Hitler could make law without parliament','Night of Long Knives (June 1934) — eliminated SA, secured army loyalty','Hindenburg\'s death (August 1934) — Hitler merges Chancellor and President'],
+g5:'Hitler was able to consolidate his power for several reasons. Firstly, the Reichstag Fire in February 1933 helped Hitler because he used it to pass a decree suspending civil liberties. This helped him because he could arrest opponents. Secondly, the Enabling Act in March 1933 gave Hitler the power to make laws without the Reichstag. This was very important. Thirdly, the Night of Long Knives in June 1934 removed the SA leaders who were a threat to Hitler. In conclusion, Hitler consolidated power through these events.',
+g8:'Hitler\'s consolidation of power in 1933–34 followed a deliberate and rapid sequence in which each step created the conditions for the next, moving from legal authority to absolute dictatorship within just 18 months.\n\nThe Reichstag Fire of 27 February 1933 provided Hitler with the perfect pretext to eliminate political opposition. By blaming the fire on communist conspiracy, Hitler persuaded Hindenburg to sign the Reichstag Fire Decree, suspending civil liberties including the right to free speech and fair trial. This allowed the Nazis to arrest thousands of political opponents before the March 1933 election. Consequently, when the Enabling Act came to a vote on 23 March 1933, the chamber was purged of effective opposition — it passed 444 to 94, giving Hitler power to rule by decree for four years. Together, these two events dismantled parliamentary democracy within six weeks of Hitler becoming Chancellor.\n\nHowever, Hitler still faced a significant challenge: the SA under Ernst Röhm was becoming a rival power base, and the regular army — essential for Hitler\'s rearmament plans — would not accept subordination to Röhm\'s street fighters. The Night of Long Knives (30 June–2 July 1934) resolved both problems simultaneously. Hitler ordered the SS to murder Röhm and approximately 400 SA leaders. The army, grateful for the elimination of its rival, agreed to swear a personal oath of loyalty to Hitler — not to Germany. When Hindenburg died in August 1934, Hitler was able to merge Chancellor and President with no institutional resistance. This was the decisive final step: there was now no constitutional, military, or political mechanism to challenge Hitler\'s authority.',
+diff:['Grade 5 describes each event separately without showing HOW each one enabled the next. Grade 8 explicitly shows the CHAIN of causation','Grade 8 explains WHY each event mattered to consolidation — the Reichstag Fire gave "pretext," the Night of Long Knives resolved the "rival power base" problem','Grade 8 uses precise evidence: "444 to 94," "30 June–2 July," "personal oath of loyalty to Hitler" — specificity earns marks','Grade 5 conclusion just summarises. Grade 8 uses the phrase "decisive final step" — showing which event mattered most']},
+{type:'HOW FAR DO YOU AGREE',marks:20,mins:22,q:'"Nazi Germany was a totalitarian state in which all aspects of life were controlled by the government." How far do you agree with this statement? Explain your answer.',bullets:['Evidence of control: propaganda, SS/Gestapo, youth organisations, women\'s roles','Evidence of limits: church opposition, some continued private resistance, popular consent more important than force','Economic policy — genuine improvement in living standards alongside control','Volksgemeinschaft — the "people\'s community" vision'],
+g5:'I agree with this statement. Nazi Germany was a totalitarian state. Goebbels controlled the media and propaganda. The Gestapo arrested people who opposed Hitler. The Hitler Youth controlled young people\'s lives. Women were told to be mothers. However, some people did resist. The churches sometimes spoke out against the Nazis. In conclusion, Nazi Germany was mostly a totalitarian state but not all aspects of life were completely controlled.',
+g8:'I largely agree that the Nazis sought to control all aspects of German life, but the degree of success varied significantly — the regime was most effective in the public sphere and least effective in private belief and religious life. Describing Nazi Germany simply as "totalitarian" therefore requires significant qualification.\n\nThe Nazis\' control of the public sphere was extensive and effective. Goebbels\' propaganda apparatus dominated all mass media — radio, cinema, newspapers, art — creating a carefully managed national narrative of German greatness and racial purity. The Hitler Youth (8 million members by 1939) and League of German Girls ensured the regime shaped the values of the next generation. The Gestapo\'s network of informers — estimated at 160,000 paid informers by 1937 — created a pervasive atmosphere of surveillance in which open opposition was suicidal. This therefore supports the statement: in the public domain, few regimes before or after have achieved such comprehensive control.\n\nHowever, the regime\'s control of private belief and conscience was much more limited. The Protestant and Catholic churches proved largely resistant to full Nazification — Pastor Niemöller\'s Confessing Church actively resisted, and Pope Pius XI\'s 1937 encyclical "Mit brennender Sorge" (With Burning Anxiety) criticised Nazi ideology and was read from German Catholic pulpits. The Edelweiss Pirates and Swing Youth movements showed that some young people rejected Nazi culture. This suggests that control of outward behaviour was not the same as control of inner conviction.\n\nIn conclusion, Nazi Germany was totalitarian in its ambitions and largely totalitarian in the public sphere — the regime controlled what Germans heard, saw, and could publicly express with extraordinary effectiveness. However, the statement overstates the degree of control over private belief, religious life, and the limits of active resistance. The regime ultimately relied on a combination of genuine popular support (particularly for economic recovery) and fear, rather than total control of every aspect of life.',
+diff:['Grade 5 agrees then notes exception without analysis. Grade 8 draws a precise distinction between public sphere control (extensive) vs private belief (limited)','Grade 8 gives SPECIFIC evidence for limits on control: Niemöller, "Mit brennender Sorge," Edelweiss Pirates — not just "some people resisted"','Grade 8 ends with a nuanced degree: totalitarian in public sphere but "the statement overstates control of private belief" — this is sophisticated','Spelling note: Kristallnacht, Gestapo, Wehrmacht, Volksgemeinschaft need to be learned cold']}
+],
+spellings:[['Kristallnacht','Night of Broken Glass (Kris-tall-nacht — three syllables; "Kris" not "Chris")'],['Gestapo','Secret police (Ge-sta-po — from GEheime STAatsPOlizei)'],['Wehrmacht','German armed forces (Vehr-makt — the "W" is pronounced "V" in German)'],['Volksgemeinschaft','People\'s community (Volks-ge-mine-shaft — compound word, say each part)'],['Lebensraum','Living space (Lay-bens-rowm — "raum" rhymes with "room" almost)'],['Anschluss','Union with Austria 1938 (An-shluss — "sch" is like "sh" in German)']]}
+]},
+
+{id:'con',icon:'🌍',tag:'AQA 8145BC — Section B',title:'Conflict and Tension 1918–1939',desc:'Paris Peace Conference · League of Nations · Road to War',col:'var(--con)',
+topics:[
+{id:'paris',num:1,title:'The Paris Peace Settlement',dates:'1919',icon:'✍️',
+facts:[
+['The Paris Peace Conference (January 1919)','World leaders met in Paris to decide the shape of post-WWI Europe. The "Big Three" dominated: President Wilson (USA), Prime Minister Lloyd George (Britain), Prime Minister Clemenceau (France). Germany was excluded from negotiations — forced to accept the final terms or face resumption of war. The conference produced five treaties for the defeated powers.'],
+['Wilson\'s aims (USA)','President Woodrow Wilson brought his "14 Points" — a blueprint for a lasting peace: self-determination for all nations, freedom of the seas, arms reduction, no secret treaties, and above all a League of Nations to resolve future disputes peacefully. Wilson was idealistic — he believed in creating a just peace that would make future war impossible. Ironically, the US Congress refused to join the League he created.'],
+['Clemenceau\'s aims (France)','Clemenceau (nicknamed "the Tiger") represented a France devastated by four years of fighting on its own soil. He wanted Germany permanently crippled: maximum reparations, German army destroyed, Rhineland permanently separated from Germany, Saarland given to France, Germany unable to ever threaten France again. He opposed Wilson\'s idealism — "God gave us the Ten Commandments, and we broke them. Wilson gives us the Fourteen Points — we shall see."'],
+['Lloyd George\'s aims (Britain)','Lloyd George took a middle position. He had just won an election on promises to "squeeze Germany until the pips squeak." But privately he wanted a moderate settlement — a ruined Germany could not trade with Britain, and a humiliated Germany might turn to communism. He feared creating conditions for another war. He largely failed to moderate Clemenceau\'s demands.'],
+['The Treaty of Versailles — key terms','War Guilt Clause (Article 231): Germany accepted sole responsibility for WWI. Reparations: £6.6 billion (finalised 1921). Military: army of 100,000 men, no air force, 6 battleships, no submarines, Rhineland demilitarised. Territory: Alsace-Lorraine to France, Eupen and Malmedy to Belgium, North Schleswig to Denmark, Polish Corridor created (splitting Germany), Saarland under League for 15 years, all colonies taken.'],
+['German reaction to Versailles','Germany called it a "diktat" (dictated peace). The War Guilt Clause was seen as a national humiliation — Germany did not feel solely responsible for WWI. Reparations were felt to be economically crippling. The loss of territory meant 3.5 million ethnic Germans now lived outside Germany. Politicians who signed Versailles were labelled "November Criminals" and "traitors." The resentment created by Versailles was a major factor in Hitler\'s rise to power.'],
+['Other Peace Treaties (1919–1920)','Treaty of St Germain (1919): broke up Austria-Hungary; Austria forbidden to unite with Germany. Treaty of Trianon (1920): Hungary lost 2/3 of its territory. Treaty of Neuilly (1919): Bulgaria lost land to Greece and Yugoslavia. Treaty of Sèvres (1920): dismantled the Ottoman Empire. Self-determination was unevenly applied — applied to Germany\'s enemies but not to create a "Greater Germany."'],
+['Was Versailles too harsh or too lenient?','Too harsh view: War Guilt humiliating; reparations economically crippling; no German participation; sowed seeds of WWII. Too lenient view: Germany survived as a single nation; key industrial areas (Ruhr) remained; France got no permanent Rhine frontier; Germany was not occupied. Reality: it was harsh enough to cause deep resentment but not harsh enough to prevent Germany from recovering and eventually seeking revenge.']
+],
+dates:[
+['11 Nov 1918','Armistice signed — WWI ends; Germany not invaded or occupied'],
+['Jan 1919','Paris Peace Conference opens; Big Three begin negotiations'],
+['Apr 1919','War Guilt Clause drafted — Germany told to accept full blame'],
+['May 1919','German delegation receives treaty; submits counterproposals (rejected)'],
+['28 Jun 1919','Treaty of Versailles signed at Palace of Versailles, in the Hall of Mirrors'],
+['1919–1920','Other peace treaties: St Germain, Trianon, Neuilly, Sèvres']
+],
+people:[
+{name:'Woodrow Wilson',role:'US President — idealist peacemaker',sig:'Proposed the 14 Points including self-determination and the League of Nations. Wanted a "peace without victory." His health collapsed during negotiations. Ultimately failed to convince US Congress to join the League — his greatest achievement was undone at home.'},
+{name:'Georges Clemenceau',role:'French Prime Minister — "the Tiger"',sig:'Represented a France scarred by four years of fighting on home soil and desperate for security. Pushed hardest for punishing Germany. Partly got what he wanted — but told his colleagues the treaty "is not a peace. It is an armistice for twenty years." He was right.'},
+{name:'David Lloyd George',role:'British Prime Minister — the pragmatist',sig:'Publicly promised to "squeeze Germany." Privately worried about creating conditions for another war. Wrote in March 1919: "We shall have to fight another war again in 25 years." Also proved prescient. Largely outmanoeuvred by Clemenceau.'}
+],
+questions:[
+{type:'SOURCE INFERENCE',marks:4,mins:6,q:'Study Source A. Source A shows the Big Three at the Paris Peace Conference. What can you infer from the positions and expressions shown about attitudes towards the peace settlement?\n\n[Note: In your exam, an actual source image or quotation will be provided. This question teaches the inference technique.]',bullets:['Make 2–3 inferences — things the source IMPLIES, not just what it shows','Use a specific detail from the source to support each inference','Do NOT just describe what you see — go BEYOND the source'],
+g5:'Source A shows the Big Three at the Paris Peace Conference. I can see three men. This shows that the main leaders of the Allied powers were at the conference. The source tells me that there were important meetings held at the conference. I can also see that they are in a formal setting which shows it was an important event.',
+g8:'From Source A, I can infer that there was significant tension between the key leaders at the Paris Peace Conference, despite their formal presentation. The [specific detail from source, e.g. body language/spatial arrangement/expressions] suggests that the leaders were not fully united in their aims. This is supported by the historical context: Wilson\'s idealistic 14 Points clashed fundamentally with Clemenceau\'s desire to permanently weaken Germany — the two men had very different visions for the peace settlement.\n\nI can also infer that the peace settlement was dominated by Allied interests rather than Wilson\'s principles of self-determination and collective security. [Specific detail from source] indicates that the major powers held the decisive authority, with Germany entirely excluded from the negotiations — a fact that would fuel German resentment and undermine the legitimacy of the Versailles Treaty.',
+diff:['Grade 5 DESCRIBES what is in the source. Grade 8 makes INFERENCES — things the source implies or suggests beyond what is directly shown','Grade 8 uses a specific detail from the source AND connects it to historical context — explaining WHY the inference is historically significant','Grade 5 says "this shows an important event." Grade 8 says "this suggests tension because..." — always go BEYOND the surface','The key word is INFER not DESCRIBE. Ask: "What does this SUGGEST? What does this IMPLY?"']},
+{type:'HOW FAR DO YOU AGREE',marks:20,mins:22,q:'"The Treaty of Versailles was a fair punishment for Germany." How far do you agree with this statement? Explain your answer.',bullets:['Evidence it was fair: Germany had caused devastation; Britain and France had to rebuild; Clemenceau\'s security needs were real','Evidence it was unfair: war guilt clause — shared responsibility; reparations crippled economy; German populations left in foreign states; Germany excluded from negotiations','Long-term consequences: created resentment that fuelled Nazi rise; Clemenceau predicted "armistice for 20 years"'],
+g5:'I disagree with this statement. The Treaty of Versailles was not fair. Germany was forced to accept the War Guilt Clause which blamed Germany for the whole war. Germany also had to pay £6.6 billion in reparations which was very harsh. Germany also lost 13% of its land. These terms were very unfair. However, some people might say it was fair because Germany had caused a lot of damage in WWI. In conclusion, I disagree because the terms were too harsh.',
+g8:'I largely disagree that the Treaty of Versailles represented fair punishment for Germany, though the question of "fairness" depends significantly on whose perspective one adopts and what criteria are applied.\n\nThe case for fairness rests on the genuine devastation that Allied powers had suffered. France lost over 1.3 million soldiers and 10% of its industrial capacity was destroyed. Britain spent the equivalent of £11 billion fighting a war triggered in part by German militarism. From Clemenceau\'s perspective, demanding reparations and military restriction was not punishment but necessary compensation for catastrophic losses — if Germany had won, it would have imposed far harsher terms, as the Treaty of Brest-Litovsk with Russia (1918) demonstrated. This therefore challenges the statement\'s implied criticism: the allies had legitimate grievances.\n\nHowever, the weight of evidence suggests the treaty was profoundly unfair in both its content and its process. The War Guilt Clause was historically indefensible: WWI resulted from the decisions of many powers — Austria-Hungary, Russia, and Britain bore significant responsibility alongside Germany. Forcing Germany to accept sole guilt was a political fiction used to justify reparations, not an honest assessment. Furthermore, the £6.6 billion figure was economically crippling — Keynes called it "a Carthaginian peace" — and the exclusion of Germany from negotiations meant the treaty lacked the moral legitimacy of an agreed settlement. It was a diktat.\n\nIn conclusion, I largely disagree with the statement because the Versailles Treaty\'s unfairness was ultimately self-defeating. Clemenceau himself acknowledged this, predicting it was "an armistice for twenty years." The treaty was harsh enough to create deep and lasting resentment among ordinary Germans — resentment that Hitler exploited — but not harsh enough to prevent Germany from recovering its industrial capacity and seeking revision. A genuinely fair settlement might have been less harsh but more durable. The real failure of Versailles was not that it punished Germany too harshly, but that it punished Germany in ways that stored up catastrophe for the future.',
+diff:['Grade 5 just agrees/disagrees with the title. Grade 8 interrogates the term "fair" — fairness depends on whose perspective you adopt','Grade 8\'s paragraph on "the case for fairness" is genuine — uses specific evidence (Brest-Litovsk, 1.3 million French casualties). The counter-argument is real, not token','Grade 8 conclusion introduces the idea of "self-defeating punishment" — a sophisticated argument about long-term consequences that is explicitly historical rather than moralising','SPaG note: Versailles, reparations, sovereignty — practise these spellings']}
+],
+spellings:[['Versailles','The palace where the treaty was signed (Ver-sigh — silent "s" and "l", ends in "eye")'],['reparations','Payments to compensate for war damage (rep-a-ray-shuns)'],['sovereignty','Supreme political power/independence (sov-er-en-tee — the "g" is silent)'],['Clemenceau','French PM at Paris Peace Conference (Klem-an-so — French name)'],['armistice','Agreement to stop fighting (arm-is-tis)'],['plebiscite','A public vote on a political question (pleb-i-site)']]},
+
+{id:'league',num:2,title:'The League of Nations',dates:'1920s',icon:'🕊️',
+facts:[
+['What was the League of Nations?','Set up in 1920 as part of the Versailles Treaty. Woodrow Wilson\'s idea — collective security: if one nation was attacked, all members would defend it. Headquartered in Geneva. Initially had 42 members. KEY WEAKNESS FROM THE START: the USA never joined — the US Senate voted against membership in November 1919. Without the world\'s largest economy, the League\'s sanctions were always going to be limited.'],
+['The League\'s structure and tools','Assembly: all member nations met once a year — passed resolutions. Council: permanent members (Britain, France, Italy, Japan — later Germany) met more frequently. Decisions required UNANIMITY — any member could veto action. The League had NO ARMY. Its only tools were: moral condemnation, economic sanctions (stopping trade with rule-breakers), and military force from member nations (who rarely contributed). This structural weakness was fundamental.'],
+['The League\'s successes in the 1920s','Aaland Islands (1921): Finland vs Sweden — League ruled in Finland\'s favour; Sweden accepted. Greek-Bulgarian dispute (1925): Greece invaded Bulgaria; League ordered Greece to withdraw; Greece complied. Humanitarian work: freed over 200,000 slaves in Sierra Leone; repatriated 400,000 WWI prisoners of war; founded predecessor of WHO (World Health Organisation). These successes shared one feature: no major power had a strong national interest at stake.'],
+['FAILURE: The Vilna Crisis (1920)','Poland seized Vilna from Lithuania. Lithuania appealed to the League. The League did NOTHING — partly because France and Britain were reluctant to confront Poland, which they valued as a buffer against communist Russia. International relations between Poland and Lithuania worsened. Showed the League would not act when major powers had conflicting interests.'],
+['FAILURE: The Corfu Crisis (1923)','An Italian general was murdered on the Greek-Albanian border. Mussolini demanded compensation and, when Greece refused, bombed and occupied the Greek island of Corfu. Greece appealed to the League. The League condemned Italy — but when Italy threatened to leave the organisation, the League backed down completely. Greece was forced to pay compensation TO ITALY. Result: the aggressor won. The bully was rewarded. CRITICAL LESSON: the League would not stand up to major powers. ⚠️ DO NOT confuse this with Manchuria (1931) for a 1920s question.'],
+['FAILURE: Upper Silesia (1921)','Germany and Poland both claimed the industrial region of Upper Silesia. The League organised a plebiscite (vote). The vote was split — the League divided the region, giving Poland the industrial areas and Germany more land. Both sides were unhappy. The League intervened but created resentment rather than resolution. Example of failure through ineffective action, not just inaction.'],
+['The League\'s structural weaknesses — the running thread','These weaknesses explain ALL the failures: (1) USA absent — no economic muscle for sanctions; (2) No army — relied on member nations who often refused; (3) Unanimous decisions required — any veto paralysed action; (4) Slow decision-making — by the time the League responded, situations had changed; (5) Britain and France ran the League but prioritised their own national interests; (6) Germany and USSR initially excluded — weakened global legitimacy.'],
+['Why the League only worked for minor disputes','CRITICAL PATTERN TO LEARN: The League succeeded when no major power had a national interest at stake (Aaland Islands — no major power cared who got them). The League failed when a major power was involved (Corfu — Italy was a founding member). This pattern proves the League\'s fundamental flaw: it was only as strong as the willingness of major powers to cooperate — and the moment a major power chose not to, the League was helpless.']
+],
+dates:[
+['Jan 1920','League of Nations officially established in Geneva'],
+['Nov 1919','US Senate votes against joining the League — critical blow before it starts'],
+['1920','Vilna Crisis — Poland seizes Lithuanian capital; League takes no action'],
+['1921','Aaland Islands — League succeeds; Upper Silesia — messy division'],
+['1923','Corfu Crisis — Italy bombards Greece; League condemns Italy then backs down; Italy wins'],
+['1925','Greek-Bulgarian dispute — League succeeds; Greece withdraws as ordered'],
+['1926','Germany finally joins the League of Nations'],
+['1931','Manchuria Crisis — Japan invades China (this is a 1930s crisis, NOT 1920s)']
+],
+people:[
+{name:'Woodrow Wilson',role:'Founder and champion of the League',sig:'His 14 Points included the League as the cornerstone of a lasting peace. Tragically, he was unable to persuade the US Senate to join. He suffered a stroke campaigning for membership. The League he founded was crippled from birth by America\'s absence.'},
+{name:'Benito Mussolini',role:'Italian dictator — aggressive challenger of the League',sig:'The Corfu Crisis (1923) showed Mussolini he could bully smaller nations and ignore the League. This lesson was not lost on Hitler — if Mussolini could get away with it, so could he. The League\'s failure in Corfu set a dangerous precedent for the 1930s.'},
+{name:'Viscount Cecil',role:'British champion of the League',sig:'Led British support for the League in the 1920s. Organised the Peace Ballot of 1935 in which 11 million Britons expressed support for the League. But British governments consistently prioritised national interest over League principles.'}
+],
+questions:[
+{type:'HOW FAR DO YOU AGREE',marks:20,mins:22,q:'"The League of Nations failed more often than it succeeded in the 1920s." How far do you agree with this statement? Explain your answer. [This is a real exam question type — based on your previously marked work.]',bullets:['Structural weakness: USA absent, no army, unanimity required — the root cause of all failures','Corfu Crisis (1923): League condemned Italy then backed down — major power won','Vilna (1920) and Upper Silesia (1921): inaction and ineffective action both count as failures','Successes: Aaland Islands, Greek-Bulgarian dispute, humanitarian work — but all when no major power objected'],
+g5:'I mainly agree with the statement. The League of Nations failed more often than it succeeded. One example of failure was the Vilna Crisis in 1920 when Poland took Vilna from Lithuania and the League did nothing. Another failure was the Upper Silesia crisis in 1921 when the League tried to solve the problem but both sides were unhappy. The League also failed in the Corfu Crisis when Italy was allowed to keep the compensation. However, the League did have some successes. It solved the Aaland Islands dispute in 1921 when it ruled in Finland\'s favour and Sweden accepted. The League also did humanitarian work. In conclusion, I mainly agree that the League failed more than it succeeded because of the Vilna, Upper Silesia and Corfu crises.',
+g8:'I largely agree with the statement that the League of Nations failed more often than it succeeded in the 1920s, though the pattern of failure is more revealing than the simple count: the League succeeded only when no major power had a national interest at stake, and it consistently failed whenever one did. This structural reality made its failures almost inevitable.\n\nThe most important reason for the League\'s repeated failures was its fundamental structural weakness: the absence of the United States. Although the League was Woodrow Wilson\'s own creation, the US Senate voted against membership in November 1919. Without the world\'s largest economy, the League\'s economic sanctions were fatally undermined — any nation targeted could continue trading with the USA regardless. This was not just one factor among many: it was the root cause that made every other failure more likely. This therefore supports the statement: the League was structurally designed in a way that made decisive action against determined aggressors almost impossible from the outset.\n\nThe Corfu Crisis of 1923 provides the clearest evidence that the League failed when major powers were involved. Mussolini bombarded and occupied the Greek island of Corfu following the murder of an Italian general. Greece appealed to the League, which condemned Italy. However, when Mussolini threatened to leave the organisation, the League reversed course and allowed Italy to collect a substantial financial indemnity from Greece — meaning the aggressor was rewarded for its aggression. This failure was significant beyond the immediate crisis: it sent a clear signal to other would-be aggressors — including Hitler — that the League would not confront a determined major power.\n\nHowever, it would be wrong to say the League never succeeded. The Aaland Islands dispute (1921) and the Greek-Bulgarian crisis (1925) both ended with the League\'s decision being accepted and implemented. The League\'s humanitarian agencies freed over 200,000 slaves and repatriated hundreds of thousands of WWI prisoners. These were genuine achievements. Yet they all share one crucial characteristic: no major power had a compelling national interest in blocking the League\'s decision. This therefore reveals the central limitation of the League\'s successes — they were conditional on the cooperation of those with power.\n\nIn conclusion, I largely agree with the statement. The League did not simply fail more than it succeeded — it was structurally designed in a way that made decisive success almost impossible whenever a major power chose to resist. Its failures — Corfu, Vilna, Upper Silesia — all demonstrate the same underlying weakness: without the USA, without its own army, and with the requirement for unanimity, the League could condemn but could not compel. Its successes, while real, were possible only because the powerful had no reason to object. The League failed more than it succeeded, and its failures mattered far more than its successes.',
+diff:['⚠️ KEY IMPROVEMENT from your previous essay: the grade 8 answer uses Corfu (1923) NOT Manchuria (1931). Manchuria was 1931 — outside the 1920s timeframe. Always check your dates against the question.','Grade 8 uses a RUNNING THREAD: every failure paragraph links back to the structural weakness (no USA). This is what sustained judgement looks like.','Grade 8\'s "clever however" on successes acknowledges they were genuine — then immediately shows WHY they don\'t change the overall verdict (conditional on major powers not objecting)','Grade 8 conclusion gives DEGREE: identifies the root cause (structural weakness) and says failures "mattered far more" — not just "mainly agree"']}
+],
+spellings:[['neutralisation','A chemical reaction? No — in history: making one side neutral (neu-tra-li-ZAY-shun)'],['plebiscite','A public vote (pleb-i-site — often misspelled "plebicite")'],['disarmament','Reduction of military weapons and forces (dis-ARM-a-ment)'],['sovereignty','Supreme power of a state (SOV-er-en-tee)'],['collective','Acting together as a group (col-LECT-ive — double L)'],['Czechoslovakia','Central European country (check-o-slo-VAK-ee-a — seven syllables)']]},
+
+{id:'war',num:3,title:'The Road to War',dates:'1930–1939',icon:'💥',
+facts:[
+['The Impact of the Great Depression (1929)','The Wall Street Crash triggered a global economic collapse. In Germany, unemployment rose to 6 million by 1932 — which helped bring Hitler to power. Worldwide, democratic governments struggled and nationalism rose. The Depression destroyed the international cooperation that had slowly developed in the late 1920s — nations turned inward, making collective security through the League even harder.'],
+['The Manchurian Crisis (1931–1933)','Japan invaded the Chinese province of Manchuria in September 1931, renaming it Manchukuo. China appealed to the League. The League set up the Lytton Commission to investigate (reported in 1932 — Japan had acted illegally). The League condemned Japan — Japan simply left the League in 1933 and kept Manchuria. No sanctions were imposed. Result: the League was shown to be powerless against a determined major power. Aggressors took note.'],
+['The Abyssinian Crisis (1935–1936)','Italy invaded Abyssinia (modern Ethiopia) in October 1935. The Emperor Haile Selassie made a famous plea to the League. The League imposed economic sanctions — but crucially excluded oil, which would have crippled Italy. The Hoare-Laval Pact (December 1935): British and French foreign ministers secretly offered Mussolini 2/3 of Abyssinia to stop the war — the scandal destroyed the pact when leaked. Italy conquered Abyssinia by May 1936. The League\'s complete failure ended its credibility.'],
+['Remilitarisation of the Rhineland (March 1936)','Hitler sent German troops into the Rhineland — directly violating Articles 42–44 of the Versailles Treaty. By his own later admission, this was his greatest gamble — his generals had orders to withdraw if France opposed them. France did nothing. Britain did nothing. Hitler later said if France had marched, it would have been catastrophic for Germany. This emboldened Hitler to believe further aggression would not be resisted.'],
+['Appeasement — what it was and why','The policy of making concessions to aggressive nations to avoid war. Why Britain (Chamberlain) followed it: (1) genuine war-weariness after WWI; (2) belief Germany\'s grievances over Versailles were legitimate; (3) fear of communism — a strong Germany was a buffer against USSR; (4) Britain was not militarily ready for war in 1936–1938; (5) public opinion was against war; (6) underestimated Hitler — thought he was a reasonable statesman.'],
+['Anschluss — Union with Austria (March 1938)','Hitler marched German troops into Austria on 12 March 1938, uniting Austria with Germany. This violated the Treaty of St Germain which forbade this union. A staged plebiscite showed 99.75% support (widely accepted as manipulated). Britain and France protested but did nothing. Population of Germany grew from 68 million to 75 million overnight. Hitler had expanded Germany peacefully — his confidence grew.'],
+['The Munich Agreement (September 1938)','Hitler demanded the Sudetenland (German-speaking border area of Czechoslovakia). Chamberlain flew to meet Hitler three times. At Munich on 29 September 1938, Chamberlain, Daladier (France), Hitler, and Mussolini agreed to give Hitler the Sudetenland. Czechoslovakia was not invited to the meeting. Chamberlain returned claiming "peace in our time." Churchill called it "a total and unmitigated defeat." This was the high point of appeasement — and its last attempt.'],
+['The End of Appeasement and the Outbreak of War','In March 1939, Hitler invaded and occupied the rest of Czechoslovakia — breaking the Munich Agreement. Appeasement was abandoned. Britain and France issued guarantees of Polish independence. On 23 August 1939, the Nazi-Soviet Non-Aggression Pact was signed — Germany and the USSR agreed not to attack each other, freeing Hitler to invade Poland. On 1 September 1939, Germany invaded Poland. On 3 September 1939, Britain and France declared war on Germany. WWII had begun.']
+],
+dates:[
+['Sep 1931','Japan invades Manchuria; League investigation reveals aggression but takes no effective action'],
+['Jan 1933','Hitler becomes Chancellor; Germany begins secret rearmament'],
+['Oct 1933','Germany leaves the League of Nations'],
+['Oct 1935','Italy invades Abyssinia; League imposes partial sanctions (no oil)'],
+['Mar 1936','Remilitarisation of the Rhineland — direct violation of Versailles; France/Britain do nothing'],
+['Oct 1936','Rome-Berlin Axis — Hitler and Mussolini formally ally'],
+['Mar 1938','Anschluss — Germany unites with Austria'],
+['Sep 1938','Munich Agreement — Britain/France give Hitler the Sudetenland'],
+['Mar 1939','Hitler invades rest of Czechoslovakia — appeasement ends'],
+['23 Aug 1939','Nazi-Soviet Non-Aggression Pact — USSR agrees not to attack Germany'],
+['1 Sep 1939','Germany invades Poland — WWII begins'],
+['3 Sep 1939','Britain and France declare war on Germany']
+],
+people:[
+{name:'Neville Chamberlain',role:'British Prime Minister (1937–1940) — architect of appeasement',sig:'Flew to meet Hitler three times before Munich. Genuinely believed he could negotiate lasting peace. Returned from Munich claiming "peace in our time." In March 1939, Hitler\'s invasion of Czechoslovakia proved him catastrophically wrong. Despite this, Britain was not militarily ready for war in 1938 — appeasement may have bought valuable time.'},
+{name:'Adolf Hitler',role:'German Chancellor and Führer — systematic dismantler of Versailles',sig:'Each act of aggression was a test of Allied resolve. Remilitarisation, Anschluss, Sudetenland — each went unanswered. He concluded Britain and France were weak and would not fight. This miscalculation led him to invade Poland — and triggered the war he thought he could avoid until Germany was stronger.'},
+{name:'Winston Churchill',role:'MP and vocal critic of appeasement',sig:'Consistently warned that appeasing Hitler was a catastrophic mistake. Called the Munich Agreement "a total and unmitigated defeat." Became Prime Minister in May 1940. His judgement on appeasement was vindicated by events — but it is worth noting he was in the minority at the time.'}
+],
+questions:[
+{type:'HOW FAR DO YOU AGREE',marks:20,mins:22,q:'"The main reason for the outbreak of war in 1939 was Hitler\'s foreign policy." How far do you agree with this statement? Explain your answer.',bullets:['Hitler\'s foreign policy — systematic dismantling of Versailles, each step more aggressive','The failure of the League of Nations — set precedents that aggression paid','The policy of appeasement — encouraged Hitler to believe he could act without consequences','The role of the Great Depression — nationalism, weak democracies'],
+g5:'I agree with this statement. Hitler\'s foreign policy was very important in causing the war. Hitler remilitarised the Rhineland in 1936, which broke the Treaty of Versailles. He also carried out the Anschluss in 1938 uniting Germany with Austria. The Munich Agreement gave Hitler the Sudetenland in 1938. These actions showed Hitler was becoming more aggressive. However, appeasement also caused the war because it encouraged Hitler. In conclusion, Hitler\'s foreign policy was the main reason for war.',
+g8:'I largely agree that Hitler\'s foreign policy was the most significant cause of the outbreak of war in 1939, because it was Hitler\'s deliberate decision to invade Poland on 1 September 1939 that directly triggered the conflict. However, Hitler\'s foreign policy operated within a context created by other factors — particularly the failure of the League of Nations and the policy of appeasement — that made his aggression possible and, ultimately, inevitable.\n\nHitler\'s foreign policy followed a clear strategic pattern: systematic dismantling of the Versailles Treaty through a series of carefully calibrated risks. The remilitarisation of the Rhineland (1936) was Hitler\'s greatest gamble — he later admitted his troops had orders to withdraw if France opposed them. When France and Britain did nothing, Hitler concluded that the democratic powers lacked the will to fight. This was the crucial turning point. The Anschluss (March 1938) united 7 million Austrians with Germany without a shot being fired; the Munich Agreement (September 1938) then confirmed that Britain and France would sacrifice other nations to avoid war. Each concession encouraged Hitler to push further — this therefore strongly supports the statement: Hitler\'s calculated aggression was the direct cause of war.\n\nHowever, appeasement must be recognised as an enabling factor that transformed Hitler\'s ambitions from a distant threat into an immediate one. Chamberlain\'s decision to give Hitler the Sudetenland at Munich in September 1938 — meeting three times and flying to Germany in person — sent a clear signal of weakness. Churchill called it "a total and unmitigated defeat." By legitimising Hitler\'s territorial demands, appeasement undermined the credibility of Britain and France\'s eventual guarantee of Polish independence. When Hitler invaded Poland, he genuinely believed the Allies would again back down — a calculation that proved wrong, but one that appeasement had given him every reason to make.\n\nIn conclusion, I largely agree with the statement: Hitler\'s foreign policy was the necessary and sufficient cause of war in the sense that without his deliberate decision to invade Poland, war would not have begun in September 1939. However, appeasement and the failure of the League of Nations created the permissive environment in which Hitler could pursue that policy with reduced risk. War broke out when it did because Hitler miscalculated — he thought Britain and France would again capitulate, as they had over every previous violation. The war\'s timing and form was Hitler\'s responsibility; the conditions that emboldened him were shared.',
+diff:['Grade 5 just lists Hitler\'s actions without explaining how they caused war. Grade 8 shows the CHAIN: each concession → Hitler more confident → escalation → war','Grade 8 identifies the "crucial turning point" — the Rhineland — and explains WHY it mattered (Hitler drew the conclusion that democracies lacked will). This is analysis.','Grade 8 gives appeasement a precise role: it didn\'t cause war but it "created the permissive environment" — a sophisticated distinction','Grade 8 conclusion gives degree: Hitler\'s policy was "necessary AND sufficient" but then immediately qualifies this by identifying what appeasement contributed — not just "main reason but others too"']}
+],
+spellings:[['appeasement','Policy of giving in to demands to avoid conflict (a-PEACE-ment — think "peace" inside it)'],['Abyssinia','Modern Ethiopia — invaded by Italy 1935 (Ab-is-SIN-ee-a — four syllables)'],['Rhineland','German region demilitarised by Versailles (Rhine-land — named after the Rhine river)'],['Sudetenland','German-speaking region of Czechoslovakia (Soo-DAY-ten-land)'],['remilitarisation','Sending troops back into a demilitarised zone (re-mil-i-ta-ri-ZAY-shun — long word, say each part)'],['Chamberlain','British PM — architect of appeasement (Cham-ber-lain — three syllables)']]
+}
+]},
+{id:'skl',icon:'📝',tag:'Exam Technique',title:'Exam Skills Hub',desc:'Sustained Judgement · Timing · Sources · SPaG',col:'var(--skl)'}
+]};
+
+
+// STATE
+let ST={screen:'home',secId:null,topicId:null,tab:'facts',open:new Set(),spState:{},clState:{},timerInt:null,timerSecs:0,timerTotal:0,timerRunning:false,timerHints:[],revOpen:new Set(),prog:{}};
+function lp(){try{const p=localStorage.getItem('yr10hist');if(p)ST.prog=JSON.parse(p);}catch(e){}}
+function sp(){try{localStorage.setItem('yr10hist',JSON.stringify(ST.prog));}catch(e){}}
+lp();
+function mark(k){ST.prog[k]=true;sp();}
+function isDone(k){return!!ST.prog[k];}
+function secPct(secId){
+  const sec=D.sections.find(s=>s.id===secId);
+  if(!sec||!sec.topics)return 0;
+  let done=0,total=0;
+  sec.topics.forEach(t=>{total+=3;['facts','q','sp'].forEach(a=>{if(isDone(secId+'-'+t.id+'-'+a))done++;});});
+  return total?Math.round(done/total*100):0;
+}
+function totalPct(){
+  let done=0,total=0;
+  D.sections.filter(s=>s.topics).forEach(s=>{s.topics.forEach(t=>{total+=3;['facts','q','sp'].forEach(a=>{if(isDone(s.id+'-'+t.id+'-'+a))done++;});});});
+  return total?Math.round(done/total*100):0;
+}
+function getSec(){return D.sections.find(s=>s.id===ST.secId);}
+function getTopic(){const s=getSec();return s&&s.topics?s.topics.find(t=>t.id===ST.topicId):null;}
+
+// TIMER
+function startTimer(secs,hints){
+  if(ST.timerInt)clearInterval(ST.timerInt);
+  ST.timerSecs=secs;ST.timerTotal=secs;ST.timerRunning=true;ST.timerHints=hints||[];
+  ST.timerInt=setInterval(()=>{
+    if(ST.timerSecs>0){ST.timerSecs--;renderTimerPanel();}
+    else{clearInterval(ST.timerInt);ST.timerRunning=false;renderTimerPanel();}
+  },1000);
+  renderTimerPanel();
+}
+function stopTimer(){if(ST.timerInt)clearInterval(ST.timerInt);ST.timerRunning=false;renderTimerPanel();}
+function renderTimerPanel(){
+  const el=document.getElementById('timer-panel');if(!el)return;
+  const s=ST.timerSecs,t=ST.timerTotal;
+  const pct=t?Math.round((s/t)*100):0;
+  const m=Math.floor(s/60),sec=s%60;
+  const col=pct>50?'green':pct>20?'amber':'red';
+  const bgCol=pct>50?'var(--grn)':pct>20?'var(--gold)':'var(--red)';
+  el.innerHTML=`<div class="timer-row">
+<div class="timer-display ${col}">${m}:${sec.toString().padStart(2,'0')}</div>
+<div class="timer-label"><strong>${ST.timerRunning?'Time remaining':'Time up!'}</strong>${ST.timerRunning?`${Math.round(pct)}% remaining`:'Write your conclusion now'}</div>
+</div>
+<div class="timer-prog"><div class="timer-pfill" style="width:${pct}%;background:${bgCol}"></div></div>
+${ST.timerHints.length?`<div class="timer-hints"><p>📍 Pacing guide</p>${ST.timerHints.map(h=>`<div class="hint-item"><span>${h.t}</span> — ${h.l}</div>`).join('')}</div>`:''}
+<div class="timer-btns">
+${ST.timerRunning?`<button class="tbtn stop" id="stop-timer">Stop timer</button>`:`<button class="tbtn" id="restart-timer">Restart</button>`}
+<button class="tbtn" id="close-timer">Close</button>
+</div>`;
+  document.getElementById('stop-timer')?.addEventListener('click',stopTimer);
+  document.getElementById('restart-timer')?.addEventListener('click',()=>startTimer(ST.timerTotal,ST.timerHints));
+  document.getElementById('close-timer')?.addEventListener('click',()=>{stopTimer();document.getElementById('timer-panel').style.display='none';});
+}
+
+// RENDER HOME
+function renderHome(){
+  const pct=totalPct();
+  let h=`<div class="fu">
+<span class="h-icon">📚</span>
+<h1 class="h-title">GCSE History Revision</h1>
+<p class="h-sub">AQA 8145BC · Germany 1890–1945 · Conflict and Tension 1918–1939<br>Year 10 End of Year Exam</p>
+<div class="h-warn">⏱ Every essay in this exam has a time limit. Timing support is built into every question.</div>
+<div class="mp">
+<div class="mp-row"><span class="mp-lbl">Overall Progress</span><span class="mp-pct">${pct}%</span></div>
+<div class="ptrack"><div class="pfill pfill-main" style="width:${pct}%"></div></div>
+</div>
+<div class="sec-cards">`;
+  D.sections.forEach(s=>{
+    const p=s.topics?secPct(s.id):0;
+    h+=`<div class="sc" data-sec="${s.id}" style="--sc-col:${s.col}">
+<div style="position:absolute;left:0;top:0;bottom:0;width:4px;background:${s.col};border-radius:2px 0 0 2px"></div>
+<span class="sc-ico">${s.icon}</span>
+<div class="sc-body">
+<div class="sc-tag" style="color:${s.col}">${s.tag}</div>
+<div class="sc-title">${s.title}</div>
+<div class="sc-desc">${s.desc}</div>
+${s.topics?`<div class="sc-prog"><div class="sc-ptrack"><div class="sc-pfill" style="width:${p}%;background:${s.col}"></div></div></div>`:''}
+</div>
+<span class="sc-arr">›</span>
+</div>`;
+  });
+  h+=`</div></div>`;
+  return h;
+}
+
+// RENDER SECTION
+function renderSection(){
+  const sec=getSec();
+  if(sec.id==='skl')return renderSkills();
+  let h=`<div class="fu">
+<div class="nav"><button class="back" id="bk-home">← Home</button><span class="nav-trail">${sec.title}</span></div>
+<div class="sh"><div class="sh-bar" style="background:${sec.col}"></div>
+<span class="sh-icon">${sec.icon}</span>
+<div class="sh-tag" style="color:${sec.col}">${sec.tag}</div>
+<div class="sh-title">${sec.title}</div>
+<div class="sh-sub">${sec.desc} · ${sec.topics.length} topics</div>
+</div>`;
+  sec.topics.forEach(t=>{
+    const done=['facts','q','sp'].filter(a=>isDone(sec.id+'-'+t.id+'-'+a)).length;
+    h+=`<div class="tc" data-topic="${t.id}" style="--tc-col:${sec.col}">
+<div style="position:absolute;left:0;top:0;bottom:0;width:3px;background:${sec.col};border-radius:2px 0 0 2px"></div>
+<span class="tc-icon">${t.icon}</span>
+<div class="tc-body">
+<div class="tc-num" style="color:${sec.col}">Topic ${t.num}</div>
+<div class="tc-name">${t.title}</div>
+<div class="tc-dates">${t.dates}</div>
+</div>
+<span class="tc-badge">${done}/3 done</span>
+</div>`;
+  });
+  h+=`</div>`;
+  return h;
+}
+
+// RENDER TOPIC
+function renderTopic(){
+  const sec=getSec(),t=getTopic();
+  const col=sec.col;
+  const tabs=[
+    {id:'facts',label:'📖 Key Facts'},
+    {id:'dates',label:'📅 Timeline'},
+    {id:'people',label:'👤 Key People'},
+    {id:'q',label:'📝 Questions'},
+    {id:'sp',label:'✏️ Spellings'}
+  ];
+  let h=`<div class="fu">
+<div class="nav"><button class="back" id="bk-sec">← ${sec.title}</button><span class="nav-trail">Topic ${t.num}</span></div>
+<div class="sh"><div class="sh-bar" style="background:${col}"></div>
+<span class="sh-icon">${t.icon}</span>
+<div class="sh-tag" style="color:${col}">${sec.code||sec.tag} · Topic ${t.num}</div>
+<div class="sh-title">${t.title}</div>
+<div class="sh-sub">${t.dates}</div>
+</div>
+<div class="tabs">`;
+  tabs.forEach(tb=>{
+    const isAct=ST.tab===tb.id;
+    const isDoneTab=isDone(sec.id+'-'+t.id+'-'+tb.id);
+    h+=`<button class="tab${isAct?` active" style="background:rgba(${col==='var(--ger)'?'77,157,224':col==='var(--con)'?'155,142,207':'240,192,64'},0.15);border-color:${col};color:${col}"`:'"'}${isDoneTab&&!isAct?' done-t':''}" data-tab="${tb.id}">${tb.label}${isDoneTab?' ✓':''}</button>`;
+  });
+  h+=`</div>`;
+  if(ST.tab==='facts')h+=renderFacts(t,sec);
+  else if(ST.tab==='dates')h+=renderDates(t);
+  else if(ST.tab==='people')h+=renderPeople(t);
+  else if(ST.tab==='q')h+=renderQuestions(t,sec);
+  else if(ST.tab==='sp')h+=renderSpellings(t,sec);
+  h+=`</div>`;
+  return h;
+}
+
+function renderFacts(t,sec){
+  const k=sec.id+'-'+t.id+'-facts';
+  let h=`<p class="fc-intro">Click each card to reveal the full explanation. Try to say it in your own words before looking.</p>
+<div class="fc-list">`;
+  t.facts.forEach((f,i)=>{
+    const open=ST.open.has('f'+i);
+    h+=`<div class="fc${open?' open':''}" data-fc="${i}">
+<div class="fc-term">${f[0]}</div>
+${!open?'<div class="fc-hint">tap to expand</div>':''}
+<div class="fc-def">${f[1]}</div>
+</div>`;
+  });
+  h+=`</div>`;
+  const allOpen=t.facts.every((_,i)=>ST.open.has('f'+i));
+  if(allOpen&&!isDone(k)){mark(k);}
+  if(allOpen){h+=`<div class="act-done"><p style="font-weight:600">All facts reviewed ✓</p></div>`;}
+  return h;
+}
+
+function renderDates(t){
+  let h=`<div class="info-box"><strong>Dates to learn cold.</strong> In the exam, precise dates and named examples earn marks that vague answers cannot.</div>
+<div class="tl">`;
+  t.dates.forEach((d,i)=>{
+    const last=i===t.dates.length-1;
+    h+=`<div class="tl-item">
+<div class="tl-left"><div class="tl-year">${d[0]}</div><div class="tl-dot"></div>${!last?'<div class="tl-line"></div>':''}</div>
+<div class="tl-content"><div class="tl-event">${d[1]}</div></div>
+</div>`;
+  });
+  h+=`</div>`;
+  return h;
+}
+
+function renderPeople(t){
+  let h=`<div class="info-box"><strong>Key figures.</strong> Know one specific action and one consequence for each person.</div>
+<div class="people-grid">`;
+  t.people.forEach(p=>{
+    h+=`<div class="person">
+<div class="person-name">${p.name}</div>
+<div class="person-role">${p.role}</div>
+<div class="person-sig">${p.sig}</div>
+</div>`;
+  });
+  h+=`</div>`;
+  return h;
+}
+
+function renderQuestions(t,sec){
+  const k=sec.id+'-'+t.id+'-q';
+  let h=`<div class="warn-box">⏱ Write your answer on paper BEFORE starting the timer or revealing anything. The timer is to train your exam pacing.</div>`;
+  t.questions.forEach((q,qi)=>{
+    const tSecs=q.mins*60;
+    const hintsMap={20:[
+      {t:'0:00',l:'Read question, plan 3 paragraphs (2 min)'},
+      {t:'2:00',l:'Write introduction — clear position (2 min)'},
+      {t:'4:00',l:'Para 1 — strongest argument for statement (5 min)'},
+      {t:'9:00',l:'Para 2 — second argument / different angle (5 min)'},
+      {t:'14:00',l:'Para 3 — "However" counter-argument with "clever however" (4 min)'},
+      {t:'18:00',l:'Conclusion — degree + root cause (3 min)'},
+      {t:'21:00',l:'SPaG check — read back through (1 min)'}
+    ],12:[
+      {t:'0:00',l:'Read question, identify 3 factors (1 min)'},
+      {t:'1:00',l:'Para 1 — factor + evidence + explain WHY (4 min)'},
+      {t:'5:00',l:'Para 2 — factor + evidence + explain WHY (4 min)'},
+      {t:'9:00',l:'Para 3 — factor + link to other factors (4 min)'},
+      {t:'13:00',l:'SPaG check (2 min)'}
+    ],4:[
+      {t:'0:00',l:'Read source carefully — what does it show/suggest? (1 min)'},
+      {t:'1:00',l:'Inference 1 — specific detail + what it implies (2 min)'},
+      {t:'3:00',l:'Inference 2 — different detail + what it implies (2 min)'},
+      {t:'5:00',l:'Re-read — have you gone BEYOND the source? (1 min)'}
+    ]};
+    const hints=hintsMap[q.marks]||[];
+    const revOpen=ST.revOpen.has('q'+qi);
+    h+=`<div class="q-card">
+<div class="q-meta">
+<span class="q-type">${q.type}</span>
+<span class="q-marks">${q.marks} marks</span>
+<span class="q-time">⏱ ${q.mins} min</span>
+</div>
+<div class="q-text">${q.q}</div>
+<div class="q-bullets">`;
+    q.bullets.forEach(b=>{ h+=`<div class="q-bullet"><span class="q-bdot">›</span><span>${b}</span></div>`; });
+    h+=`</div>
+<button class="q-timer-btn" data-qi="${qi}" data-secs="${tSecs}">⏱ Start ${q.mins}-minute timer for this question</button>
+<div id="timer-panel-${qi}" style="display:none"></div>
+<button class="reveal-btn" data-rqi="${qi}">${revOpen?'Hide grade comparison':'Show grade 5 vs grade 8 comparison'}</button>
+${revOpen?renderGradeCompare(q):''}
+</div>`;
+  });
+  if(!isDone(k)&&ST.revOpen.size>0){mark(k);}
+  return h;
+}
+
+function renderGradeCompare(q){
+  return`<div class="grade-compare">
+<div class="gc-panel grade5">
+<div class="gc-label l5">⚠ Grade 5 Answer</div>
+<div class="gc-text">${q.g5.replace(/\n/g,'<br>')}</div>
+</div>
+<div class="gc-panel grade8">
+<div class="gc-label l8">✓ Grade 8 Answer</div>
+<div class="gc-text">${q.g8.replace(/\n\n/g,'</p><p style="margin-top:10px">').replace(/\n/g,'<br>')}</div>
+</div>
+<div class="gc-diff">
+<p>What makes the difference</p>
+${q.diff.map(d=>`<div class="gc-diff-item"><span class="gc-diff-dot">★</span><span>${d}</span></div>`).join('')}
+</div>
+</div>`;
+}
+
+function renderSpellings(t,sec){
+  const k=sec.id+'-'+t.id+'-sp';
+  let h=`<p class="sp-intro">Type each word correctly. Spellings matter for SPaG marks (4 marks at the top level). These are the tricky ones for this topic.</p>`;
+  t.spellings.forEach((sp,i)=>{
+    const st=ST.spState[i]||{};
+    h+=`<div class="sp-card">
+<div class="sp-clue"><strong>Clue:</strong> ${sp[1]}</div>
+<div class="sp-input-row">
+<input class="sp-input${st.tried?(st.correct?' correct':' wrong'):''}" data-spi="${i}" type="text" placeholder="Type the word..." value="${st.val||''}" ${st.correct?'readonly':''}>
+<button class="sp-check" data-spi="${i}" ${st.correct?'disabled':''}>Check</button>
+</div>
+<div class="sp-result${st.tried?' show':''} ${st.correct?'ok':'bad'}">
+${st.tried?(st.correct?`✓ Correct! "${sp[0]}" is right.`:`✗ Not quite. The correct spelling is: <strong>${sp[0]}</strong>`):''}
+</div>
+</div>`;
+  });
+  const allDone=t.spellings.every((_,i)=>ST.spState[i]&&ST.spState[i].tried);
+  if(allDone&&!isDone(k)){mark(k);}
+  if(allDone){
+    const correct=t.spellings.filter((_,i)=>ST.spState[i]&&ST.spState[i].correct).length;
+    h+=`<div class="act-done"><p style="font-weight:600">${correct}/${t.spellings.length} correct ✓</p><p style="font-size:12px;color:var(--mu);margin-top:4px">Go back and practice any you got wrong.</p></div>`;
+    h+=`<button class="btn-g" id="sp-reset" style="margin-top:10px;width:100%">Reset spellings</button>`;
+  }
+  h+=`<div class="spag-tip" style="margin-top:14px"><strong>SPaG strategy:</strong> After finishing your essay, read through it specifically looking for: capital letters on proper nouns (Hitler, Versailles, Rhineland), apostrophes, and your six key words from this topic.</div>`;
+  return h;
+}
+
+// SKILLS SCREEN
+function renderSkills(){
+  let h=`<div class="fu">
+<div class="nav"><button class="back" id="bk-home">← Home</button><span class="nav-trail">Exam Skills</span></div>
+<div class="sh"><div class="sh-bar" style="background:var(--skl)"></div>
+<span class="sh-icon">📝</span>
+<div class="sh-tag" style="color:var(--skl)">AQA 8145BC</div>
+<div class="sh-title">Exam Skills Hub</div>
+<div class="sh-sub">Sustained Judgement · Structure · Sources · SPaG · Timing</div>
+</div>`;
+
+  // SUSTAINED JUDGEMENT
+  h+=`<div class="sec-title">Sustained Judgement — what it means and why it matters</div>
+<div class="sj-box">
+<div class="sj-head">⭐ This is the single most important skill for Level 4 (13–16 marks)</div>
+<div class="sj-body">
+<strong>Sustained judgement does NOT mean writing "I mainly agree" every sentence.</strong><br><br>
+It means every paragraph answers the question "how far?" — how significant was this factor in the bigger picture? You are making a case to a judge. Each piece of evidence must be linked to your verdict. If you describe something without saying what it PROVES about the question, you lose marks.<br><br>
+The examiner is looking for a thread of argument running through your whole essay, not a series of isolated paragraphs.
+</div>
+<div class="sj-compare">
+<div class="sj-row bad"><div class="sj-row-lbl">✗ Level 2–3 (No Sustained Judgement)</div><div class="sj-row-text">"The League did nothing about Vilna. This was a large failure because Poland took the city and Lithuania couldn't get it back. This shows the League was weak."</div></div>
+<div class="sj-row good"><div class="sj-row-lbl">✓ Level 4 (With Sustained Judgement)</div><div class="sj-row-text">"The League's inaction over Vilna (1920) is significant because it reveals the pattern that would define all its failures: <em>it could not act when a stronger nation chose to ignore it.</em> This directly supports the statement, because it shows that the League's weakness was structural, not situational — a pattern that repeated itself in Corfu (1923) and beyond."</div></div>
+</div>
+</div>`;
+
+  // ESSAY STRUCTURE
+  h+=`<div class="sec-title">Essay Structure — 20-mark "How far do you agree" questions</div>
+<div class="sh" style="padding:14px 16px">
+<div class="struct-item"><div class="struct-num">1</div><div class="struct-body"><div class="struct-title">Introduction — take a CLEAR position immediately</div><div class="struct-desc">Don't sit on the fence. "I largely agree with this statement because..." or "I disagree to a significant extent, though..." State your 2–3 main reasons in the introduction. Brief mention of counter-argument. Do NOT just repeat the question.</div><div class="struct-time">⏱ 2 minutes</div></div></div>
+<div class="struct-item"><div class="struct-num">2</div><div class="struct-body"><div class="struct-title">Paragraph 1 — strongest argument FOR the statement</div><div class="struct-desc">POINT → EVIDENCE (named, dated example) → EXPLAIN why this matters → LINK BACK: "This therefore supports the statement because..." End with a judgement sentence about significance.</div><div class="struct-time">⏱ 5 minutes</div></div></div>
+<div class="struct-item"><div class="struct-num">3</div><div class="struct-body"><div class="struct-title">Paragraph 2 — second argument FOR the statement</div><div class="struct-desc">Different factor, same structure. Link back to the same root cause if possible — this builds a sustained argument, not isolated points. "Furthermore..." or "This was compounded by..."</div><div class="struct-time">⏱ 5 minutes</div></div></div>
+<div class="struct-item"><div class="struct-num">4</div><div class="struct-body"><div class="struct-title">Paragraph 3 — "However" (the Clever However)</div><div class="struct-desc">Acknowledge the counter-argument GENUINELY — with real evidence. Then show WHY it doesn't change your overall verdict. The pattern for successes: they only happened when no major power objected. This is not "I agree but..." — it's a real argument that you then defeat with evidence.</div><div class="struct-time">⏱ 4–5 minutes</div></div></div>
+<div class="struct-item"><div class="struct-num">5</div><div class="struct-body"><div class="struct-title">Conclusion — DEGREE, not just "I mainly agree"</div><div class="struct-desc">Do not just repeat your introduction. Give the DEGREE: HOW MUCH do you agree and WHY? Identify the single root cause that explains the most. "The [X] was not simply a failure — it was structurally designed in a way that made success impossible whenever [Y]." Refer back to specific named examples.</div><div class="struct-time">⏱ 3 minutes</div></div></div>
+</div>`;
+
+  // SOURCE INFERENCE
+  h+=`<div class="sec-title">Source Inference — 4-mark questions</div>
+<div class="sa-step"><div class="sa-step-num">Step 1</div><div class="sa-step-title">Read the source carefully — twice</div><div class="sa-step-text">First read: what is it showing/saying? Second read: what does it SUGGEST or IMPLY that isn't directly stated?</div></div>
+<div class="sa-step"><div class="sa-step-num">Step 2</div><div class="sa-step-title">Make an INFERENCE — not a description</div><div class="sa-step-text">A description says what is there. An inference says what it suggests. "The source shows three men" = description. "The source suggests tension between the leaders because the body language indicates..." = inference.</div></div>
+<div class="sa-step"><div class="sa-step-num">Step 3</div><div class="sa-step-title">Use a specific detail from the source</div><div class="sa-step-text">Every inference must be supported by a specific detail — a word, phrase, position, or feature in the source. Do not make general statements.</div></div>
+<div class="sa-step"><div class="sa-step-num">Step 4</div><div class="sa-step-title">Connect to historical context</div><div class="sa-step-text">The top marks go to students who connect the inference to what they know: "This is supported by the historical context: at the Paris Peace Conference, Wilson and Clemenceau fundamentally disagreed about..."</div></div>
+<div class="sa-template"><em>Template:</em> "From Source [X], I can infer that [INFERENCE]. This is suggested by [SPECIFIC DETAIL FROM SOURCE], which implies [WHAT IT SUGGESTS]. This connects to the historical context: [WHAT YOU KNOW]."</div>`;
+
+  // LINKING PHRASES BANK
+  h+=`<div class="sec-title">Linking Phrase Bank — use at least 4 per essay</div>
+<div class="info-box">These phrases signal sustained judgement to the examiner. They connect your evidence to the question. Tap a phrase to highlight it.</div>
+<div class="phrases">`;
+  const phrases=['This therefore supports the statement because...','This challenges the statement to the extent that...','Consequently, [x] was destined to fail whenever...','This links directly to the structural weakness because...','However, it would be wrong to say that...','These successes share one crucial characteristic:...','By contrast, when [major power] had something to gain...','This means that the failures outweigh the successes because...','The degree to which I agree is limited because...','This was not simply [X] — it was structurally designed in a way that...'];
+  phrases.forEach((p,i)=>{h+=`<div class="phrase" data-pi="${i}">${p}</div>`;});
+  h+=`</div>`;
+
+  // SPAG
+  h+=`<div class="sec-title">SPaG — 4 marks at Level 4</div>
+<div class="spag-tip"><strong>Rule 1 — Proper nouns need capital letters:</strong> Hitler, Versailles, Rhineland, Reichstag, Weimar, Munich, Abyssinia, Czechoslovakia. Every time. Always.</div>
+<div class="spag-tip"><strong>Rule 2 — Apostrophes for possession:</strong> "Germany's army" (the army belonging to Germany). NOT "Germany's" as a plural. "The League's failure" = correct. "The Leagues failure" = wrong.</div>
+<div class="spag-tip"><strong>Rule 3 — Spell your key terms correctly:</strong> Versailles (not "Versaille"), reparations (not "repairations"), Rhineland (not "Reinland"), Czechoslovakia (not "Checkoslavakia"), plebiscite (not "plebescite").</div>
+<div class="spag-tip"><strong>Rule 4 — Vary your sentence starters:</strong> Don't start three sentences in a row with "Hitler." Use: "As a result," "Consequently," "However," "Furthermore," "By contrast," "This meant that..."</div>
+<div class="spag-tip"><strong>Rule 5 — Read back through your essay:</strong> Spend the last 60–90 seconds ONLY checking SPaG. If you find one error and correct it, that minute was worth it.</div>`;
+
+  // PRE-EXAM CHECKLIST
+  h+=`<div class="sec-title">Pre-Exam Essay Checklist</div>`;
+  const checks=['I have read the question THREE TIMES and identified the exact timeframe (e.g. "1920s" — do not use 1931 Manchuria)','My introduction takes a clear position AND states my main reasons','Each paragraph has a named, dated example — not just "for example"','Every paragraph ends with a sentence linking back to the statement','I have a genuine "However" paragraph with real counter-evidence','My conclusion gives DEGREE — not just "mainly agree" but specifically why and to what extent','I have used at least 4 different linking phrases (Consequently, Furthermore, This therefore...)','I have read back through for SPaG: capital letters, apostrophes, key spellings'];
+  checks.forEach((c,i)=>{
+    const done=ST.clState[i];
+    h+=`<div class="cl-item${done?' checked':''}" data-cli="${i}"><div class="cl-box">${done?'✓':''}</div><div class="cl-text">${c}</div></div>`;
+  });
+  h+=`<button class="btn-g" id="cl-reset" style="margin-top:10px;width:100%">Reset checklist</button>`;
+  h+=`</div>`;
+  return h;
+}
+
+// RENDER MAIN
+function render(){
+  if(ST.screen==='home')document.getElementById('app').innerHTML=renderHome();
+  else if(ST.screen==='section')document.getElementById('app').innerHTML=renderSection();
+  else if(ST.screen==='topic')document.getElementById('app').innerHTML=renderTopic();
+  bind();
+}
+
+function bind(){
+  document.querySelectorAll('[data-sec]').forEach(el=>el.addEventListener('click',()=>{
+    const sec=D.sections.find(s=>s.id===el.dataset.sec);
+    if(sec.id==='skl'){ST.screen='section';ST.secId='skl';}
+    else{ST.screen='section';ST.secId=el.dataset.sec;}
+    ST.open=new Set();ST.spState={};ST.revOpen=new Set();ST.tab='facts';render();
+  }));
+  document.querySelectorAll('[data-topic]').forEach(el=>el.addEventListener('click',()=>{
+    ST.screen='topic';ST.topicId=el.dataset.topic;ST.open=new Set();ST.spState={};ST.revOpen=new Set();ST.tab='facts';render();
+  }));
+  document.getElementById('bk-home')?.addEventListener('click',()=>{ST.screen='home';ST.secId=null;render();});
+  document.getElementById('bk-sec')?.addEventListener('click',()=>{ST.screen='section';ST.topicId=null;ST.open=new Set();ST.tab='facts';render();});
+  document.querySelectorAll('[data-tab]').forEach(el=>el.addEventListener('click',()=>{ST.tab=el.dataset.tab;ST.open=new Set();render();}));
+  document.querySelectorAll('[data-fc]').forEach(el=>el.addEventListener('click',()=>{
+    const i=parseInt(el.dataset.fc);ST.open.has('f'+i)?ST.open.delete('f'+i):ST.open.add('f'+i);render();
+  }));
+  document.querySelectorAll('[data-qi]').forEach(el=>el.addEventListener('click',()=>{
+    const qi=parseInt(el.dataset.qi);
+    const secs=parseInt(el.dataset.secs);
+    const t=getTopic();
+    const q=t?.questions[qi];
+    const hints=q?({20:[{t:'0:00',l:'Plan + intro'},{t:'4:00',l:'Para 1 — for statement'},{t:'9:00',l:'Para 2 — for statement'},{t:'14:00',l:'Para 3 — However counter'},{t:'18:00',l:'Conclusion + degree'},{t:'21:00',l:'SPaG check'}],12:[{t:'0:00',l:'Para 1 — factor + why'},{t:'5:00',l:'Para 2 — factor + why'},{t:'9:00',l:'Para 3 — link factors'},{t:'13:00',l:'SPaG check'}],4:[{t:'0:00',l:'Read source twice'},{t:'1:00',l:'Inference 1 + specific detail'},{t:'3:00',l:'Inference 2 + context'}]}[q.marks]||[]):[]; 
+    const panel=document.getElementById('timer-panel-'+qi);
+    if(panel){panel.style.display='block';panel.id='timer-panel';ST.timerTotal=secs;startTimer(secs,hints);}
+  }));
+  document.querySelectorAll('[data-rqi]').forEach(el=>el.addEventListener('click',()=>{
+    const qi=parseInt(el.dataset.rqi);
+    ST.revOpen.has('q'+qi)?ST.revOpen.delete('q'+qi):ST.revOpen.add('q'+qi);render();
+  }));
+  document.querySelectorAll('.sp-check').forEach(el=>el.addEventListener('click',()=>{
+    const i=parseInt(el.dataset.spi);
+    const input=document.querySelector(`.sp-input[data-spi="${i}"]`);
+    const t=getTopic();const sp=t?.spellings[i];
+    if(!sp||!input)return;
+    const val=input.value.trim();
+    const correct=val.toLowerCase()===sp[0].toLowerCase();
+    ST.spState[i]={tried:true,correct,val};render();
+  }));
+  document.querySelectorAll('.sp-input').forEach(el=>el.addEventListener('keypress',e=>{
+    if(e.key==='Enter'){const btn=document.querySelector(`.sp-check[data-spi="${el.dataset.spi}"]`);btn?.click();}
+  }));
+  document.getElementById('sp-reset')?.addEventListener('click',()=>{ST.spState={};render();});
+  document.querySelectorAll('.phrase').forEach(el=>el.addEventListener('click',()=>{
+    el.classList.toggle('phrase-copied');setTimeout(()=>el.classList.remove('phrase-copied'),1500);
+  }));
+  document.querySelectorAll('[data-cli]').forEach(el=>el.addEventListener('click',()=>{
+    const i=parseInt(el.dataset.cli);
+    ST.clState[i]=!ST.clState[i];render();
+  }));
+  document.getElementById('cl-reset')?.addEventListener('click',()=>{ST.clState={};render();});
+}
+render();
+</script></body></html>
